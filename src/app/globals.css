@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens (Tailwind v4 CSS-first configuration).
+ * Values registered in @theme become utilities: --color-ink -> text-ink, bg-ink, border-ink.
+ * The palette is a warm neutral light theme with a single restrained accent.
+ * Contrast ratios against --color-canvas: ink 16.7:1, muted 6.7:1, accent 6.7:1 (all >= WCAG AA).
+ */
+@theme {
+  --color-canvas: #fbfaf8;
+  --color-surface: #ffffff;
+  --color-ink: #1c1b19;
+  --color-muted: #5c5a54;
+  --color-line: #e4e0d9;
+  --color-accent: #12655c;
+  --color-accent-strong: #0d4f48;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /*
+   * Global keyboard focus treatment. Applied once here rather than per component so
+   * every interactive element is reachable and visible by default, including any
+   * element added later that forgets to style its own focus state.
+   */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
