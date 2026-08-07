@@ -15,6 +15,12 @@ export interface SectionDefinition {
   readonly title: string;
   /** Shorter label used in the header navigation. */
   readonly navLabel: string;
+  /**
+   * Overrides `href` for the header nav link only. Used when the nav should scroll to an
+   * in-page anchor on the home page rather than navigate to the section's own route — the
+   * route still exists and is still linked to elsewhere (e.g. the homepage principle cards).
+   */
+  readonly navHref: string | null;
   /** One-line description shown in the home page contents index. Provisional copy. */
   readonly summary: string;
   /** Page-level meta description. Provisional copy. */
@@ -32,6 +38,7 @@ export const SECTIONS = [
     href: "/leadership",
     title: "Leadership focus",
     navLabel: "Leadership",
+    navHref: "/#principles-heading",
     summary: "How I build teams, develop managers, and set the operating system for delivery.",
     description:
       "How Jeff Whiteside builds engineering teams, develops managers, and establishes the " +
@@ -43,6 +50,7 @@ export const SECTIONS = [
     href: "/experience",
     title: "Selected experience",
     navLabel: "Experience",
+    navHref: "/#experience-heading",
     summary: "Two decades leading SaaS and marketplace engineering organizations.",
     description:
       "Selected engineering leadership experience: CommandLink and Ritchie Bros. / Xcira.",
@@ -53,6 +61,7 @@ export const SECTIONS = [
     href: "/projects",
     title: "Projects",
     navLabel: "Projects",
+    navHref: null,
     summary: "Things I build to stay close to the craft.",
     description: "Personal software projects built by Jeff Whiteside.",
     plannedIn: "Iteration 5",
@@ -62,6 +71,7 @@ export const SECTIONS = [
     href: "/writing",
     title: "Writing and publication",
     navLabel: "Writing",
+    navHref: null,
     summary: "A published teaching case on leadership and remote work.",
     description:
       "Writing and published work by Jeff Whiteside, including a teaching case on the " +
@@ -73,6 +83,7 @@ export const SECTIONS = [
     href: "/about",
     title: "About",
     navLabel: "About",
+    navHref: null,
     summary: "Background, approach, and what I do outside of engineering.",
     description: "About Jeff Whiteside — background, approach, and interests.",
     plannedIn: "Iteration 6",
@@ -82,6 +93,7 @@ export const SECTIONS = [
     href: "/contact",
     title: "Contact",
     navLabel: "Contact",
+    navHref: null,
     summary: "Email and LinkedIn.",
     description: "How to reach Jeff Whiteside.",
     plannedIn: "Iteration 6",

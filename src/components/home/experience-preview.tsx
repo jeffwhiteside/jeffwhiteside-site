@@ -28,7 +28,7 @@ export function ExperiencePreview() {
         <div className="text-center">
 
           <h2 id="experience-heading" className="text-section mt-3 scroll-mt-24">
-            My Journey
+            My Journey So Far
           </h2>
             <p className="eyebrow">Four Chapters that shaped how I build, lead, and think</p>
         </div>

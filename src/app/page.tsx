@@ -13,7 +13,7 @@ export default function Home() {
       <Hero />
       <LeadershipPreview />
       <ExperiencePreview />
-      <ImpactAndProjects />
+      {/* <ImpactAndProjects /> */}
     </>
   );
 }

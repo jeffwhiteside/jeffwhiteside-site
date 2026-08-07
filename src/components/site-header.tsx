@@ -28,7 +28,7 @@ export function SiteHeader() {
             {NAV_SECTIONS.map((section) => (
               <li key={section.id}>
                 <Link
-                  href={section.href}
+                  href={section.navHref ?? section.href}
                   className="text-muted transition-colors hover:text-ink"
                 >
                   {section.navLabel}

@@ -1,5 +1,5 @@
 /**
- * Personal content for the About page and the footer's "Beyond Work" column.
+ * Personal content for the About page.
  *
  * The interests below are confirmed by the owner. The family paragraph is a placeholder:
  * the owner asked for it but has not supplied details, and nothing about a person's family
@@ -28,11 +28,6 @@ export const INTERESTS = [
       "Small tools that solve problems in my own life, and a way to stay close to the craft.",
   },
 ] as const satisfies readonly Interest[];
-
-/** Short summary used in the footer, where there is only room for a sentence. */
-export const BEYOND_WORK_SUMMARY =
-  "Outside of engineering, I play guitar, cook for family and friends, and build small " +
-  "applications that solve problems in my own life.";
 
 /**
  * Placeholder. The owner asked for family content but has not supplied it. Rendered as an

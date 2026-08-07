@@ -42,17 +42,6 @@ export const IMPACT = [
   },
 ] as const satisfies readonly ImpactStatement[];
 
-/** Values shown in the footer. */
-export const VALUES = [
-  { title: "Collaborative", description: "Better outcomes together." },
-  { title: "Accountable", description: "Ownership drives results." },
-  { title: "Adaptable", description: "Embrace change. Deliver value." },
-] as const;
-
 /** Pull quote used in the hero. Owner's wording, from the branding mockup. */
 export const HERO_QUOTE =
   "My role is to build an environment where talented people can do the best work of their careers. This always leads to extrodonary results that we can all be proud of";
-
-/** Closing quote used in the footer. */
-export const CLOSING_QUOTE =
-  "Technology is the enabler, but people and purpose create lasting impact.";
