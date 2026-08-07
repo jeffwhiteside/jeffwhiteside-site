@@ -24,9 +24,10 @@ export const ROLES = [
     title: "Vice President, Software Engineering & Products",
     period: "May 2024 – June 2026",
     summary:
-      "Led engineering, product, QA, platform reliability, and AI enablement across seven " +
-      "B2B SaaS platforms. Managed a distributed 60+ person organization through five " +
-      "engineering managers and seven product managers.",
+      "Scaled an engineering organization from 30 to 60+ while growing new SaaS products, " +
+      "modernizing the platform, and strengthening how teams built and released software. " +
+      "It was also a lesson in scale: what works at 30 people doesn’t work at 60, and great " + 
+      "leaders have to evolve themselves, their systems, and their organizations as they grow.",
     highlights: [
       "Drove agentic coding and AI-enabled SDLC adoption using Cursor, Claude Code, AI-assisted code review, and spec-driven planning; improved engineering productivity by approximately 40% while preserving engineer ownership and release quality",
       "Established architecture, reliability, and secure-delivery standards across React front ends, APIs, AWS, CI/CD, observability, SLO/SLI practices, SOC 2 readiness, incident response, and RCA; sustained 99.8%+ stability",
@@ -41,9 +42,11 @@ export const ROLES = [
     title: "Vice President, Software Development & Infrastructure",
     period: "August 2015 – May 2024",
     summary:
-      "Owned software development, infrastructure, QA/SRE, architecture, and modernization " +
-      "for global, high-volume, real-time transactional marketplace platforms. Directed six " +
-      "cross-functional teams under strict transaction accuracy and release discipline.",
+      "Spent nearly a decade building technology for the complex world of live auctions " +
+      "and marketplaces, while growing engineering teams and modernizing the platform from " +
+      "legacy client-server systems toward cloud, web, mobile, and service-based architecture. " +
+      "This chapter taught me how to modernize critical systems without losing sight of the customers " +
+      "and businesses that depend on them every day.",
     highlights: [
       "Led multi-year modernization from on-premise systems to AWS and from legacy web applications to React/API-based platforms; decommissioned data centers and reduced infrastructure costs by approximately 30%",
       "Established architecture reviews, CI/CD pipelines, automated QA gates, on-call discipline, and incident response; reduced escaped defects by 45% while sustaining 99.95% uptime",
@@ -55,11 +58,15 @@ export const ROLES = [
   {
     company: "Wolters Kluwer TeamMate",
     location: "Tampa, FL",
-    title: "Agile Coach & Release Manager",
+    title: "Enterprise Agile Coach & Release Manager",
     period: "January 2013 – August 2015",
     summary:
-      "Led Agile delivery, QA/SRE, and enterprise release governance for regulated audit, " +
-      "tax, risk, and compliance software.",
+      "Stepped outside traditional engineering leadership to focus on how large " +
+      "organizations build and deliver software. Helped evolve the SDLC using " + 
+      "Agile practices across both legacy client-server and modern SaaS products " +
+      "supporting mission-critical tax and audit work for major enterprises and " +
+      "government agencies. This chapter shaped how I think about systems and processes, " + 
+      "continuous improvement, and enabling teams to deliver effectively at scale.",
     highlights: [
       "Designed enterprise SDLC and release governance integrating Agile/SAFe delivery, automated testing, SOC/PCI controls, and compliance-sensitive release gates",
       "Served as Release Train Engineer across legacy and greenfield programs, facilitating PI Planning and quarterly roadmap alignment",
@@ -73,9 +80,11 @@ export const ROLES = [
     title: "Senior Engineer, Architect, Director of Engineering",
     period: "June 2004 – January 2013",
     summary:
-      "Progressed from hands-on Java engineer and architect to Director of Engineering, " +
-      "leading distributed teams building SaaS and mobile workforce platforms through " +
-      "growth, acquisition integration, and platform consolidation.",
+      "Grew from a hands-on software engineer into engineering leadership while building mobile " +
+      "workforce technology before smartphones and GPS became commonplace. Experimenting with " +
+      "distributed teams in Belarus taught me how to lead across distance, cultures, and time " +
+      "zones—and that great teams are built through trust, communication, and shared purpose, " +
+      "regardless of where people work.",
     highlights: [
       "Introduced Scrum/XP, TDD, CI/CD, and engineering metrics, improving release cadence from four-month production cycles to biweekly pre-production and monthly production releases",
       "Directed a zero-downtime data-center and platform migration without service interruption",

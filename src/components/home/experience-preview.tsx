@@ -26,10 +26,11 @@ export function ExperiencePreview() {
     >
       <div className="page-container">
         <div className="text-center">
-          <p className="eyebrow">By Experience</p>
-          <h2 id="experience-heading" className="text-section mt-3">
-            A Journey of Growth &amp; Impact
+
+          <h2 id="experience-heading" className="text-section mt-3 scroll-mt-24">
+            My Journey
           </h2>
+            <p className="eyebrow">Four Chapters that shaped how I build, lead, and think</p>
         </div>
 
         <ol className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">

@@ -27,7 +27,11 @@ export function Hero() {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <ButtonLink href="/experience">
+              <ButtonLink href="#principles-heading" variant="secondary">
+                Explore How I Lead
+                <ArrowRight />
+              </ButtonLink>
+              <ButtonLink href="#experience-heading">
                 Explore My Journey
                 <ArrowRight />
               </ButtonLink>

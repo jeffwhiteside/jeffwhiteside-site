@@ -27,8 +27,8 @@ const PRINCIPLES: ReadonlyArray<{
   {
     title: "Elevate People",
     description:
-      "Invest in people first. Coach, challenge, and empower others to grow into their " +
-      "best and do the best work of their careers.",
+      "Invest in people first. Coach, challenge, and empower others to grow. Give people " +
+      "meaningful ownership, set high standards, and hold one another accountable.",
     icon: PeopleIcon,
     tile: "blue",
   },
@@ -90,7 +90,7 @@ export function LeadershipPreview() {
     >
       <div className="page-container">
         <div className="mt-1 text-center">
-          <h2 id="principles-heading" className="text-section mt-3">
+          <h2 id="principles-heading" className="text-section mt-3 scroll-mt-24">
             My Operating Principles
           </h2>
           <p className="eyebrow">guiding every decision I make</p>
@@ -121,6 +121,23 @@ export function LeadershipPreview() {
                 ))}
               </ul>
             </div>
+
+
+    <div className="mt-12 grid grid-cols-1 gap-6 rounded-xl bg-elevated p-8">
+          <div className="flex items-center gap-4">
+            {/* <SummitIcon className="size-8 shrink-0 text-accent" /> */}
+            <p className="text-lg text-ink">
+              Outcomes aren&apos;t a hope. They&apos;re the result of how we lead.
+            </p>
+          </div>
+          
+          <p className="text-sm text-muted">
+            When these principles become part of an organization&apos;s culture, teams thrive,
+            customers win, and the business grows.
+          </p>
+        </div>
+
+
           </div>
 
           <div className="relative">
@@ -174,19 +191,6 @@ export function LeadershipPreview() {
           </div>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 rounded-xl bg-elevated p-8 sm:grid-cols-[auto_1px_1fr] sm:items-center sm:gap-8">
-          <div className="flex items-center gap-4">
-            <SummitIcon className="size-8 shrink-0 text-accent" />
-            <p className="text-lg text-ink">
-              Outcomes aren&apos;t a hope. They&apos;re the result of how we lead.
-            </p>
-          </div>
-          <span aria-hidden="true" className="hidden h-full w-px bg-line sm:block" />
-          <p className="text-sm text-muted">
-            When these principles become part of an organization&apos;s culture, teams thrive,
-            customers win, and the business grows.
-          </p>
-        </div>
       </div>
     </section>
   );
