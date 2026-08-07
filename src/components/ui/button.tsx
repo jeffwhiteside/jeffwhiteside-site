@@ -1,0 +1,67 @@
+import Link from "next/link";
+import type { ReactNode } from "react";
+
+type Variant = "primary" | "secondary";
+
+interface ButtonLinkProps {
+  href: string;
+  variant?: Variant;
+  children: ReactNode;
+  /** Set for links leaving the site; adds target and rel. */
+  external?: boolean;
+}
+
+const BASE =
+  "inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-medium transition-colors";
+
+const VARIANTS: Record<Variant, string> = {
+  primary: "bg-brand text-white hover:bg-brand-strong",
+  secondary: "border border-line text-ink hover:border-ink",
+};
+
+/**
+ * The site's only button treatment, always rendered as a link — nothing here submits or
+ * mutates, so a <button> element would misrepresent the action to assistive technology.
+ *
+ * Internal links use next/link for prefetching; external links get noopener noreferrer.
+ */
+export function ButtonLink({
+  href,
+  variant = "primary",
+  external = false,
+  children,
+}: ButtonLinkProps) {
+  const className = `${BASE} ${VARIANTS[variant]}`;
+
+  if (external) {
+    return (
+      <a href={href} className={className} target="_blank" rel="noopener noreferrer">
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className={className}>
+      {children}
+    </Link>
+  );
+}
+
+/** Trailing arrow used inside buttons and inline calls to action. */
+export function ArrowRight() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      className="size-3.5 shrink-0"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M2.5 8h11M9.5 4l4 4-4 4" />
+    </svg>
+  );
+}

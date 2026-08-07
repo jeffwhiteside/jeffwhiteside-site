@@ -3,21 +3,110 @@
 /*
  * Design tokens (Tailwind v4 CSS-first configuration).
  * Values registered in @theme become utilities: --color-ink -> text-ink, bg-ink, border-ink.
- * The palette is a warm neutral light theme with a single restrained accent.
- * Contrast ratios against --color-canvas: ink 16.7:1, muted 6.7:1, accent 6.7:1 (all >= WCAG AA).
+ * See docs/design-brief.md for the reasoning behind these choices.
+ *
+ * The site is dark by default. Light bands break up the page here and there.
+ * Contrast on --color-canvas: ink 18.9:1, muted 9.5:1, accent 5.5:1, positive 10.6:1.
  */
 @theme {
-  --color-canvas: #fbfaf8;
-  --color-surface: #ffffff;
-  --color-ink: #1c1b19;
-  --color-muted: #5c5a54;
-  --color-line: #e4e0d9;
-  --color-accent: #12655c;
-  --color-accent-strong: #0d4f48;
+  /*
+   * Dark surfaces.
+   *
+   * --color-canvas is the mean of the four corner colours sampled from the hero portrait
+   * (#000510, #000510, #000510, #000510). Matching it means the photograph's background and
+   * the page are the same colour, so the image edge dissolves instead of reading as a pasted
+   * rectangle. Changing the portrait means re-sampling this value.
+   */
+  --color-canvas: #000510;
+  --color-elevated: #0a1c3e;
+  --color-line: #17325c;
+  --color-ink: #f2f7fc;
+  --color-muted: #9fb3c8;
 
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  /* Light band */
+  --color-band: #ffffff;
+  --color-band-ink: #0a1729;
+  --color-band-muted: #4b5563;
+  --color-band-line: #e5e7eb;
+
+  --color-accent: #3b82f6;
+  --color-accent-strong: #2563eb;
+  --color-accent-soft: #12294a;
+
+  /* Reserved for verified figures only. Never decorative. */
+  --color-positive: #34d399;
+
+  /*
+   * Icon tile hues. The only place more than one colour appears, used to distinguish
+   * parallel cards at a glance. Never applied to text.
+   */
+  --color-tile-blue: #2563eb;
+  --color-tile-teal: #0d9488;
+  --color-tile-violet: #7c3aed;
+  --color-tile-amber: #ea580c;
+  --color-tile-green: #16a34a;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  --font-serif: var(--font-source-serif), ui-serif, Georgia, "Times New Roman", serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@utility page-container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 72rem;
+  padding-inline: clamp(1.25rem, 5vw, 2.5rem);
+}
+
+@utility measure-prose {
+  max-width: 34rem;
+}
+
+@utility eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+@utility text-hero {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+@utility text-section {
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+@utility card {
+  border: 1px solid var(--color-line);
+  border-radius: 0.75rem;
+  background-color: var(--color-elevated);
+}
+
+@utility tag {
+  display: inline-block;
+  border: 1px solid var(--color-line);
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+@utility link {
+  color: var(--color-accent);
+  transition: color 150ms ease-out;
+
+  &:hover {
+    color: var(--color-ink);
+  }
 }
 
 @layer base {
@@ -25,16 +114,39 @@
     background-color: var(--color-canvas);
     color: var(--color-ink);
     font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
 
   /*
-   * Global keyboard focus treatment. Applied once here rather than per component so
-   * every interactive element is reachable and visible by default, including any
-   * element added later that forgets to style its own focus state.
+   * Headings use the sans face at a heavy weight rather than the serif. The dark treatment
+   * reads as a product surface, and a serif at these sizes fights that; the serif is retained
+   * for the monogram and pull quotes, where its voice still belongs.
    */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
+    border-radius: 2px;
   }
 }

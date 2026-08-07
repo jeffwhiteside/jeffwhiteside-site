@@ -42,3 +42,8 @@ next-env.d.ts
 
 # local-only project working notes (deployment log, scratch)
 /.project/
+
+# local-only stock placeholder imagery, for judging layout during review.
+# Never committed: the site must not ship stock photography, and components fall
+# back to an outlined placeholder when these files are absent.
+/public/placeholder/

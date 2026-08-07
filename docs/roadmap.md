@@ -2,7 +2,7 @@
 
 ## Current iteration
 
-**Iteration 1 — Repository, documentation, and project foundation.** Awaiting local review.
+**Iteration 2 — Visual system and page skeleton.** Awaiting local review.
 
 ## Planned iterations
 
@@ -11,8 +11,8 @@ reviewed again through a Vercel preview deployment before the next begins.
 
 | #   | Iteration                          | Scope                                                                                  | Status      |
 | --- | ---------------------------------- | -------------------------------------------------------------------------------------- | ----------- |
-| 1   | Repository and foundation          | Next.js project, TypeScript, Tailwind, ESLint, docs, ADRs, design tokens, metadata       | In review   |
-| 2   | Visual system and page skeleton    | Typography, spacing, colors, header, footer, empty semantic sections, anchor navigation  | Not started |
+| 1   | Repository and foundation          | Next.js project, TypeScript, Tailwind, ESLint, docs, ADRs, design tokens, metadata       | Committed (`b78ab98`); deployed review deferred |
+| 2   | Visual system and page skeleton    | Typography, spacing, colors, header, footer, empty semantic sections, anchor navigation  | In review   |
 | 3   | Hero and leadership positioning    | Hero section, leadership focus areas                                                     | Not started |
 | 4   | Selected experience                | CommandLink and Ritchie Bros. / Xcira entries                                            | Not started |
 | 5   | Personal projects                  | Personal Time Tracker and RSS Reader entries, screenshot strategy                        | Not started |
@@ -48,7 +48,6 @@ Not implemented in Version 1. No infrastructure is being quietly prepared for an
 | Authentication                      | Nothing on the site is private                                          |
 | Contact-form backend                | Email and LinkedIn are sufficient and require no server                 |
 | Dark mode                           | Doubles visual review effort; light theme is the priority for V1        |
-| Multiple page architecture          | A single page is the right scope for the audience                       |
 | Project case-study pages            | Project content is still placeholder                                    |
 | Interactive architecture diagrams   | Diagrams belong in documentation, not on a professional landing page    |
 | Downloadable résumé                 | Needs a decision on hosting a PDF and keeping it current                |
@@ -66,4 +65,12 @@ These need an explicit decision, and in most cases an ADR, before any work start
 - **Live links for personal projects** — depends on whether those applications are publicly
   deployed and ready to be judged by a hiring manager.
 - **Publication URL** — a link for the teaching case has not been supplied.
-- **Moving from a single page to multiple routes** — would change the routing architecture.
+- **Project detail routes** (`/projects/[slug]`) — would extend the routing architecture again.
+
+## Scope changes made
+
+| Change                                        | Date       | Recorded in |
+| --------------------------------------------- | ---------- | ----------- |
+| Single page → a route per section              | 2026-08-07 | ADR 0006    |
+| Portrait added after initially being excluded  | 2026-08-06 | design-brief.md |
+| Projects section kept, expanded to three entries | 2026-08-06 | design-brief.md |

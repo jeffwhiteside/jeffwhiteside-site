@@ -3,8 +3,8 @@
 This document describes the architecture **as it currently exists**, not as it is planned.
 It is updated in the same iteration as any architectural change.
 
-Current state: **Iteration 1 — foundation only.** The application renders a single
-placeholder page. Site sections and reusable components do not exist yet.
+Current state: **Iteration 2 — site skeleton.** Six routes, header, footer, and navigation
+exist. Every section page renders labeled placeholder content; no final copy is written.
 
 ## System context
 
@@ -54,15 +54,28 @@ Because the output is static HTML, the site can be served entirely from Vercel's
 
 ## Routing approach
 
-The App Router is used with a single route.
+The App Router is used with **six routes**, all statically prerendered.
 
-- `src/app/layout.tsx` is the **root layout**. It renders `<html>` and `<body>`, imports the
-  global stylesheet, and exports the site `metadata` object. Every route is wrapped by it.
-- `src/app/page.tsx` is the route segment for `/`.
+| Route         | File                          | Purpose                       |
+| ------------- | ----------------------------- | ----------------------------- |
+| `/`           | `app/page.tsx`                | Cover: hero + contents index  |
+| `/leadership` | `app/leadership/page.tsx`     | Leadership focus              |
+| `/experience` | `app/experience/page.tsx`     | Selected experience           |
+| `/projects`   | `app/projects/page.tsx`       | Projects                      |
+| `/writing`    | `app/writing/page.tsx`        | Writing and publication       |
+| `/contact`    | `app/contact/page.tsx`        | Contact                       |
 
-Version 1 is a single page. Navigation between sections uses in-page anchors rather than
-routes, so no additional route segments are planned. See
-[adr/0003-use-static-content-for-v1.md](adr/0003-use-static-content-for-v1.md).
+- `src/app/layout.tsx` is the **root layout**. It renders `<html>` and `<body>`, loads the
+  fonts, imports the global stylesheet, renders the header and footer, and exports the site
+  `metadata`. Every route is wrapped by it.
+- Each section page exports its **own `title` and `description`**. The root layout defines a
+  title template (`"%s — Jeff Whiteside"`), so a page supplies only its own title.
+- Navigation uses `next/link`, giving client-side transitions with prefetching over the
+  statically prerendered routes.
+
+The site moved from a single anchor-navigated page to a route per section in Iteration 2. See
+[adr/0006-multi-page-architecture.md](adr/0006-multi-page-architecture.md), which supersedes
+the single-page portion of ADR 0003.
 
 Next.js 16 supplies generated global types such as `LayoutProps<"/">`, which type the layout
 props against the actual route tree. These are generated into `.next/types` during build and
@@ -76,33 +89,108 @@ therefore runs `next typegen` first. This is why the script is not simply `tsc -
 
 ```mermaid
 flowchart TD
-    Layout["app/layout.tsx<br/>root layout + metadata"]
-    Page["app/page.tsx<br/>route: /"]
-    CSS["app/globals.css<br/>tokens + base styles"]
+    Layout["app/layout.tsx<br/>root layout, fonts, metadata, skip link"]
+    Header["components/site-header.tsx<br/>sticky header + nav"]
+    Footer["components/site-footer.tsx"]
+    Home["app/page.tsx<br/>route: /"]
+    Pages["app/{leadership,experience,projects,<br/>writing,contact}/page.tsx"]
+    Hero["components/hero.tsx<br/>h1, scope facts, CTAs"]
+    Index["components/contents-index.tsx"]
+    Portrait["components/portrait-placeholder.tsx"]
+    Shell["components/page-shell.tsx<br/>page heading + margin grid"]
+    Margin["components/margin-layout.tsx<br/>margin + main grid"]
+    Sections["content/sections.ts<br/>route registry"]
+    Contact["content/contact.ts"]
+    CSS["app/globals.css<br/>tokens, measures, utilities"]
 
-    Layout -->|renders children| Page
+    Layout --> Header
+    Layout --> Footer
     Layout -->|imports| CSS
+    Layout -->|renders children| Home
+    Layout -->|renders children| Pages
+    Home --> Hero
+    Home --> Index
+    Hero --> Portrait
+    Pages --> Shell
+    Shell --> Margin
+    Sections -->|NAV_SECTIONS| Header
+    Sections -->|summaries + hrefs| Index
+    Sections -->|getSection| Pages
+    Contact --> Hero
+    Contact --> Footer
 ```
 
-The structure is deliberately flat at this stage. A `src/components/` directory is introduced
-in Iteration 2, when there is a second consumer for shared markup — not before.
+Two relationships matter here:
+
+1. `content/sections.ts` is the **route registry**. It feeds the header navigation, the home
+   page contents index, and each page's own title and description. A link cannot point at a
+   page that does not exist, and a page cannot exist without appearing in navigation.
+2. `margin-layout.tsx` is shared by `page-shell.tsx` and every page, so the annotation column
+   stays aligned across the whole site from a single definition.
 
 ## Component organization
 
-Not yet established. Iteration 1 contains only the root layout and one placeholder page.
+Components are small presentational **Server Components** in `src/components/`, named in
+kebab-case and exported as named (not default) exports.
 
-The intended approach, to be implemented in Iteration 2: small, presentational Server
-Components, one per site section, composed by `page.tsx`. Sections stay independently
-extractable so any of them can become its own route later without restructuring.
+| Component                  | Responsibility                                                     |
+| -------------------------- | ------------------------------------------------------------------ |
+| `site-header.tsx`          | Sticky header, wordmark, route navigation                            |
+| `site-footer.tsx`          | Footer                                                               |
+| `margin-layout.tsx`        | Asymmetric margin + main grid, shared by every page                  |
+| `page-shell.tsx`           | Section page shell: `h1` and the margin grid                         |
+| `hero.tsx`                 | Home hero: portrait, `h1`, supporting copy, scope facts, CTAs        |
+| `contents-index.tsx`       | Home contents index: every section with a one-line summary           |
+| `portrait.tsx`             | Hero portrait, with placeholder and outline fallbacks                |
+| `project-image.tsx`        | Project screenshot, with the same fallback chain                     |
+
+The header and footer live in the **root layout**, so all six routes inherit them
+automatically — the arrangement anticipated by the original single-page structure and now
+being used.
+
+The hero is intentionally **not** built on `PageShell`. It carries a different type scale, a
+two-column portrait arrangement, and no page heading treatment; routing it through the shared
+component would mean props with exactly one caller.
+
+There is still **no client component and no `"use client"` directive anywhere.** The header
+deliberately has no active-page indicator: `usePathname` would force a client boundary for a
+cue each page's `<h1>` already provides.
 
 ## Content organization
 
-Content currently lives inline in TSX. There is no content layer, no Markdown pipeline, and
-no CMS.
+Two patterns, chosen per case:
 
-Content will be extracted into typed modules only where it materially improves
-maintainability — for example, a list of experience entries or projects that a component maps
-over. Prose that appears exactly once stays inline in the component that renders it.
+1. **Structural content lives in a typed module.** `src/content/sections.ts` is the route
+   registry — id, path, title, navigation label, index summary, and meta description. It is
+   typed with `as const satisfies readonly SectionDefinition[]` so entries are literal-typed
+   while still being validated against the interface. `getSection(id)` throws on an unknown
+   id rather than returning `undefined`, because every caller is a route that cannot render
+   without its definition.
+2. **Prose stays inline** in the component that renders it, per ADR 0003.
+
+`src/content/contact.ts` holds email, LinkedIn, and location as named constants so the hero,
+contact section, and footer cannot drift apart. The phone number is deliberately absent.
+
+### Images
+
+`src/lib/assets.ts` exposes `resolvePublicImage(candidates)`, which returns the first path
+that exists under `public/`. It uses `node:fs` inside Server Components, so it runs **at build
+time only** and the result is baked into the static output.
+
+Images resolve in three tiers: the real asset, then a **gitignored** local stock placeholder
+under `public/placeholder/`, then a drawn outline. The tiers share dimensions, so substituting
+the real asset causes no layout shift.
+
+The purpose is to let the owner review composition locally against real photography while
+guaranteeing that stock imagery is never committed or deployed. Because the placeholders are
+absent from the repository, referencing them directly would render broken images on every
+deployment; the third tier prevents that. Verified by building with the placeholder directory
+removed: the output contains zero `<img>` tags.
+
+All rendering goes through `next/image`, which emits WebP/AVIF with explicit dimensions.
+
+`SectionDefinition` currently carries a temporary `plannedIn` field used to label placeholder
+content. It is removed from each entry as that section receives real content.
 
 ## Styling approach
 
@@ -125,17 +213,79 @@ Current tokens:
 | `--color-ink`           | `#1c1b19` | Primary text                          |
 | `--color-muted`         | `#5c5a54` | Secondary text                        |
 | `--color-line`          | `#e4e0d9` | Borders and rules                     |
-| `--color-accent`        | `#12655c` | Single accent — links, emphasis       |
-| `--color-accent-strong` | `#0d4f48` | Accent hover/active                   |
+| `--color-accent`        | `#8a4b2a` | Single accent — deep clay             |
+| `--color-accent-strong` | `#6f3c21` | Accent hover/active                   |
 
-Contrast against `--color-canvas`: ink 16.7:1, muted 6.7:1, accent 6.7:1 — all meet WCAG AA
+Contrast against `--color-canvas`: ink 16.7:1, muted 6.7:1, accent 6.5:1 — all meet WCAG AA
 for normal text.
 
-Typography currently uses a system font stack. The final typographic system is decided in
-Iteration 2.
+The accent changed from deep teal to deep clay in Iteration 2 following the design research;
+the reasoning is recorded in [design-brief.md](design-brief.md).
 
-Keyboard focus is handled globally by a single `:focus-visible` rule so that no component can
-accidentally ship without a visible focus state.
+### Typography
+
+Two families, loaded through `next/font/google` in the root layout:
+
+| Role                | Family          | Notes                                        |
+| ------------------- | --------------- | -------------------------------------------- |
+| Headings (`h1`–`h3`)| Source Serif 4  | Humanist serif, 600 weight, tightened tracking |
+| Body and UI         | Inter           | Neutral sans, 1.65 line height                 |
+
+`next/font` downloads and subsets the fonts **at build time** and serves them from our own
+origin as two `.woff2` files. The browser never contacts Google, which preserves the property
+that the site makes no third-party runtime requests, and the generated `@font-face` rules
+include size-adjust metrics so swapping the fallback does not shift layout.
+
+Heading styles are applied at the **element level** in `@layer base` rather than through
+utility classes, so a new section cannot introduce an inconsistent heading treatment.
+
+The serif/sans pairing is the main reason the page does not read as a generic SaaS template,
+where a single geometric sans is the norm.
+
+### Layout
+
+Layout follows [docs/design-brief.md](design-brief.md). Four measures are defined as Tailwind
+v4 `@utility` rules:
+
+| Utility            | Value  | Applies to                                  |
+| ------------------ | ------ | -------------------------------------------- |
+| `page-container`   | 64rem  | Outer bound, including the margin column      |
+| `measure-content`  | 48rem  | Headings, lists, structured blocks            |
+| `measure-prose`    | 36rem  | Running paragraphs                            |
+| margin column      | 9rem   | Grid track in `margin-layout.tsx`             |
+
+Gutters use `clamp(1.25rem, 5vw, 2.5rem)`, so horizontal padding is fluid with no media
+query.
+
+The one structural device is the **margin column**: a CSS grid of `9rem minmax(0, 1fr)` that
+activates at `lg` and collapses to a single stacked column below it. The grid is applied to
+every block whether or not a note is present, so the whole page shares one left edge.
+
+It carries **only true, useful information** — scope numerals in the hero today, role dates
+and project status in later iterations. A section with nothing factual to annotate has an
+empty margin. Decorative section indices were implemented and then removed; the reasoning is
+in [design-brief.md](design-brief.md).
+
+The column is strictly supplementary: the page reads correctly with every note removed.
+
+**Radii: a single `2px`**, used by the portrait, focus outlines, and the skip link. No
+fully-rounded shapes — circles read as avatars and chips, which is the wrong visual language
+for an editorial page.
+
+Measures are CSS utilities rather than React wrapper components to avoid extra DOM elements;
+the margin grid *is* a component because it owns structure, not just a width.
+
+Responsive behavior relies on these fluid measures plus a small number of `sm:` and `lg:`
+adjustments. There is no general grid system and no breakpoint-heavy layout code.
+
+### Accessibility
+
+- Keyboard focus is handled globally by a single `:focus-visible` rule, so no component can
+  ship without a visible focus state.
+- A skip link is the first focusable element in the body and targets `<main id="main">`.
+- Each `<section>` is a labeled landmark via `aria-labelledby` pointing at its heading.
+- Sections carry `scroll-mt-24` so an anchored heading is not hidden under the sticky header.
+- Smooth scrolling is applied only under `prefers-reduced-motion: no-preference`.
 
 ## Deployment model
 
@@ -143,29 +293,44 @@ accidentally ship without a visible focus state.
 flowchart LR
     Dev[Local development<br/>npm run dev] --> Verify[npm run lint / typecheck / build]
     Verify --> Commit[Manual git commit]
-    Commit --> Push[git push]
-    Push --> Repo[(GitHub repository)]
-    Repo --> Preview[Vercel Preview Deployment<br/>per branch/commit]
+    Commit --> Push[git push origin main]
+    Push --> Repo[(GitHub<br/>jeffwhiteside-site)]
+    Repo -->|main| Preview[Vercel Preview Deployment<br/>per commit]
     Preview --> Review[Deployed review]
-    Review -->|explicit approval only| Prod[Vercel Production<br/>jeffwhiteside.dev]
+    Review -->|Iteration 9,<br/>explicit approval| ProdBranch[(branch: production)]
+    ProdBranch --> Prod[Vercel Production<br/>jeffwhiteside.dev]
 ```
 
 Characteristics:
 
-- Vercel builds from the Git repository. Every push produces an immutable preview deployment
-  at its own URL.
+- Vercel builds from the GitHub repository `jeffwhiteside/jeffwhiteside-site`. Every push
+  produces an immutable deployment at its own URL.
+- **Vercel's Production Branch is set to `production`, not `main`.** `production` does not
+  exist yet. This inverts Vercel's default so that ordinary pushes to `main` build as
+  *preview* deployments, which is what the iteration review process requires. See
+  [adr/0005-production-branch-release-model.md](adr/0005-production-branch-release-model.md).
 - Build command is the default `npm run build`. No custom Vercel configuration and no
   `vercel.json` are required.
 - No environment variables and no secrets are used by the application.
-- Production is promoted only on explicit approval (Iteration 9). Preview deployments never
-  affect `jeffwhiteside.dev`.
+- Production is promoted only on explicit approval in Iteration 9, by creating the
+  `production` branch. Until then nothing can reach `jeffwhiteside.dev`.
+
+One exception to the above: importing a project into Vercel always builds its default branch
+once, before the Production Branch setting can be changed. Iteration 1's deployment is
+therefore labeled "Production" in the Vercel dashboard, on a `.vercel.app` URL. No custom
+domain was attached at that point, so it had no visitor-facing effect.
 
 ## External dependencies
 
-**Build time:** npm registry, Next.js, React, Tailwind CSS, ESLint, TypeScript.
+**Build time:** npm registry, Next.js, React, Tailwind CSS, ESLint, TypeScript, and Google
+Fonts (fetched once by `next/font` and inlined into the build output).
 
 **Run time:** none. The served page makes no third-party requests — no fonts, analytics,
-tag managers, embedded media, or API calls.
+tag managers, embedded media, or API calls. Verified by inspecting the built HTML: the only
+absolute URLs present are the site's own canonical and Open Graph tags.
+
+Because fonts are resolved at build time, a build requires network access to Google Fonts.
+Vercel builds have it; a fully offline local build would fail.
 
 ## Security and privacy considerations
 
@@ -182,7 +347,15 @@ tag managers, embedded media, or API calls.
 
 ## Current limitations
 
-- The site renders a placeholder page; no real content exists yet.
+- Every section page renders placeholder content; no final copy exists yet.
+- Below the `md` breakpoint the header shows only a Contact link, not the full navigation.
+  Deliberate — the home contents index lists every section — but it means mobile visitors
+  return home to navigate.
+- The header does not indicate the current page. Deliberate; see Component organization.
+- **Content now costs a click.** The primary audience scans for under a minute, and five of
+  six routes are one navigation away. The home contents index mitigates this but does not
+  eliminate it. Recorded as a consequence in ADR 0006.
+- No sitemap, which matters more now that there are six routes than it did with one.
 - No favicon or Open Graph image (Iteration 9).
 - Open Graph metadata omits an image, so link previews are currently text-only.
 - No automated tests. Given a static page with no logic, lint plus a type-checked production
@@ -194,8 +367,10 @@ tag managers, embedded media, or API calls.
 
 Recorded for context. None of these are being prepared for or partially built.
 
-- **Multiple routes.** If sections grow into detail pages, each becomes its own App Router
-  segment. Keeping sections as self-contained components preserves this option cheaply.
+- **A sitemap and `robots.txt`.** With six routes this is now worth adding. Next.js generates
+  both from `app/sitemap.ts` and `app/robots.ts` with no dependency.
+- **Project detail routes.** `/projects/[slug]` is the natural next segment if individual
+  projects grow into case studies. Deferred.
 - **A content layer.** If content volume grows, typed content modules or MDX would be the next
   step — still without a CMS.
 - **A blog.** Would most likely justify MDX and a `content/` directory. Deferred.

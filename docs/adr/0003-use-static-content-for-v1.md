@@ -1,7 +1,12 @@
 # ADR 0003: Use static content and a single page for Version 1
 
-- Status: Accepted
+- Status: **Partially superseded** by [ADR 0006](0006-multi-page-architecture.md) (2026-08-07)
 - Date: 2026-08-06
+
+> **Superseded in part.** The *single page* decision below no longer holds: each section is now
+> its own route. Everything else in this ADR — static prerendering, content authored in TSX,
+> typed modules for repeated structures, no content pipeline — remains in force. The original
+> text is preserved unedited; ADR 0006 records what changed and why.
 
 ## Context
 

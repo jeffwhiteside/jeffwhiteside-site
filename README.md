@@ -3,9 +3,10 @@
 The personal professional website for Jeff Whiteside, a software engineering leader based in
 Tampa, Florida.
 
-The site is a single, polished page supporting a senior engineering leadership job search. It
-presents leadership focus areas, selected experience, personal projects, and a published
-teaching case. It is intentionally small: static content, no database, no CMS.
+The site supports a senior engineering leadership job search. A home page carries the
+positioning and a contents index; each section — leadership focus, selected experience,
+projects, writing, contact — is its own statically prerendered route. It is intentionally
+small: static content, no database, no CMS.
 
 ## Technology stack
 
@@ -69,10 +70,24 @@ serves and is the recommended final check before pushing.
 ```text
 src/
   app/
-    layout.tsx      root layout, <html>/<body>, site metadata
-    page.tsx        the single page
-    globals.css     Tailwind import, design tokens, base styles
+    layout.tsx      root layout: fonts, metadata, header/footer, skip link
+    page.tsx        home: hero + contents index
+    globals.css     Tailwind import, design tokens, measures, base styles
+    leadership/page.tsx   experience/page.tsx   projects/page.tsx
+    writing/page.tsx      contact/page.tsx
+  components/
+    site-header.tsx sticky header and route navigation
+    site-footer.tsx footer
+    hero.tsx        home hero: portrait, headline, scope facts, calls to action
+    contents-index.tsx  home index of every section
+    page-shell.tsx  shared shell for section pages
+    margin-layout.tsx   margin + main grid shared by every page
+    portrait-placeholder.tsx  stand-in until a photograph is supplied
+  content/
+    sections.ts     route registry: ids, paths, titles, summaries, descriptions
+    contact.ts      email, LinkedIn, location
 docs/
+  design-brief.md   design direction, palette, type scale, grid
   vision.md         purpose, audience, positioning, non-goals
   architecture.md   living architecture description and diagrams
   roadmap.md        iterations, future ideas, deferred features
@@ -85,19 +100,32 @@ Configuration lives at the repository root: `next.config.ts`, `tsconfig.json`,
 
 ## Deployment
 
-The site deploys to Vercel from this Git repository.
+The site deploys to Vercel from `github.com/jeffwhiteside/jeffwhiteside-site`.
 
-- Every pushed branch produces a **Preview Deployment** with its own URL.
-- The production domain is `jeffwhiteside.dev`.
-- Builds run `npm run build`; no custom build configuration is required.
+- Builds run `npm run build`; no custom build configuration and no `vercel.json` are required.
 - No environment variables or secrets are used.
+- The production domain is `jeffwhiteside.dev`.
+
+**Vercel's Production Branch is `production`, not `main`.** That branch does not exist yet.
+Consequently every push to `main` builds as a **Preview Deployment** and cannot reach the
+production domain. Going live means creating `production` from an approved commit:
+
+```bash
+git switch -c production   # first release only
+git push -u origin production
+```
+
+Afterwards, publishing is an explicit fast-forward of `production` — never a side effect of
+pushing ordinary work. The reasoning is in
+[docs/adr/0005-production-branch-release-model.md](docs/adr/0005-production-branch-release-model.md).
 
 Iterations 1 through 8 are reviewed exclusively through preview deployments. Production
-deployment is configured in Iteration 9.
+deployment happens in Iteration 9.
 
 ## Documentation
 
 - [docs/vision.md](docs/vision.md) — what this site is for
+- [docs/design-brief.md](docs/design-brief.md) — design direction, palette, typography, grid
 - [docs/architecture.md](docs/architecture.md) — how it is built, with diagrams
 - [docs/roadmap.md](docs/roadmap.md) — what is planned and what is deferred
 - [docs/adr/](docs/adr/) — architecture decision records
