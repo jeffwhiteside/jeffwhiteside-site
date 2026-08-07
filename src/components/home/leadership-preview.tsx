@@ -41,7 +41,7 @@ const PRINCIPLES: ReadonlyArray<{
     tile: "green",
   },
   {
-    title: "Set Direction",
+    title: "Create Alignment",
     description:
       "Create a shared understanding of where we're going, why it matters, and how every " +
       "team contributes to the mission.",
