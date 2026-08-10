@@ -25,7 +25,7 @@ export const PROJECTS = [
     slug: "curator",
     name: "Curator",
     description:
-      "AI-powered hub for the content I care consume (RSS feeds, podcasts, YouTube channels, " +
+      "AI-powered hub for the content I consume (RSS feeds, podcasts, YouTube channels, " +
       "and books). It summarizes, evaluates, and ranks everything so I know what's worth my " +
       "time.",
     icon: BroadcastIcon,
