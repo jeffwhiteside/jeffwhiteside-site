@@ -152,8 +152,9 @@ Needed from the owner, roughly in the order they become blocking:
   component for a cue each page's `<h1>` already provides.
 - **Multi-page costs a click.** The design research concluded a single page suited a
   sub-60-second executive reader; five of six routes are now one navigation away. The home
-  contents index mitigates this. Worth revisiting if it ever proves wrong — though measuring
-  it would require analytics, which are deferred.
+  contents index mitigates this. Worth revisiting if it ever proves wrong — PostHog now
+  captures pageviews (see docs/architecture.md), though click-through between sections isn't
+  instrumented yet.
 - No sitemap or `robots.txt`, which matters more with six routes than with one. Next.js can
   generate both with no dependency; candidate for Iteration 8 or 9.
 - Section page copy such as the contents-index summaries is provisional and unreviewed.

@@ -78,7 +78,6 @@ Explicitly out of scope for Version 1:
 - Dark mode
 - A blog or CMS
 - A database or authentication
-- Analytics
 - A contact-form backend
 - Multiple pages or project case-study pages
 - An AI assistant or any AI integration

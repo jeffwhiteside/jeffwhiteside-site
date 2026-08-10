@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import { Inter, Source_Serif_4 } from "next/font/google";
+import { PostHogPageview } from "@/components/analytics/posthog-pageview";
+import { PostHogProvider } from "@/components/analytics/posthog-provider";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 /*
  * Fonts are downloaded at build time by next/font and served from our own origin. The
- * browser makes no request to Google, which keeps the "no third-party runtime requests"
- * property described in docs/architecture.md and avoids a render-blocking dependency.
+ * browser makes no request to Google for them, which avoids a render-blocking dependency.
+ * (The site as a whole is no longer free of third-party runtime requests — see PostHog
+ * analytics below and docs/architecture.md.)
  */
 const inter = Inter({
   subsets: ["latin"],
@@ -58,6 +61,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${inter.variable} ${sourceSerif.variable}`}>
       <body>
+        <PostHogProvider />
+        <PostHogPageview />
+
         {/* Visible only when focused, so keyboard users can bypass the navigation. */}
         <a
           href="#main"

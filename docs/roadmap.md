@@ -28,8 +28,6 @@ ADR.
 
 - A writing section or blog
 - Project case-study detail pages
-- A downloadable résumé
-- Analytics
 - An AI assistant
 - Dark mode
 - Speaking, mentoring, or advisory sections
@@ -44,7 +42,6 @@ Not implemented in Version 1. No infrastructure is being quietly prepared for an
 | Blog engine                         | No content pipeline yet; would drive an MDX and routing decision        |
 | CMS                                 | Content changes are rare and the owner edits code directly              |
 | Database                            | No dynamic data exists                                                  |
-| Analytics                           | Keeps the privacy posture at zero data collection                       |
 | Authentication                      | Nothing on the site is private                                          |
 | Contact-form backend                | Email and LinkedIn are sufficient and require no server                 |
 | Dark mode                           | Doubles visual review effort; light theme is the priority for V1        |

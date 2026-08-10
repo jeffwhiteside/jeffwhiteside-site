@@ -325,18 +325,24 @@ domain was attached at that point, so it had no visitor-facing effect.
 **Build time:** npm registry, Next.js, React, Tailwind CSS, ESLint, TypeScript, and Google
 Fonts (fetched once by `next/font` and inlined into the build output).
 
-**Run time:** none. The served page makes no third-party requests — no fonts, analytics,
-tag managers, embedded media, or API calls. Verified by inspecting the built HTML: the only
-absolute URLs present are the site's own canonical and Open Graph tags.
+**Run time:** PostHog, for pageview analytics only (`us.i.posthog.com`). No fonts, tag
+managers, embedded media, or other third-party requests. PostHog loads and fires a `$pageview`
+event on each navigation only when `NODE_ENV === "production"` — local development and preview
+deployments never send data. Autocapture and session recording are both explicitly disabled,
+and persistence is `localStorage` rather than cookies. See `src/lib/posthog.ts` and
+`src/components/analytics/`.
 
 Because fonts are resolved at build time, a build requires network access to Google Fonts.
 Vercel builds have it; a fully offline local build would fail.
 
 ## Security and privacy considerations
 
-- **No data collection.** No analytics, no cookies, no tracking, no forms, no client-side
-  storage. There is nothing to breach and no consent banner is required.
-- **No secrets.** The repository contains no credentials or environment variables. Nothing
+- **Minimal analytics.** PostHog captures pageviews only — no autocapture of clicks or form
+  input, no session recording, no cookies (localStorage only). No forms exist to submit data
+  in the first place. This was a deliberate narrowing from PostHog's default (full autocapture
+  plus session recording available) specifically to avoid needing a cookie-consent banner.
+- **No secrets requiring env vars.** The PostHog key in `src/lib/posthog.ts` is a project API
+  key, designed to be public — it can only write events, not read project data. Nothing else
   needs to be kept out of version control except `.project/`, which holds local notes.
 - **Static attack surface.** No server-side code paths, no user input, no database.
 - **Public contact details are intentional.** Email and LinkedIn are published deliberately;
@@ -377,5 +383,3 @@ Recorded for context. None of these are being prepared for or partially built.
 - **Dark mode.** The token layer is already the correct seam: a `prefers-color-scheme` block
   overriding the `@theme` variables would cover most of it. Deferred; no partial support
   exists today.
-- **Analytics.** If ever added, a privacy-preserving option would be preferred, and it would
-  change the privacy posture described above.

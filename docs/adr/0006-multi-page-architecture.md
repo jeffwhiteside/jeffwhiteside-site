@@ -58,6 +58,9 @@ ids, paths, titles, navigation labels, index summaries, and per-page meta descri
 - A visitor must navigate to see everything; the home page must carry enough summary to make
   that worthwhile. **If analytics ever show visitors not clicking through, this decision
   should be revisited** — measuring that would require adding analytics, which is deferred.
+  *(Update: PostHog pageview analytics were added after this ADR was written — see
+  docs/architecture.md. Click-through between sections specifically isn't instrumented yet,
+  so the revisit trigger described here still hasn't been evaluated.)*
 - Six routes to keep visually consistent instead of one page. `PageShell` exists to make that
   automatic.
 - The in-page `Section` component and anchor navigation were removed. `scroll-mt` offsets and
