@@ -22,7 +22,7 @@ export default function LeadershipPage() {
             <span
               className={`flex size-11 items-center justify-center rounded-lg text-white ${TILE_CLASSES[tile]}`}
             >
-              <Icon />fdsafdsaf
+              <Icon />
             </span>
             <h2 className="mt-4 text-lg">{title}</h2>
             <p className="mt-2 text-muted">{description}</p>

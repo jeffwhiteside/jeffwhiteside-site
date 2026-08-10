@@ -61,7 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/* Visible only when focused, so keyboard users can bypass the navigation. */}
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:rounded-[2px] focus:border focus:border-line focus:bg-surface focus:px-4 focus:py-2 focus:text-sm"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:rounded-[2px] focus:border focus:border-line focus:bg-elevated focus:px-4 focus:py-2 focus:text-sm"
         >
           Skip to content
         </a>

@@ -1,9 +1,9 @@
 /**
  * Single source of truth for the site's sections, each of which is its own route.
  *
- * The header navigation, the home page contents index, and the routes themselves are all
- * derived from this list, so navigation cannot link to a page that does not exist and a page
- * cannot exist without appearing in navigation.
+ * The header navigation and the routes themselves are both derived from this list, so
+ * navigation cannot link to a page that does not exist and a page cannot exist without
+ * appearing in navigation.
  */
 
 export interface SectionDefinition {
@@ -11,7 +11,7 @@ export interface SectionDefinition {
   readonly id: string;
   /** Route path. */
   readonly href: string;
-  /** Page heading and contents-index entry. */
+  /** Page heading. */
   readonly title: string;
   /** Shorter label used in the header navigation. */
   readonly navLabel: string;
@@ -21,8 +21,6 @@ export interface SectionDefinition {
    * route still exists and is still linked to elsewhere (e.g. the homepage principle cards).
    */
   readonly navHref: string | null;
-  /** One-line description shown in the home page contents index. Provisional copy. */
-  readonly summary: string;
   /** Page-level meta description. Provisional copy. */
   readonly description: string;
   /**
@@ -39,11 +37,10 @@ export const SECTIONS = [
     title: "Leadership focus",
     navLabel: "Leadership",
     navHref: "/#principles-heading",
-    summary: "How I build teams, develop managers, and set the operating system for delivery.",
     description:
       "How Jeff Whiteside builds engineering teams, develops managers, and establishes the " +
       "operating system for reliable delivery.",
-    plannedIn: "Iteration 3",
+    plannedIn: null,
   },
   {
     id: "experience",
@@ -51,20 +48,18 @@ export const SECTIONS = [
     title: "Selected experience",
     navLabel: "Experience",
     navHref: "/#experience-heading",
-    summary: "Two decades leading SaaS and marketplace engineering organizations.",
     description:
       "Selected engineering leadership experience: CommandLink and Ritchie Bros. / Xcira.",
-    plannedIn: "Iteration 4",
+    plannedIn: null,
   },
   {
     id: "projects",
     href: "/projects",
-    title: "Projects",
+    title: "Things I Build for Myself",
     navLabel: "Projects",
     navHref: null,
-    summary: "Things I build to stay close to the craft.",
     description: "Personal software projects built by Jeff Whiteside.",
-    plannedIn: "Iteration 5",
+    plannedIn: null,
   },
   {
     id: "writing",
@@ -72,11 +67,10 @@ export const SECTIONS = [
     title: "Writing and publication",
     navLabel: "Writing",
     navHref: null,
-    summary: "A published teaching case on leadership and remote work.",
     description:
       "Writing and published work by Jeff Whiteside, including a teaching case on the " +
       "leadership of remote work.",
-    plannedIn: "Iteration 6",
+    plannedIn: null,
   },
   {
     id: "about",
@@ -84,9 +78,8 @@ export const SECTIONS = [
     title: "About",
     navLabel: "About",
     navHref: null,
-    summary: "Background, approach, and what I do outside of engineering.",
     description: "About Jeff Whiteside — background, approach, and interests.",
-    plannedIn: "Iteration 6",
+    plannedIn: null,
   },
   {
     id: "contact",
@@ -94,7 +87,6 @@ export const SECTIONS = [
     title: "Contact",
     navLabel: "Contact",
     navHref: null,
-    summary: "Email and LinkedIn.",
     description: "How to reach Jeff Whiteside.",
     plannedIn: "Iteration 6",
   },
@@ -104,9 +96,14 @@ export type SectionId = (typeof SECTIONS)[number]["id"];
 
 /**
  * Header navigation. Contact is excluded because it is reached by the header's
- * "Let's Connect" button rather than a nav link.
+ * "Let's Connect" button rather than a nav link. About is excluded for now — hidden from
+ * navigation, but the route, its content, and `getSection("about")` all still work.
  */
-export const NAV_SECTIONS = SECTIONS.filter((section) => section.id !== "contact");
+const HIDDEN_FROM_NAV: readonly SectionId[] = ["contact", "about"];
+
+export const NAV_SECTIONS = SECTIONS.filter(
+  (section) => !HIDDEN_FROM_NAV.includes(section.id),
+);
 
 /**
  * Look up a section by id. Throws rather than returning undefined: every caller is a route

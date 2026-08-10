@@ -1,8 +1,13 @@
+import { BroadcastIcon, ClockIcon, GlobeIcon, type Icon } from "@/components/ui/icons";
+import type { TileColor } from "@/content/leadership";
+
 export interface Project {
-  /** Locates the screenshot at `/projects/<slug>.jpg`. */
+  /** Locates the screenshot at `/projects/<slug>.jpg`, and the future detail page at `/projects/<slug>`. */
   readonly slug: string;
   readonly name: string;
   readonly description: string;
+  readonly icon: Icon;
+  readonly tile: TileColor;
   /** Real technologies only. Empty until the owner confirms the stack. */
   readonly technologies: readonly string[];
   readonly repositoryUrl: string | null;
@@ -12,43 +17,48 @@ export interface Project {
 }
 
 /**
- * Personal projects.
- *
- * The first two are named in the owner's positioning material; the third is a confirmed slot
- * with no details yet. Technologies, links, and architecture are supplied in Iteration 5 —
- * nothing is invented here, and the reference mockup's project names and tech tags were
- * fabricated and are not reproduced.
+ * Personal projects, matching the owner's mockup for the projects index. Each links to its own
+ * detail page at `/projects/<slug>` — not yet built, added in a later iteration.
  */
 export const PROJECTS = [
   {
-    slug: "project-1",
-    name: "Personal Time Tracker",
+    slug: "curator",
+    name: "Curator",
     description:
-      "A personal application for understanding how time is allocated across projects, " +
-      "responsibilities, and priorities.",
-    technologies: [],
+      "AI-powered hub for the content I care about—RSS feeds, podcasts, YouTube channels, " +
+      "and books. It summarizes, evaluates, and ranks everything so I know what's worth my " +
+      "time.",
+    icon: BroadcastIcon,
+    tile: "violet",
+    technologies: ["React", "TypeScript", "Supabase", "AI / LLMs", "Notion API"],
     repositoryUrl: null,
     liveUrl: null,
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
   {
-    slug: "project-2",
-    name: "RSS Reader",
+    slug: "timetracker",
+    name: "TimeTracker",
     description:
-      "A focused RSS reading application designed to reduce noise and make it easier to " +
-      "follow selected sources.",
-    technologies: [],
+      "A focused time tracking app that helps me understand how I spend my time, protect " +
+      "deep work, and continuously improve.",
+    icon: ClockIcon,
+    tile: "green",
+    technologies: ["Next.js", "TypeScript", "PostgreSQL", "Charts", "Vercel"],
     repositoryUrl: null,
     liveUrl: null,
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
   {
-    slug: "project-3",
-    name: "Third project",
-    description: "Details to be supplied.",
-    technologies: [],
+    slug: "jeffwhiteside-dev",
+    name: "JeffWhiteside.dev",
+    description:
+      "My portfolio and digital home. A place to share my journey, leadership philosophy, " +
+      "writing, and the projects I'm building.",
+    icon: GlobeIcon,
+    tile: "blue",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Vercel"],
     repositoryUrl: null,
     liveUrl: null,
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
 ] as const satisfies readonly Project[];

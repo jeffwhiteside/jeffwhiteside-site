@@ -60,7 +60,7 @@
 }
 
 @utility measure-prose {
-  max-width: 34rem;
+  max-width: 40rem;
 }
 
 @utility eyebrow {

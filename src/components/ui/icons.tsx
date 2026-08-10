@@ -2,9 +2,9 @@ import type { ComponentType } from "react";
 
 /*
  * The site's complete icon set: marks for the leadership focus areas and operating principles,
- * plus the three contact marks. All are inline stroke SVGs inheriting currentColor — no icon
- * library, no icon font, no network request. Each is aria-hidden and always accompanied by a
- * text label, so nothing depends on an icon being understood.
+ * the personal projects, and the three contact marks. All are inline stroke SVGs inheriting
+ * currentColor — no icon library, no icon font, no network request. Each is aria-hidden and
+ * always accompanied by a text label, so nothing depends on an icon being understood.
  */
 
 interface IconProps {
@@ -127,6 +127,37 @@ export function CheckIcon({ className }: IconProps) {
   return (
     <svg {...svgProps(className)}>
       <path d="m4 12 5.5 5.5L20 6" />
+    </svg>
+  );
+}
+
+/** A content hub gathering scattered sources into one feed. */
+export function BroadcastIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <circle cx="6" cy="18" r="1.4" fill="currentColor" stroke="none" />
+      <path d="M5 12a7 7 0 0 1 7 7M5 6.5a12.5 12.5 0 0 1 12.5 12.5" />
+    </svg>
+  );
+}
+
+/** Time tracked and spent well. */
+export function ClockIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5.5l3.5 2" />
+    </svg>
+  );
+}
+
+/** A site, live on the web. */
+export function GlobeIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18" />
+      <path d="M12 3c2.6 2.5 4 5.7 4 9s-1.4 6.5-4 9c-2.6-2.5-4-5.7-4-9s1.4-6.5 4-9Z" />
     </svg>
   );
 }

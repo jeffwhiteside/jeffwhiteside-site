@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { ArrowRight } from "@/components/ui/button";
 import {
   ChecklistIcon,
   CheckIcon,
@@ -162,9 +160,13 @@ export function LeadershipPreview() {
                     {index + 1}
                   </span>
 
-                  <Link
-                    href="/leadership"
-                    className={`group flex flex-1 items-center gap-4 rounded-xl border p-4 transition-colors ${
+                  {/*
+                    Not a link yet — none of these principles has its own detail page. A plain
+                    div, not <Link href="/leadership">, so the whole row doesn't read as
+                    clickable when it isn't going anywhere specific.
+                  */}
+                  <div
+                    className={`flex flex-1 items-center gap-4 rounded-xl border p-4 ${
                       TILE_SOFT_CLASSES[principle.tile]
                     }`}
                   >
@@ -181,10 +183,7 @@ export function LeadershipPreview() {
                         {principle.description}
                       </span>
                     </span>
-                    <span className="text-band-muted transition-colors group-hover:text-accent">
-                      <ArrowRight />
-                    </span>
-                  </Link>
+                  </div>
                 </li>
               ))}
             </ol>
