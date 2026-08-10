@@ -24,7 +24,7 @@ export const ROLES = [
     title: "Vice President, Software Engineering & Products",
     period: "May 2024 – June 2026",
     summary:
-      "Scaled an engineering organization from 30 to 60+ while growing new SaaS products, " +
+      "Scaled an engineering organization from 25 to 60+ while growing new SaaS products, " +
       "modernizing the platform, and strengthening how teams built and released software. " +
       "It was also a lesson in scale: what works at 30 people doesn’t work at 60, and great " + 
       "leaders have to evolve themselves, their systems, and their organizations as they grow.",

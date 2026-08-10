@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArrowRight } from "@/components/ui/button";
 import { GitHubIcon, LinkedInIcon, MailIcon } from "@/components/ui/icons";
 import { Monogram } from "@/components/ui/monogram";
@@ -31,13 +30,26 @@ export function SiteFooter() {
           and technology.
         </p>
 
-        <Link
-          href="/contact"
-          className="link mt-3 inline-flex items-center gap-2 text-base font-medium"
-        >
-          Let&rsquo;s Connect
-          <ArrowRight />
-        </Link>
+        <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
+          <a
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link inline-flex items-center gap-2 text-base font-medium"
+          >
+            <LinkedInIcon className="size-4" />
+            Connect on LinkedIn
+            <ArrowRight />
+          </a>
+          <a
+            href={`mailto:${EMAIL}`}
+            className="link inline-flex items-center gap-2 text-base font-medium"
+          >
+            <MailIcon className="size-4" />
+            {EMAIL}
+            <ArrowRight />
+          </a>
+        </div>
 
         <ul className="mt-3 flex items-center gap-3">
           {CONNECT_LINKS.map(({ href, label, Icon, external }) => (

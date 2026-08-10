@@ -26,6 +26,23 @@ export function Hero() {
               businesses succeed.
             </p>
 
+            <div className="mt-6">
+              <p className="eyebrow">20+ Years of Engineering Leadership</p>
+              <p className="mt-1 text-sm text-ink">
+                SaaS Platforms &amp; Organizations{" "}
+                <span aria-hidden="true" className="text-accent">
+                  •
+                </span>{" "}
+                Developing Leaders
+                <br />
+                Platform Modernization{" "}
+                <span aria-hidden="true" className="text-accent">
+                  •
+                </span>{" "}
+                AI-Enabled Engineering
+              </p>
+            </div>
+
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <ButtonLink href="#principles-heading" variant="secondary">
                 Explore How I Lead

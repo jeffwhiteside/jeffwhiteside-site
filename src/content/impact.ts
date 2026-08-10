@@ -44,4 +44,4 @@ export const IMPACT = [
 
 /** Pull quote used in the hero. Owner's wording, from the branding mockup. */
 export const HERO_QUOTE =
-  "My role is to build an environment where talented people can do the best work of their careers. This always leads to extrodonary results that we can all be proud of";
+  "My role is to build an environment where talented people can do the best work of their careers. That leads to extraordinary results we can all be proud of.";
