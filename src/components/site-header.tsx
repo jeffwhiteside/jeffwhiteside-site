@@ -37,13 +37,6 @@ export function SiteHeader() {
             ))}
           </ul>
         </nav>
-
-        <Link
-          href="/contact"
-          className="text-sm text-muted transition-colors hover:text-ink lg:hidden"
-        >
-          Contact
-        </Link>
       </div>
     </header>
   );

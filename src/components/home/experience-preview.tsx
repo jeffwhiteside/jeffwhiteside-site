@@ -59,12 +59,12 @@ export function ExperiencePreview() {
           ))}
         </ol>
 
-        <div className="mt-12 flex justify-center">
+        {/* <div className="mt-12 flex justify-center">
           <ButtonLink href="/experience">
             View Full Experience
             <ArrowRight />
           </ButtonLink>
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 /**
- * Contact details, defined once so the header, hero, contact page, and footer cannot drift.
+ * Contact details, defined once so nothing that references them can drift. Consumed directly
+ * by the footer's LinkedIn/email links — there is no dedicated Contact page or route.
  * The phone number is deliberately not published.
  */
 

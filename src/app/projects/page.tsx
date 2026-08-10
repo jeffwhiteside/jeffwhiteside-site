@@ -26,13 +26,13 @@ export default function ProjectsPage() {
       <p className="mt-4 text-muted">
         Technology is a tool to solve problems in our lives. When I see an opportunity to make
         something better, I jump into action. Where it makes sense I build my own tools and systems.
-        I also love exploreing new technologies, tools and techniques. Even though I focus my value on 
+        I also love exploring new technologies, tools and techniques. Even though I focus my value on 
         helping teams be successful through leadership, staying close to the technologies my teams use
         is also important and really fun.
       </p>
 
       <p className="mt-4 text-muted">
-        Here are a few example projects, I built for myself that I use daily.
+        Here are a few example projects I built for myself that I use daily.
       </p>
 
       <ul className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3">

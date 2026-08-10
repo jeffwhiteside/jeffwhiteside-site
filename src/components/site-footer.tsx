@@ -27,11 +27,11 @@ export function SiteFooter() {
 
         <p className="measure-prose mt-2 text-muted">
           I&rsquo;m always interested in connecting with people building great teams, products,
-          and technology.
+          and technology. Please reach out if you want to connect.
         </p>
 
-        <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
-          <a
+        {/* <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2"> */}
+          {/* <a
             href={LINKEDIN_URL}
             target="_blank"
             rel="noopener noreferrer"
@@ -40,16 +40,16 @@ export function SiteFooter() {
             <LinkedInIcon className="size-4" />
             Connect on LinkedIn
             <ArrowRight />
-          </a>
-          <a
+          </a> */}
+          {/* <a
             href={`mailto:${EMAIL}`}
             className="link inline-flex items-center gap-2 text-base font-medium"
           >
             <MailIcon className="size-4" />
             {EMAIL}
             <ArrowRight />
-          </a>
-        </div>
+          </a> */}
+        {/* </div> */}
 
         <ul className="mt-3 flex items-center gap-3">
           {CONNECT_LINKS.map(({ href, label, Icon, external }) => (
@@ -65,6 +65,7 @@ export function SiteFooter() {
             </li>
           ))}
         </ul>
+
       </div>
 
       <div className="border-t border-line">

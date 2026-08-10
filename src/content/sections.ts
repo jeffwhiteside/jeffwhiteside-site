@@ -23,11 +23,6 @@ export interface SectionDefinition {
   readonly navHref: string | null;
   /** Page-level meta description. Provisional copy. */
   readonly description: string;
-  /**
-   * Temporary scaffolding: which iteration replaces this page's placeholder with real
-   * content. Removed from each entry as that page is built.
-   */
-  readonly plannedIn: string | null;
 }
 
 export const SECTIONS = [
@@ -40,7 +35,6 @@ export const SECTIONS = [
     description:
       "How Jeff Whiteside builds engineering teams, develops managers, and establishes the " +
       "operating system for reliable delivery.",
-    plannedIn: null,
   },
   {
     id: "experience",
@@ -50,7 +44,6 @@ export const SECTIONS = [
     navHref: "/#experience-heading",
     description:
       "Selected engineering leadership experience: CommandLink and Ritchie Bros. / Xcira.",
-    plannedIn: null,
   },
   {
     id: "projects",
@@ -59,7 +52,6 @@ export const SECTIONS = [
     navLabel: "Projects",
     navHref: null,
     description: "Personal software projects built by Jeff Whiteside.",
-    plannedIn: null,
   },
   {
     id: "writing",
@@ -70,7 +62,6 @@ export const SECTIONS = [
     description:
       "Writing and published work by Jeff Whiteside, including a teaching case on the " +
       "leadership of remote work.",
-    plannedIn: null,
   },
   {
     id: "about",
@@ -79,27 +70,21 @@ export const SECTIONS = [
     navLabel: "About",
     navHref: null,
     description: "About Jeff Whiteside — background, approach, and interests.",
-    plannedIn: null,
-  },
-  {
-    id: "contact",
-    href: "/contact",
-    title: "Contact",
-    navLabel: "Contact",
-    navHref: null,
-    description: "How to reach Jeff Whiteside.",
-    plannedIn: "Iteration 6",
   },
 ] as const satisfies readonly SectionDefinition[];
 
 export type SectionId = (typeof SECTIONS)[number]["id"];
 
 /**
- * Header navigation. Contact is excluded because it is reached by the header's
- * "Let's Connect" button rather than a nav link. About is excluded for now — hidden from
- * navigation, but the route, its content, and `getSection("about")` all still work.
+ * Header navigation. About is excluded for now — hidden from navigation, but the route, its
+ * content, and `getSection("about")` all still work.
+ *
+ * There is no Contact section or route. It was a placeholder page reachable only by a hidden
+ * (CSS `lg:hidden` counterpart never rendered on desktop) link, which meant it stayed
+ * crawlable and publicly reachable at /contact while offering nothing real — worse than not
+ * having it. Reaching out happens through the footer's direct LinkedIn and email links instead.
  */
-const HIDDEN_FROM_NAV: readonly SectionId[] = ["contact", "about"];
+const HIDDEN_FROM_NAV: readonly SectionId[] = ["about"];
 
 export const NAV_SECTIONS = SECTIONS.filter(
   (section) => !HIDDEN_FROM_NAV.includes(section.id),
