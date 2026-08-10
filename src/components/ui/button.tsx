@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-type Variant = "primary" | "secondary";
+export type Variant = "primary" | "secondary";
 
 interface ButtonLinkProps {
   href: string;
@@ -21,6 +21,12 @@ const VARIANTS: Record<Variant, string> = {
   secondary: "border border-line text-ink hover:border-ink",
 };
 
+/** The button treatment's class list, exported so other link-shaped components (e.g. a
+ * tracked link that needs its own "use client" boundary) can match it without duplicating it. */
+export function buttonClassName(variant: Variant = "primary") {
+  return `${BASE} ${VARIANTS[variant]}`;
+}
+
 /**
  * The site's only button treatment, always rendered as a link — nothing here submits or
  * mutates, so a <button> element would misrepresent the action to assistive technology.
@@ -34,7 +40,7 @@ export function ButtonLink({
   download = false,
   children,
 }: ButtonLinkProps) {
-  const className = `${BASE} ${VARIANTS[variant]}`;
+  const className = buttonClassName(variant);
 
   if (download) {
     return (

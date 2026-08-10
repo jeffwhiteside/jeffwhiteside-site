@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowRight, ButtonLink } from "@/components/ui/button";
+import { TrackedLink } from "@/components/analytics/tracked-link";
+import { ArrowRight } from "@/components/ui/button";
 import { BookOpenIcon, DocumentIcon, DownloadIcon } from "@/components/ui/icons";
 import { getSection } from "@/content/sections";
 import { PUBLICATIONS } from "@/content/writing";
@@ -15,12 +16,14 @@ export const metadata: Metadata = {
 
 /**
  * Writing index: one card per publication, with a "Read" (opens the PDF in a new tab) and a
- * "Download" (forces a download) action. Both resolve `/writing/<slug>.pdf` at build time and
- * quietly disappear — replaced by a "PDF pending" note — if that file doesn't exist yet, the
- * same real-asset-first pattern the portrait, project screenshots, and résumé download all use.
- * The cover art works the same way against `/writing/<slug>-cover.jpg` or `.png`, falling
- * back to a plain citation panel rather than a fabricated cover — the venue is a real academic
- * journal with its own real cover design, which nothing here should impersonate.
+ * "Download" (forces a download) action, each firing its own PostHog event
+ * (publication_read / publication_download) via TrackedLink so it's possible to tell the two
+ * apart in analytics. Both resolve `/writing/<slug>.pdf` at build time and quietly disappear —
+ * replaced by a "PDF pending" note — if that file doesn't exist yet, the same real-asset-first
+ * pattern the portrait, project screenshots, and résumé download all use. The cover art works
+ * the same way against `/writing/<slug>-cover.jpg` or `.png`, falling back to a plain citation
+ * panel rather than a fabricated cover — the venue is a real academic journal with its own
+ * real cover design, which nothing here should impersonate.
  */
 export default function WritingPage() {
   return (
@@ -99,15 +102,26 @@ export default function WritingPage() {
                 <div className="mt-6 flex flex-wrap items-center gap-3">
                   {pdf ? (
                     <>
-                      <ButtonLink href={pdf} external>
+                      <TrackedLink
+                        href={pdf}
+                        external
+                        event="publication_read"
+                        properties={{ slug: publication.slug, title: publication.title }}
+                      >
                         <BookOpenIcon className="size-4" />
                         Read the Case Study
                         <ArrowRight />
-                      </ButtonLink>
-                      <ButtonLink href={pdf} variant="secondary" download>
+                      </TrackedLink>
+                      <TrackedLink
+                        href={pdf}
+                        variant="secondary"
+                        download
+                        event="publication_download"
+                        properties={{ slug: publication.slug, title: publication.title }}
+                      >
                         <DownloadIcon className="size-4" />
                         Download PDF
-                      </ButtonLink>
+                      </TrackedLink>
                     </>
                   ) : (
                     <p className="text-xs tracking-widest text-muted uppercase">PDF pending</p>
