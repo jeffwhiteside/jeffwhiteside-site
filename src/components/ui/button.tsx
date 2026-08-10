@@ -9,6 +9,8 @@ interface ButtonLinkProps {
   children: ReactNode;
   /** Set for links leaving the site; adds target and rel. */
   external?: boolean;
+  /** Forces a file download rather than a navigation. Implies a plain anchor, not next/link. */
+  download?: boolean;
 }
 
 const BASE =
@@ -29,9 +31,18 @@ export function ButtonLink({
   href,
   variant = "primary",
   external = false,
+  download = false,
   children,
 }: ButtonLinkProps) {
   const className = `${BASE} ${VARIANTS[variant]}`;
+
+  if (download) {
+    return (
+      <a href={href} download className={className}>
+        {children}
+      </a>
+    );
+  }
 
   if (external) {
     return (

@@ -2,9 +2,10 @@ import type { ComponentType } from "react";
 
 /*
  * The site's complete icon set: marks for the leadership focus areas and operating principles,
- * the personal projects, and the three contact marks. All are inline stroke SVGs inheriting
- * currentColor — no icon library, no icon font, no network request. Each is aria-hidden and
- * always accompanied by a text label, so nothing depends on an icon being understood.
+ * the personal projects, published writing, and the three contact marks. All are inline stroke
+ * SVGs inheriting currentColor — no icon library, no icon font, no network request. Each is
+ * aria-hidden and always accompanied by a text label, so nothing depends on an icon being
+ * understood.
  */
 
 interface IconProps {
@@ -158,6 +159,36 @@ export function GlobeIcon({ className }: IconProps) {
       <circle cx="12" cy="12" r="9" />
       <path d="M3 12h18" />
       <path d="M12 3c2.6 2.5 4 5.7 4 9s-1.4 6.5-4 9c-2.6-2.5-4-5.7-4-9s1.4-6.5 4-9Z" />
+    </svg>
+  );
+}
+
+/** A publication, at a glance. */
+export function DocumentIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M7 3.5h6.5L18 8v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z" />
+      <path d="M13.5 3.5V8H18M9 12.5h6M9 16h6" />
+    </svg>
+  );
+}
+
+/** Read a publication in full. */
+export function BookOpenIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M12 6.2c-1.8-1.2-4-1.9-6-1.9A1.5 1.5 0 0 0 4.5 5.8v11.4c2.2 0 4.6.6 6.5 1.8 1.9-1.2 4.3-1.8 6.5-1.8V5.8A1.5 1.5 0 0 0 16 4.3c-2 0-4.2.7-6 1.9Z" />
+      <path d="M12 6.2V19" />
+    </svg>
+  );
+}
+
+/** Save a file locally. */
+export function DownloadIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M12 3.5v11M7.5 10l4.5 4.5 4.5-4.5" />
+      <path d="M4.5 17.5v2a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1v-2" />
     </svg>
   );
 }
