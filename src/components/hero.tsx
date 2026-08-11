@@ -21,13 +21,14 @@ export function Hero() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
           <div className="order-2 lg:order-1">
             {/*
-              Sized down from text-hero specifically on mobile so all three lines fit the
-              viewport width without wrapping and the whole headline lands above the fold,
-              above a ~240px portrait. Estimated to fit down to a 320px-wide phone, not
-              measured on a real device — worth a look and adjusting the size if it still
-              wraps or reads too small on an actual phone.
+              A fixed mobile size (1.75rem) still wrapped "Delivering Results." on a real
+              phone — the estimate was wrong, and a single flat size is a guess either way.
+              Scaling with vw instead means it tracks the viewport rather than betting on one
+              width: it gets proportionally smaller on narrower phones instead of staying put
+              until it suddenly doesn't fit. Deliberately conservative after the last miss —
+              if it now reads too small, raise the clamp's middle (preferred) value.
             */}
-            <h1 className="text-[1.75rem] leading-[1.15] tracking-tight sm:text-hero">
+            <h1 className="text-[clamp(1rem,5.5vw,1.375rem)] leading-[1.15] tracking-tight sm:text-hero">
               Elevating People.
               <br />
               Inspiring Trust.
