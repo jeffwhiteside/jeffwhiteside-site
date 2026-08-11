@@ -2,10 +2,10 @@ import type { ComponentType } from "react";
 
 /*
  * The site's complete icon set: marks for the leadership focus areas and operating principles,
- * the personal projects, published writing, and the three contact marks. All are inline stroke
- * SVGs inheriting currentColor — no icon library, no icon font, no network request. Each is
- * aria-hidden and always accompanied by a text label, so nothing depends on an icon being
- * understood.
+ * the personal projects, published writing, the mobile nav toggle, and the three contact
+ * marks. All are inline stroke SVGs inheriting currentColor — no icon library, no icon font,
+ * no network request. Each is aria-hidden and always accompanied by a text label, so nothing
+ * depends on an icon being understood.
  */
 
 interface IconProps {
@@ -189,6 +189,24 @@ export function DownloadIcon({ className }: IconProps) {
     <svg {...svgProps(className)}>
       <path d="M12 3.5v11M7.5 10l4.5 4.5 4.5-4.5" />
       <path d="M4.5 17.5v2a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1v-2" />
+    </svg>
+  );
+}
+
+/** Opens the mobile nav menu. */
+export function MenuIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </svg>
+  );
+}
+
+/** Closes the mobile nav menu. */
+export function CloseIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M6 6l12 12M18 6 6 18" />
     </svg>
   );
 }

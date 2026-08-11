@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MobileNav } from "@/components/mobile-nav";
 import { Monogram } from "@/components/ui/monogram";
 import { NAV_SECTIONS } from "@/content/sections";
 
@@ -15,7 +16,7 @@ import { NAV_SECTIONS } from "@/content/sections";
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-canvas/95 backdrop-blur">
-      <div className="page-container flex h-16 items-center justify-between gap-6">
+      <div className="page-container relative flex h-16 items-center justify-between gap-6">
         <Link href="/" className="flex items-center gap-3">
           <Monogram />
           <span className="text-sm font-bold tracking-[0.12em] uppercase">
@@ -37,6 +38,8 @@ export function SiteHeader() {
             ))}
           </ul>
         </nav>
+
+        <MobileNav />
       </div>
     </header>
   );

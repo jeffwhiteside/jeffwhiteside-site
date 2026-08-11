@@ -6,22 +6,28 @@ import { HERO_QUOTE } from "@/content/impact";
 /**
  * The hero.
  *
- * Mobile (below `sm`) is a deliberately different reading order from desktop, not desktop
- * stacked vertically: headline → philosophy → scope facts → portrait → CTAs. That means the
- * portrait and the CTA row each need two renderings — one inside the text column for desktop's
- * side-by-side layout, one after the portrait for mobile's stacked order — toggled with
- * `hidden`/`sm:hidden` rather than reordered with CSS `order`, since the CTA row's desktop
- * position (inside the text column, left side) and mobile position (below the portrait, full
- * width) aren't reachable from the same grid placement. Duplicated markup, but predictable at
- * both breakpoints without gambling on grid auto-flow.
+ * Mobile (below `sm`) order is portrait → headline → philosophy → scope facts → CTAs — the
+ * owner's explicit call, overriding an earlier "headline first" pass. Because the portrait now
+ * comes before the text column at every breakpoint (`order-1 lg:order-2` / `order-2
+ * lg:order-1`, i.e. the original ordering), the CTA row no longer needs two renderings the way
+ * it did under the headline-first layout — it's already naturally the last thing in the text
+ * column at both breakpoints, so only its *styling* (stacked/ghost vs inline/primary) still
+ * needs the two versions, both live in the same spot.
  */
 export function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="page-container relative pt-12 pb-1 sm:pt-16 sm:pb-1">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-12">
-          <div className="order-1">
-            <h1 className="text-hero">
+          <div className="order-2 lg:order-1">
+            {/*
+              Sized down from text-hero specifically on mobile so all three lines fit the
+              viewport width without wrapping and the whole headline lands above the fold,
+              above a ~240px portrait. Estimated to fit down to a 320px-wide phone, not
+              measured on a real device — worth a look and adjusting the size if it still
+              wraps or reads too small on an actual phone.
+            */}
+            <h1 className="text-[1.75rem] leading-[1.15] tracking-tight sm:text-hero">
               Elevating People.
               <br />
               Inspiring Trust.
@@ -59,8 +65,20 @@ export function Hero() {
               </p>
             </div>
 
-            {/* Desktop position: inline row, unchanged from before. Hidden on mobile — see
-                the mobile-position copy of this row after the portrait below. */}
+            {/* Mobile: stacked, full-width, second action de-emphasized to ghost so it
+                doesn't compete with the first. Desktop keeps the original inline row below. */}
+            <div className="mt-8 flex flex-col items-stretch gap-2.5 sm:hidden">
+              <ButtonLink href="#principles-heading" variant="secondary" className="w-full">
+                Explore How I Lead
+                <ArrowRight />
+              </ButtonLink>
+              <ButtonLink href="#experience-heading" variant="ghost" className="w-full">
+                Explore My Journey
+                <ArrowRight />
+              </ButtonLink>
+              <ResumeButton className="w-full" />
+            </div>
+
             <div className="mt-8 hidden flex-wrap items-center gap-3 sm:flex">
               <ButtonLink href="#principles-heading" variant="secondary">
                 Explore How I Lead
@@ -74,7 +92,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="order-2">
+          <div className="order-1 lg:order-2">
             <div className="relative mx-auto max-w-md">
               <Portrait />
 
@@ -82,7 +100,7 @@ export function Hero() {
                 Flush overlay on the portrait's faded lower edge, not a separate card below it.
                 Full width so it reads as a caption on the photo rather than a floating box.
                 Hidden below `sm`: on the compact mobile portrait it would crowd a photo that's
-                already reduced to ~240px, and the paragraph above already carries the same
+                already reduced to ~240px, and the paragraph below already carries the same
                 idea — nothing is lost by dropping it there.
               */}
               <figure className="absolute inset-x-0 bottom-0 hidden p-5 sm:block">
@@ -101,20 +119,6 @@ export function Hero() {
                   — Jeff Whiteside
                 </figcaption>
               </figure>
-            </div>
-
-            {/* Mobile position: stacked, full-width, second action de-emphasized to ghost so
-                it doesn't compete with the first — see the desktop copy of this row above. */}
-            <div className="mt-8 flex flex-col items-stretch gap-2.5 sm:hidden">
-              <ButtonLink href="#principles-heading" variant="secondary" className="w-full">
-                Explore How I Lead
-                <ArrowRight />
-              </ButtonLink>
-              <ButtonLink href="#experience-heading" variant="ghost" className="w-full">
-                Explore My Journey
-                <ArrowRight />
-              </ButtonLink>
-              <ResumeButton className="w-full" />
             </div>
           </div>
         </div>
