@@ -81,11 +81,11 @@ export function Hero() {
             </div>
 
             <div className="mt-8 hidden flex-wrap items-center gap-3 sm:flex">
-              <ButtonLink href="/leadership" variant="secondary">
+              <ButtonLink href="/leadership" >
                 Explore How I Lead
                 <ArrowRight />
               </ButtonLink>
-              <ButtonLink href="#experience-heading">
+              <ButtonLink href="#experience-heading" variant="secondary">
                 Explore My Journey
                 <ArrowRight />
               </ButtonLink>

@@ -87,15 +87,21 @@ export interface PrincipleDetail {
   readonly tagline: string;
   readonly icon: Icon;
   readonly tile: TileColor;
-  readonly whatIBelieve: readonly string[];
-  readonly howIPractice: readonly PracticeItem[];
-  readonly experienceTagline: string;
-  readonly experienceParagraph: string;
+  /**
+   * True for a principle whose full write-up isn't ready yet. The page renders its header
+   * (number, title, tagline) plus a "coming soon" notice instead of the five sub-sections
+   * below, so all the sub-section fields are optional rather than filled with placeholder copy.
+   */
+  readonly comingSoon?: boolean;
+  readonly whatIBelieve?: readonly string[];
+  readonly howIPractice?: readonly PracticeItem[];
+  readonly experienceTagline?: string;
+  readonly experienceParagraph?: string;
   readonly experienceLinkLabel?: string;
   readonly experienceLinkHref?: string;
-  readonly ideasThatShaped: readonly IdeaSource[];
-  readonly learnedTagline: string;
-  readonly learnedParagraph: string;
+  readonly ideasThatShaped?: readonly IdeaSource[];
+  readonly learnedTagline?: string;
+  readonly learnedParagraph?: string;
 }
 
 /**
@@ -211,34 +217,7 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
     tagline: "Trust is earned through integrity, not authority.",
     icon: ShieldCheckIcon,
     tile: "green",
-    whatIBelieve: [
-      "Placeholder — the owner's core belief about building trust hasn't been written " +
-        "yet. Will expand on how integrity, accountability, and honest conversations earn " +
-        "trust over time.",
-    ],
-    howIPractice: [
-      {
-        title: "Placeholder",
-        description: "A specific practice for building trust, pending from the owner.",
-      },
-      {
-        title: "Placeholder",
-        description: "A second practice for building trust, pending from the owner.",
-      },
-    ],
-    experienceTagline: "Placeholder — pending.",
-    experienceParagraph:
-      "Placeholder — a story from experience illustrating how trust was built or lost is " +
-      "pending from the owner.",
-    ideasThatShaped: [
-      {
-        type: "Pending",
-        title: "Placeholder",
-        description: "A resource that shaped this principle, pending from the owner.",
-      },
-    ],
-    learnedTagline: "Placeholder — pending.",
-    learnedParagraph: "Placeholder — a lesson learned about trust, pending from the owner.",
+    comingSoon: true,
   },
   {
     number: "03",
@@ -247,34 +226,7 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
     tagline: "Shared understanding moves faster than top-down direction.",
     icon: CompassIcon,
     tile: "violet",
-    whatIBelieve: [
-      "Placeholder — the owner's core belief about creating alignment hasn't been " +
-        "written yet. Will expand on connecting where a team is going to why it matters " +
-        "and how each person contributes.",
-    ],
-    howIPractice: [
-      {
-        title: "Placeholder",
-        description: "A specific practice for creating alignment, pending from the owner.",
-      },
-      {
-        title: "Placeholder",
-        description: "A second practice for creating alignment, pending from the owner.",
-      },
-    ],
-    experienceTagline: "Placeholder — pending.",
-    experienceParagraph:
-      "Placeholder — a story from experience illustrating how alignment was created is " +
-      "pending from the owner.",
-    ideasThatShaped: [
-      {
-        type: "Pending",
-        title: "Placeholder",
-        description: "A resource that shaped this principle, pending from the owner.",
-      },
-    ],
-    learnedTagline: "Placeholder — pending.",
-    learnedParagraph: "Placeholder — a lesson learned about alignment, pending from the owner.",
+    comingSoon: true,
   },
   {
     number: "04",
@@ -283,34 +235,7 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
     tagline: "Clear priorities let teams decide with confidence.",
     icon: ChecklistIcon,
     tile: "amber",
-    whatIBelieve: [
-      "Placeholder — the owner's core belief about creating clarity hasn't been written " +
-        "yet. Will expand on how clear priorities, ownership, and expectations enable " +
-        "better decisions.",
-    ],
-    howIPractice: [
-      {
-        title: "Placeholder",
-        description: "A specific practice for creating clarity, pending from the owner.",
-      },
-      {
-        title: "Placeholder",
-        description: "A second practice for creating clarity, pending from the owner.",
-      },
-    ],
-    experienceTagline: "Placeholder — pending.",
-    experienceParagraph:
-      "Placeholder — a story from experience illustrating how clarity changed an outcome " +
-      "is pending from the owner.",
-    ideasThatShaped: [
-      {
-        type: "Pending",
-        title: "Placeholder",
-        description: "A resource that shaped this principle, pending from the owner.",
-      },
-    ],
-    learnedTagline: "Placeholder — pending.",
-    learnedParagraph: "Placeholder — a lesson learned about clarity, pending from the owner.",
+    comingSoon: true,
   },
   {
     number: "05",
@@ -319,34 +244,6 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
     tagline: "Fix the environment, not just the symptom.",
     icon: GearsIcon,
     tile: "teal",
-    whatIBelieve: [
-      "Placeholder — the owner's core belief about thinking in systems hasn't been " +
-        "written yet. Will expand on improving the environment, processes, and feedback " +
-        "loops rather than asking people to work around broken systems.",
-    ],
-    howIPractice: [
-      {
-        title: "Placeholder",
-        description: "A specific practice for thinking in systems, pending from the owner.",
-      },
-      {
-        title: "Placeholder",
-        description: "A second practice for thinking in systems, pending from the owner.",
-      },
-    ],
-    experienceTagline: "Placeholder — pending.",
-    experienceParagraph:
-      "Placeholder — a story from experience illustrating a systemic fix is pending from " +
-      "the owner.",
-    ideasThatShaped: [
-      {
-        type: "Pending",
-        title: "Placeholder",
-        description: "A resource that shaped this principle, pending from the owner.",
-      },
-    ],
-    learnedTagline: "Placeholder — pending.",
-    learnedParagraph:
-      "Placeholder — a lesson learned about systems thinking, pending from the owner.",
+    comingSoon: true,
   },
 ] as const;

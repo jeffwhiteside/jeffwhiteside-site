@@ -193,97 +193,109 @@ export default function LeadershipPage() {
 
                       <hr className="mt-6 border-band-line" />
 
-                      {/* A. What I Believe — plain editorial prose, no card, no icon. */}
-                      <div className="mt-8">
-                        <h3 className="text-lg">{BELIEVE_STEP.label}</h3>
-                        <div className="measure-prose mt-3 space-y-3">
-                          {principle.whatIBelieve.map((paragraph) => (
-                            <p key={paragraph} className="text-band-muted">
-                              {paragraph}
+                      {principle.comingSoon ? (
+                        <p className="measure-prose mt-8 text-band-muted">
+                          This principle&rsquo;s full write-up is coming soon.
+                        </p>
+                      ) : (
+                        <>
+                          {/* A. What I Believe — plain editorial prose, no card, no icon. */}
+                          <div className="mt-8">
+                            <h3 className="text-lg">{BELIEVE_STEP.label}</h3>
+                            <div className="measure-prose mt-3 space-y-3">
+                              {principle.whatIBelieve?.map((paragraph) => (
+                                <p key={paragraph} className="text-band-muted">
+                                  {paragraph}
+                                </p>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* B. How I Put It Into Practice — pale cards, visual relief. */}
+                          <div className="mt-10">
+                            <h3 className="text-lg">{PRACTICE_STEP.label}</h3>
+                            <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                              {principle.howIPractice?.map((item) => (
+                                <li key={item.title} className={PRACTICE_CARD_CLASSES}>
+                                  <p className="font-semibold text-band-ink">{item.title}</p>
+                                  <p className="mt-1 text-sm text-band-muted">
+                                    {item.description}
+                                  </p>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          {/* C. What Experience Taught Me — blue left border, grounded in a
+                              specific story rather than generic advice. */}
+                          <div className="mt-10 rounded-r-lg border-l-4 border-accent bg-accent/5 p-5">
+                            <p className="eyebrow">From Experience</p>
+                            <p className="mt-2 text-lg text-band-ink">
+                              {principle.experienceTagline}
                             </p>
-                          ))}
-                        </div>
-                      </div>
+                            <p className="measure-prose mt-2 text-band-muted">
+                              {principle.experienceParagraph}
+                            </p>
+                            {principle.experienceLinkHref ? (
+                              <Link
+                                href={principle.experienceLinkHref}
+                                className="link mt-3 inline-flex items-center gap-2 text-sm"
+                              >
+                                {principle.experienceLinkLabel}
+                                <ArrowRight />
+                              </Link>
+                            ) : null}
+                          </div>
 
-                      {/* B. How I Put It Into Practice — pale cards, visual relief. */}
-                      <div className="mt-10">
-                        <h3 className="text-lg">{PRACTICE_STEP.label}</h3>
-                        <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                          {principle.howIPractice.map((item) => (
-                            <li key={item.title} className={PRACTICE_CARD_CLASSES}>
-                              <p className="font-semibold text-band-ink">{item.title}</p>
-                              <p className="mt-1 text-sm text-band-muted">{item.description}</p>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                          {/* D. Ideas That Shaped My Thinking — compact source cards, title
+                              leads, no cover-image bookshelf. */}
+                          <div className="mt-10">
+                            <h3 className="text-lg">{IDEAS_STEP.label}</h3>
+                            <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                              {principle.ideasThatShaped?.map((idea) => (
+                                <li key={idea.title} className={IDEA_CARD_CLASSES}>
+                                  <span className="inline-block rounded border border-band-line px-2 py-0.5 text-xs font-medium tracking-wide text-band-muted uppercase">
+                                    {idea.type}
+                                  </span>
+                                  <p className="mt-2 text-base font-semibold text-band-ink">
+                                    {idea.title}
+                                  </p>
+                                  {idea.author ? (
+                                    <p className="text-sm text-band-muted">{idea.author}</p>
+                                  ) : null}
+                                  <p className="mt-2 text-sm text-band-muted">
+                                    {idea.description}
+                                  </p>
+                                  {idea.linkHref ? (
+                                    <a
+                                      href={idea.linkHref}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="link mt-2 inline-flex items-center gap-1 text-sm"
+                                    >
+                                      {idea.linkLabel}
+                                      <ArrowRight />
+                                    </a>
+                                  ) : null}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
 
-                      {/* C. What Experience Taught Me — blue left border, grounded in a
-                          specific story rather than generic advice. */}
-                      <div className="mt-10 rounded-r-lg border-l-4 border-accent bg-accent/5 p-5">
-                        <p className="eyebrow">From Experience</p>
-                        <p className="mt-2 text-lg text-band-ink">
-                          {principle.experienceTagline}
-                        </p>
-                        <p className="measure-prose mt-2 text-band-muted">
-                          {principle.experienceParagraph}
-                        </p>
-                        {principle.experienceLinkHref ? (
-                          <Link
-                            href={principle.experienceLinkHref}
-                            className="link mt-3 inline-flex items-center gap-2 text-sm"
-                          >
-                            {principle.experienceLinkLabel}
-                            <ArrowRight />
-                          </Link>
-                        ) : null}
-                      </div>
-
-                      {/* D. Ideas That Shaped My Thinking — compact source cards, title
-                          leads, no cover-image bookshelf. */}
-                      <div className="mt-10">
-                        <h3 className="text-lg">{IDEAS_STEP.label}</h3>
-                        <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                          {principle.ideasThatShaped.map((idea) => (
-                            <li key={idea.title} className={IDEA_CARD_CLASSES}>
-                              <span className="inline-block rounded border border-band-line px-2 py-0.5 text-xs font-medium tracking-wide text-band-muted uppercase">
-                                {idea.type}
-                              </span>
-                              <p className="mt-2 text-base font-semibold text-band-ink">
-                                {idea.title}
-                              </p>
-                              {idea.author ? (
-                                <p className="text-sm text-band-muted">{idea.author}</p>
-                              ) : null}
-                              <p className="mt-2 text-sm text-band-muted">{idea.description}</p>
-                              {idea.linkHref ? (
-                                <a
-                                  href={idea.linkHref}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="link mt-2 inline-flex items-center gap-1 text-sm"
-                                >
-                                  {idea.linkLabel}
-                                  <ArrowRight />
-                                </a>
-                              ) : null}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* E. What I've Learned Along the Way — the reflective close, given
-                          more room and a pull-quote treatment (same serif-italic voice as the
-                          hero and footer quotes elsewhere on the site). */}
-                      <div className="mt-16">
-                        <p className="eyebrow">Something I&rsquo;ve Learned</p>
-                        <p className="mt-3 font-serif text-2xl text-band-ink italic">
-                          {principle.learnedTagline}
-                        </p>
-                        <p className="measure-prose mt-4 text-band-muted">
-                          {principle.learnedParagraph}
-                        </p>
-                      </div>
+                          {/* E. What I've Learned Along the Way — the reflective close, given
+                              more room and a pull-quote treatment (same serif-italic voice as
+                              the hero and footer quotes elsewhere on the site). */}
+                          <div className="mt-16">
+                            <p className="eyebrow">Something I&rsquo;ve Learned</p>
+                            <p className="mt-3 font-serif text-2xl text-band-ink italic">
+                              {principle.learnedTagline}
+                            </p>
+                            <p className="measure-prose mt-4 text-band-muted">
+                              {principle.learnedParagraph}
+                            </p>
+                          </div>
+                        </>
+                      )}
 
                       <div className="mt-12 flex items-center justify-between text-sm">
                         <a
