@@ -105,7 +105,7 @@
   transition: color 150ms ease-out;
 
   &:hover {
-    color: var(--color-ink);
+    color: var(--color-accent-strong);
   }
 }
 

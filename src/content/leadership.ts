@@ -50,6 +50,16 @@ export const TILE_BORDER_CLASSES: Record<TileColor, string> = {
   green: "border-t-tile-green",
 };
 
+/** Same background tint as TILE_SOFT_CLASSES, without its border — for filling a whole block
+ * (e.g. one principle's section) that already gets its edge from TILE_BORDER_CLASSES. */
+export const TILE_BG_CLASSES: Record<TileColor, string> = {
+  blue: "bg-tile-blue/8",
+  teal: "bg-tile-teal/8",
+  violet: "bg-tile-violet/8",
+  amber: "bg-tile-amber/8",
+  green: "bg-tile-green/8",
+};
+
 /**
  * The five recurring sub-sections every principle below walks through, in order. Shared by
  * the "each principle explores" legend and by each principle's own section headings, so the
@@ -123,37 +133,66 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
     icon: PeopleIcon,
     tile: "blue",
     whatIBelieve: [
-      "My first responsibility as a leader is to help people become more capable, " +
-        "confident, and effective than they were before we worked together.",
-      "That means creating opportunities, giving meaningful ownership, coaching, and " +
-        "challenging people beyond what they think is possible. Empowerment doesn't mean " +
-        "lowering expectations. People do their best work when they are trusted with real " +
-        "responsibility, understand what's expected, and know their leader is invested in " +
-        "their success.",
+      "My first responsibility as a leader is to understand the people I lead " +
+      "and help them become more capable, confident, and effective over time. " +
+      "That starts with knowing who they are; their strengths, aspirations, " +
+      "motivations, working styles, and the areas where they still need to grow.",
+      "I believe people do their best work when they have a clear sense of purpose, " +
+      "meaningful ownership, room to exercise judgment, and opportunities to build " +
+      "mastery. My role is to create those conditions, set high standards, and believe " +
+      "in people enough to challenge them beyond what they think is possible.",
+      "Elevating people also means being present when the work gets hard. Give honest " +
+      "feedback when someone is off track. Encourage them when confidence drops. " +
+      "Recognize and celebrate real progress. Create opportunities for collaboration " +
+      "and contribution. People should know that their leader is invested in their " +
+      "success; but also that growth comes with responsibility and accountability.",
+      "If I am doing my job well, people should leave my organization stronger than " +
+      "when they entered it: better at their craft, more confident in their judgment, " +
+      "more prepared to lead others, and proud of what they accomplished together."
     ],
     howIPractice: [
       {
-        title: "Coach before solving",
+        title: "Know them",
+        description:
+          "Understand their strengths, motivations, aspirations, working style, and " +
+          "where they want to grow. Ask good questions, listen carefully, and look " + 
+          "for opportunities that stretch them in ways that matter.",
+      },
+      {
+        title: "Coach them",
         description:
           "I ask questions first. My goal is to build judgment and confidence, not " +
-          "dependence.",
+          "dependence. One of the hardest parts of leadership is resisting the urge " +
+          "to step in and solve the problem yourself.",
       },
       {
-        title: "Give meaningful ownership",
+        title: "Trust Them",
         description:
           "People grow when they own problems that matter and have room to solve them " +
-          "their way.",
+          "their way. They may solve it differently than you would. Embrace and encourage " +
+          "that. Ensure both autonomy and accountability",
       },
       {
-        title: "Set high standards",
+        title: "Challenge them",
         description:
-          "I'm clear about what good looks like and hold myself and others accountable " +
-          "to it.",
+          "I’m clear about what good looks like and hold myself and others accountable " +
+          "to it. High standards are a form of belief: I challenge people because I " + 
+          "know what they’re capable of. People often rise to the expectations placed " + 
+          "on them.",
       },
       {
-        title: "Develop leaders who develop others",
+        title: "Recognize them",
         description:
-          "My impact multiplies through leaders who inspire growth in the people they lead.",
+          "Celebrate real progress, reinforce what is working, and help people regain " +
+          "confidence when the work gets difficult. Small wins matter. Recognition helps " +
+          "people see their own growth and build momentum.",
+      },      
+      {
+        title: "Develop them",
+        description:
+          "My impact multiplies through leaders who develop the people they lead. " +
+          "I coach managers to create clarity, give meaningful ownership, provide " + 
+          "direct feedback, and help others grow into greater responsibility.",
       },
     ],
     experienceTagline: "Scaling an organization changed how I thought about leadership.",

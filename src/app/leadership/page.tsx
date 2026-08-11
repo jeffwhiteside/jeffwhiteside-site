@@ -6,6 +6,7 @@ import { ArrowRight } from "@/components/ui/button";
 import {
   PRINCIPLE_DETAILS,
   PRINCIPLE_EXPLORES,
+  TILE_BG_CLASSES,
   TILE_BORDER_CLASSES,
   TILE_CLASSES,
   TILE_TEXT_CLASSES,
@@ -174,7 +175,7 @@ export default function LeadershipPage() {
                       id={principle.id}
                       className={`scroll-mt-24 rounded-2xl border border-band-line border-t-4 p-6 sm:p-10 ${
                         TILE_BORDER_CLASSES[principle.tile]
-                      }`}
+                      } ${TILE_BG_CLASSES[principle.tile]}`}
                     >
                       <div className="flex items-center gap-3">
                         <span
