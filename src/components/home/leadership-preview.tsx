@@ -1,15 +1,6 @@
 import Link from "next/link";
-import {
-  ChecklistIcon,
-  CheckIcon,
-  CompassIcon,
-  GearsIcon,
-  PeopleIcon,
-  ShieldCheckIcon,
-  SummitIcon,
-  TargetIcon,
-} from "@/components/ui/icons";
-import { ArrowRight } from "@/components/ui/button";
+import { CheckIcon, SummitIcon, TargetIcon } from "@/components/ui/icons";
+import { ArrowRight, ButtonLink } from "@/components/ui/button";
 import {
   PRINCIPLE_DETAILS,
   TILE_CLASSES,
@@ -28,7 +19,6 @@ import {
 const PRINCIPLES: ReadonlyArray<{
   title: string;
   description: string;
-  icon: typeof PeopleIcon;
   tile: TileColor;
 }> = [
   {
@@ -36,7 +26,6 @@ const PRINCIPLES: ReadonlyArray<{
     description:
       "Invest in people first. Coach, challenge, and empower others to grow. Give people " +
       "meaningful ownership, set high standards, and hold one another accountable.",
-    icon: PeopleIcon,
     tile: "blue",
   },
   {
@@ -44,7 +33,6 @@ const PRINCIPLES: ReadonlyArray<{
     description:
       "Trust is earned through integrity, accountability, and honest conversations. " +
       "Strong teams move faster because they know where they stand.",
-    icon: ShieldCheckIcon,
     tile: "green",
   },
   {
@@ -52,7 +40,6 @@ const PRINCIPLES: ReadonlyArray<{
     description:
       "Create a shared understanding of where we're going, why it matters, and how every " +
       "team contributes to the mission.",
-    icon: CompassIcon,
     tile: "violet",
   },
   {
@@ -60,7 +47,6 @@ const PRINCIPLES: ReadonlyArray<{
     description:
       "Clear priorities, ownership, and expectations allow teams to make better decisions " +
       "with confidence and autonomy.",
-    icon: ChecklistIcon,
     tile: "amber",
   },
   {
@@ -68,7 +54,6 @@ const PRINCIPLES: ReadonlyArray<{
     description:
       "The best leaders don't ask people to overcome broken systems. They continuously " +
       "improve the environment, processes, and feedback loops that enable teams to succeed.",
-    icon: GearsIcon,
     tile: "teal",
   },
 ];
@@ -98,7 +83,7 @@ export function LeadershipPreview() {
       <div className="page-container">
         <div className="mt-1 text-center">
           <h2 id="principles-heading" className="text-section mt-3 scroll-mt-24">
-            My Operating Principles
+            My Leadership Principles
           </h2>
           <p className="eyebrow">guiding every decision I make</p>
         </div>
@@ -147,63 +132,49 @@ export function LeadershipPreview() {
 
           </div>
 
-          <div className="relative">
-            {/* Connecting rule + arrowhead, drawn behind the numbered markers. */}
-            <span
-              aria-hidden="true"
-              className="absolute top-4 bottom-4 left-4 w-px -translate-x-1/2 bg-band-line"
-            />
-            <span
-              aria-hidden="true"
-              className="absolute bottom-4 left-4 h-0 w-0 -translate-x-1/2 translate-y-full border-x-4 border-t-4 border-x-transparent border-t-band-line"
-            />
+          <ol className="space-y-4">
+            {PRINCIPLES.map((principle) => {
+              const detail = PRINCIPLE_DETAILS.find((item) => item.title === principle.title);
 
-            <ol className="space-y-4">
-              {PRINCIPLES.map((principle) => {
-                const detail = PRINCIPLE_DETAILS.find((item) => item.title === principle.title);
-
-                return (
-                  <li key={principle.title} className="flex items-start gap-4 sm:gap-5">
+              return (
+                <li key={principle.title}>
+                  <Link
+                    href={detail ? `/leadership#${detail.id}` : "/leadership"}
+                    className={`group flex items-center gap-4 rounded-xl border p-4 transition-colors ${
+                      TILE_SOFT_CLASSES[principle.tile]
+                    }`}
+                  >
                     {/* Same shape and zero-padded number as the leadership page's own
                         per-principle badge, so the two pages read as the same numbering. */}
                     <span
-                      className={`relative z-10 flex size-8 shrink-0 items-center justify-center rounded-lg text-sm font-semibold text-white ${
+                      className={`flex size-11 shrink-0 items-center justify-center rounded-lg text-sm font-semibold text-white ${
                         TILE_CLASSES[principle.tile]
                       }`}
                     >
                       {detail?.number}
                     </span>
-
-                    <Link
-                      href={detail ? `/leadership#${detail.id}` : "/leadership"}
-                      className={`group flex flex-1 items-center gap-4 rounded-xl border p-4 transition-colors ${
-                        TILE_SOFT_CLASSES[principle.tile]
-                      }`}
-                    >
-                      <span
-                        className={`flex size-11 shrink-0 items-center justify-center rounded-lg text-white ${
-                          TILE_CLASSES[principle.tile]
-                        }`}
-                      >
-                        <principle.icon />
+                    <span className="flex-1">
+                      <span className="block text-base text-band-ink">{principle.title}</span>
+                      <span className="mt-1 block text-sm text-band-muted">
+                        {principle.description}
                       </span>
-                      <span className="flex-1">
-                        <span className="block text-base text-band-ink">{principle.title}</span>
-                        <span className="mt-1 block text-sm text-band-muted">
-                          {principle.description}
-                        </span>
-                      </span>
-                      <span className="text-band-muted transition-colors group-hover:text-accent">
-                        <ArrowRight />
-                      </span>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ol>
-          </div>
+                    </span>
+                    <span className="text-band-muted transition-colors group-hover:text-accent">
+                      <ArrowRight />
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ol>
         </div>
 
+        <div className="mt-12 flex justify-center">
+          <ButtonLink href="/leadership">
+            Explore My Leadership Philosophy
+            <ArrowRight />
+          </ButtonLink>
+        </div>
       </div>
     </section>
   );

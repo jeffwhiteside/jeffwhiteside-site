@@ -69,7 +69,7 @@ export function Hero() {
             {/* Mobile: stacked, full-width, second action de-emphasized to ghost so it
                 doesn't compete with the first. Desktop keeps the original inline row below. */}
             <div className="mt-8 flex flex-col items-stretch gap-2.5 sm:hidden">
-              <ButtonLink href="#principles-heading" variant="secondary" className="w-full">
+              <ButtonLink href="/leadership" variant="secondary" className="w-full">
                 Explore How I Lead
                 <ArrowRight />
               </ButtonLink>
@@ -81,7 +81,7 @@ export function Hero() {
             </div>
 
             <div className="mt-8 hidden flex-wrap items-center gap-3 sm:flex">
-              <ButtonLink href="#principles-heading" variant="secondary">
+              <ButtonLink href="/leadership" variant="secondary">
                 Explore How I Lead
                 <ArrowRight />
               </ButtonLink>

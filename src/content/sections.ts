@@ -31,7 +31,7 @@ export const SECTIONS = [
     href: "/leadership",
     title: "Leadership focus",
     navLabel: "Leadership",
-    navHref: "/#principles-heading",
+    navHref: null,
     description:
       "How Jeff Whiteside builds engineering teams, develops managers, and establishes the " +
       "operating system for reliable delivery.",

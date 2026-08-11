@@ -25,7 +25,7 @@ const BASE =
   "inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-medium transition-colors";
 
 const VARIANTS: Record<Variant, string> = {
-  primary: "bg-brand text-white hover:bg-brand-strong",
+  primary: "bg-accent text-white hover:bg-accent-strong",
   secondary: "border border-line text-ink hover:border-ink",
   ghost: "text-ink hover:text-accent",
 };
