@@ -30,6 +30,16 @@ export const TILE_SOFT_CLASSES: Record<TileColor, string> = {
   green: "border-tile-green/25 bg-tile-green/8",
 };
 
+/** Text colour matching a tile hue, for small accents on the light band (e.g. a principle's
+ * thesis line or its active state in navigation) — never for body text. */
+export const TILE_TEXT_CLASSES: Record<TileColor, string> = {
+  blue: "text-tile-blue",
+  teal: "text-tile-teal",
+  violet: "text-tile-violet",
+  amber: "text-tile-amber",
+  green: "text-tile-green",
+};
+
 /** Solid top-border accent colour, for marking off a full block (e.g. one principle's
  * section) rather than tinting a card. */
 export const TILE_BORDER_CLASSES: Record<TileColor, string> = {
