@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-export type Variant = "primary" | "secondary";
+export type Variant = "primary" | "secondary" | "ghost";
 
 interface ButtonLinkProps {
   href: string;
@@ -11,6 +11,14 @@ interface ButtonLinkProps {
   external?: boolean;
   /** Forces a file download rather than a navigation. Implies a plain anchor, not next/link. */
   download?: boolean;
+  /**
+   * Appended after the variant's own classes — for layout concerns (e.g. `w-full` for a
+   * stacked mobile layout) that don't conflict with any variant, not for re-theming a variant.
+   * Two utility classes that both set the same CSS property (e.g. layering a background
+   * override onto `primary`) have an unpredictable winner, since Tailwind's cascade order
+   * doesn't follow the order classes appear in this string — add a real variant instead.
+   */
+  className?: string;
 }
 
 const BASE =
@@ -19,6 +27,7 @@ const BASE =
 const VARIANTS: Record<Variant, string> = {
   primary: "bg-brand text-white hover:bg-brand-strong",
   secondary: "border border-line text-ink hover:border-ink",
+  ghost: "text-ink hover:text-accent",
 };
 
 /** The button treatment's class list, exported so other link-shaped components (e.g. a
@@ -38,9 +47,12 @@ export function ButtonLink({
   variant = "primary",
   external = false,
   download = false,
+  className: extraClassName,
   children,
 }: ButtonLinkProps) {
-  const className = buttonClassName(variant);
+  const className = extraClassName
+    ? `${buttonClassName(variant)} ${extraClassName}`
+    : buttonClassName(variant);
 
   if (download) {
     return (
