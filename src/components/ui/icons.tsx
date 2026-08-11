@@ -1,11 +1,11 @@
 import type { ComponentType } from "react";
 
 /*
- * The site's complete icon set: marks for the leadership focus areas and operating principles,
- * the personal projects, published writing, the mobile nav toggle, and the three contact
- * marks. All are inline stroke SVGs inheriting currentColor — no icon library, no icon font,
- * no network request. Each is aria-hidden and always accompanied by a text label, so nothing
- * depends on an icon being understood.
+ * The site's complete icon set: marks for the operating principles, the leadership detail
+ * page, the personal projects, published writing, the mobile nav toggle, and the three
+ * contact marks. All are inline stroke SVGs inheriting currentColor — no icon library, no
+ * icon font, no network request. Each is aria-hidden and always accompanied by a text label,
+ * so nothing depends on an icon being understood.
  */
 
 interface IconProps {
@@ -207,6 +207,25 @@ export function CloseIcon({ className }: IconProps) {
   return (
     <svg {...svgProps(className)}>
       <path d="M6 6l12 12M18 6 6 18" />
+    </svg>
+  );
+}
+
+/** How a principle gets put into practice. */
+export function WrenchIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M14.7 6.3a4 4 0 0 0-5.4 4.6l-6 6a1.8 1.8 0 0 0 2.5 2.5l6-6a4 4 0 0 0 4.6-5.4l-2.6 2.6-2-2 2.6-2.6Z" />
+    </svg>
+  );
+}
+
+/** What experience taught, in hindsight. */
+export function LightbulbIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M9 18h6M10 21h4" />
+      <path d="M12 3a6 6 0 0 0-3.5 10.9c.6.45.9 1.05.9 1.6H14.6c0-.55.3-1.15.9-1.6A6 6 0 0 0 12 3Z" />
     </svg>
   );
 }

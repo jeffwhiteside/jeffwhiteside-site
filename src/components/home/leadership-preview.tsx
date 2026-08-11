@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   ChecklistIcon,
   CheckIcon,
@@ -8,13 +9,21 @@ import {
   SummitIcon,
   TargetIcon,
 } from "@/components/ui/icons";
-import { TILE_CLASSES, TILE_SOFT_CLASSES, type TileColor } from "@/content/leadership";
+import { ArrowRight } from "@/components/ui/button";
+import {
+  PRINCIPLE_DETAILS,
+  TILE_CLASSES,
+  TILE_SOFT_CLASSES,
+  type TileColor,
+} from "@/content/leadership";
 
 /**
- * The five operating principles, in the numbered order shown on the page. Local to this
- * component rather than in content/leadership.ts — nothing else uses this text, so keeping it
- * here means editing the copy doesn't require jumping to another file. Each links to the
- * general /leadership page for now; none of these has its own dedicated page yet.
+ * The five operating principles, in the numbered order shown on the page. The short teaser
+ * copy is local to this component — nothing else uses it, so keeping it here means editing
+ * it doesn't require jumping to another file. The number and anchor id, though, come from
+ * content/leadership.ts's PRINCIPLE_DETAILS (matched by title below) rather than being
+ * hand-typed here too, so this row's number badge and its link target can't drift out of
+ * sync with the leadership page's own numbering and section ids.
  */
 const PRINCIPLES: ReadonlyArray<{
   title: string;
@@ -150,42 +159,47 @@ export function LeadershipPreview() {
             />
 
             <ol className="space-y-4">
-              {PRINCIPLES.map((principle, index) => (
-                <li key={principle.title} className="flex items-start gap-4 sm:gap-5">
-                  <span
-                    className={`relative z-10 flex size-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white ${
-                      TILE_CLASSES[principle.tile]
-                    }`}
-                  >
-                    {index + 1}
-                  </span>
+              {PRINCIPLES.map((principle) => {
+                const detail = PRINCIPLE_DETAILS.find((item) => item.title === principle.title);
 
-                  {/*
-                    Not a link yet — none of these principles has its own detail page. A plain
-                    div, not <Link href="/leadership">, so the whole row doesn't read as
-                    clickable when it isn't going anywhere specific.
-                  */}
-                  <div
-                    className={`flex flex-1 items-center gap-4 rounded-xl border p-4 ${
-                      TILE_SOFT_CLASSES[principle.tile]
-                    }`}
-                  >
+                return (
+                  <li key={principle.title} className="flex items-start gap-4 sm:gap-5">
+                    {/* Same shape and zero-padded number as the leadership page's own
+                        per-principle badge, so the two pages read as the same numbering. */}
                     <span
-                      className={`flex size-11 shrink-0 items-center justify-center rounded-lg text-white ${
+                      className={`relative z-10 flex size-8 shrink-0 items-center justify-center rounded-lg text-sm font-semibold text-white ${
                         TILE_CLASSES[principle.tile]
                       }`}
                     >
-                      <principle.icon />
+                      {detail?.number}
                     </span>
-                    <span className="flex-1">
-                      <span className="block text-base text-band-ink">{principle.title}</span>
-                      <span className="mt-1 block text-sm text-band-muted">
-                        {principle.description}
+
+                    <Link
+                      href={detail ? `/leadership#${detail.id}` : "/leadership"}
+                      className={`group flex flex-1 items-center gap-4 rounded-xl border p-4 transition-colors ${
+                        TILE_SOFT_CLASSES[principle.tile]
+                      }`}
+                    >
+                      <span
+                        className={`flex size-11 shrink-0 items-center justify-center rounded-lg text-white ${
+                          TILE_CLASSES[principle.tile]
+                        }`}
+                      >
+                        <principle.icon />
                       </span>
-                    </span>
-                  </div>
-                </li>
-              ))}
+                      <span className="flex-1">
+                        <span className="block text-base text-band-ink">{principle.title}</span>
+                        <span className="mt-1 block text-sm text-band-muted">
+                          {principle.description}
+                        </span>
+                      </span>
+                      <span className="text-band-muted transition-colors group-hover:text-accent">
+                        <ArrowRight />
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
             </ol>
           </div>
         </div>
