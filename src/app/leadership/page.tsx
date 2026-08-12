@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { PrincipleNav } from "@/components/leadership-principle-nav";
 import { ArrowRight } from "@/components/ui/button";
@@ -212,21 +213,34 @@ export default function LeadershipPage() {
                           </div>
 
                           {/* D. Ideas That Shaped My Thinking — compact source cards, title
-                              leads, no cover-image bookshelf. */}
+                              leads, with a small cover image when one is available. */}
                           <div className="mt-10">
                             <h3 className="text-lg">{IDEAS_STEP.label}</h3>
                             <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                               {principle.ideasThatShaped?.map((idea) => (
                                 <li key={idea.title} className={IDEA_CARD_CLASSES}>
-                                  <span className="inline-block rounded border border-band-line px-2 py-0.5 text-xs font-medium tracking-wide text-band-muted uppercase">
-                                    {idea.type}
-                                  </span>
-                                  <p className="mt-2 text-base font-semibold text-band-ink">
-                                    {idea.title}
-                                  </p>
-                                  {idea.author ? (
-                                    <p className="text-sm text-band-muted">{idea.author}</p>
-                                  ) : null}
+                                  <div className="flex gap-3">
+                                    {idea.coverImage ? (
+                                      <Image
+                                        src={idea.coverImage}
+                                        alt=""
+                                        width={55}
+                                        height={70}
+                                        className="shrink-0 rounded border border-band-line object-cover"
+                                      />
+                                    ) : null}
+                                    <div className="min-w-0">
+                                      <span className="inline-block rounded border border-band-line px-2 py-0.5 text-xs font-medium tracking-wide text-band-muted uppercase">
+                                        {idea.type}
+                                      </span>
+                                      <p className="mt-2 text-base font-semibold text-band-ink">
+                                        {idea.title}
+                                      </p>
+                                      {idea.author ? (
+                                        <p className="text-sm text-band-muted">{idea.author}</p>
+                                      ) : null}
+                                    </div>
+                                  </div>
                                   <p className="mt-2 text-sm text-band-muted">
                                     {idea.description}
                                   </p>

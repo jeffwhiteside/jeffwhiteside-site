@@ -86,6 +86,9 @@ export interface IdeaSource {
   readonly description: string;
   readonly linkLabel?: string;
   readonly linkHref?: string;
+  /** Public-relative path to a small cover image (e.g. "/books/dare-to-lead.jpg"), shown at
+   * 55x70 beside the title. Omit when no cover art is available for this source. */
+  readonly coverImage?: string;
 }
 
 export interface PrincipleDetail {
@@ -207,41 +210,58 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
     ideasThatShaped: [
       {
         type: "Book",
+        title: "Multipliers",
+        coverImage: "/books/multipliers.jpg",
+        author: "Liz Wiseman",
+        description:
+          "Helped change how I thought about my role as a leader. My job isn't to have " +
+          "all the answers; it's to draw out the intelligence and capability of the " +
+          "people around me, give them room to lead, and help them become better than " +
+          "they thought they could be",
+        linkLabel: "View on Amazon",
+        linkHref: "https://www.amazon.com/Multipliers-Revised-Updated-Leaders-Everyone-ebook/dp/B01KT18416/ref=sr_1_1?crid=2RAJP4JC2FL38&dib=eyJ2IjoiMSJ9.OThPxUt9yF3tkHb44wZb0DlEBYjGqoKcnJ4KDlpsW4bLZDfCt5E7dXf2G7U7bcSbkI3xOw225fIqyY1UsShy_-i01IoGgIF-Kfjuv5RT94Lt-RxR66OMNxb1NqR94vSaANqyyUXoIauAEqa_OuRpdDzFPgxgiVAkPFdF7lGLwYzDdpApq_-ICJ0P6sXBo0lE0tjaNrUsklBP8_MFfECEjqKFvlcQ2rHFS4NkDdRtJbM.i7FQyIZMyIiJFxfaQ0Kbq5pseOdMzGgvBChIDGqMUBk&dib_tag=se&keywords=multipliers&qid=1786504212&sprefix=multiplier%2Caps%2C255&sr=8-1",
+      },
+      {
+        type: "Book",
+        title: "First Break All The Rules",
+        coverImage: "/books/firstbreakalltherules.jpg",
+        author: "Marcus Buckingham & Curt Coffman",
+        description:
+          "Reinforced that great leadership isn't about treating everyone the same. " +
+          "People have different strengths, motivations, aspirations, and ways of " + 
+          "working. My responsibility is to understand those differences, help people " +
+          "build on what they do best, and create opportunities where they can contribute," +
+          "grow, and succeed.",
+        linkLabel: "View on Amazon",
+        linkHref: "https://www.amazon.com/First-Break-All-Rules-Differently/dp/1595621113/ref=sr_1_1?crid=1UZV95L0X7LIP&dib=eyJ2IjoiMSJ9.z16oCMdycf7bEf4Synq2a4oMRSZGQ2ISAabdAGh7DwNHnoc-zGSLaRbYMCHd9Y2UN2LUNQ6YfBz75OaIxhuOQAUS6iNZ8kAGGvsDjvfBheVJJrDvqOB69a1Km1A5QrHDy94ff6nqSROCHu9M2ibWjp9Yfp2yntA-noEF_zMCFm0etD3dJRKIlZVG2PvhMD9tTrvJy9T7VFOe3dK5OCLqxRLAzsNIV5LDKmtE3t2Sbjc.x3upRVlUo1F9UBhRSMdp31etaQ6P-_6mzkjkBRFLR-o&dib_tag=se&keywords=first+break+all+the+rules&qid=1786507442&sprefix=first+break+a%2Caps%2C200&sr=8-1",
+      },
+      {
+        type: "Book",
         title: "Dare to Lead",
+        coverImage: "/books/daretolead.jpg",
         author: "Brené Brown",
         description:
-          "Taught me that courage, vulnerability, and clear expectations are the " +
-          "foundation of trust and growth.",
+          "Reinforced that helping people grow requires both courage and vulnerability. " +
+          "Leaders need to set clear expectations, give honest feedback, admit when " +
+          "they don't have the answer, and create an environment where people can " +
+          "do the same",
         linkLabel: "View on Amazon",
         linkHref: "https://www.amazon.com/s?k=Dare+to+Lead+Brene+Brown",
       },
       {
         type: "Research",
-        title: "Psychological Safety",
-        author: "Amy Edmondson",
+        title: "Self-Dermination Theory",
+        coverImage: "/books/research.jpg",
+        author: "Edward Deci & Richard Ryan",
         description:
-          "Her research gave me language for something I saw firsthand: safety and high " +
-          "standards aren't opposites.",
-        linkLabel: "Read study",
-        linkHref: "https://scholar.google.com/scholar?q=Amy+Edmondson+psychological+safety",
-      },
-      {
-        type: "Book",
-        title: "Hidden Potential",
-        author: "Adam Grant",
-        description:
-          "Reinforced my belief that leaders should expand what people believe they're " +
-          "capable of becoming.",
-        linkLabel: "View on Amazon",
-        linkHref: "https://www.amazon.com/s?k=Hidden+Potential+Adam+Grant",
-      },
-      {
-        type: "Experience",
-        title: "Leading Distributed Teams",
-        description:
-          "Managing teams in India, Belarus, and Latin America taught me that investment " +
-          "and trust transcend distance.",
-      },
+          "Gave me a deeper framework for understanding motivation. People are more " +
+          "likely to thrive when their needs for autonomy, competence, and connection " +
+          "to others are supported. It reinforced my belief that leaders don't " +
+          "create motivation through control; they create conditions where motivation " +
+          "and growth can flourish.",
+        linkLabel: "Foundational Research",
+        linkHref: "https://selfdeterminationtheory.org/wp-content/uploads/2020/10/2000_DeciRyan_PIWhatWhy.pdf",
+      },      
     ],
     learnedTagline: "I used to think protecting people from failure was my job.",
     learnedParagraph:
