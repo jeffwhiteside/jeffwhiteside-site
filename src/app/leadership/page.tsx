@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { PrincipleNav } from "@/components/leadership-principle-nav";
 import { ArrowRight } from "@/components/ui/button";
@@ -12,7 +11,6 @@ import {
   TILE_TEXT_CLASSES,
 } from "@/content/leadership";
 import { getSection } from "@/content/sections";
-import { resolvePublicImage } from "@/lib/assets";
 
 const section = getSection("leadership");
 
@@ -46,13 +44,6 @@ const IDEA_CARD_CLASSES = "rounded-lg border border-band-line p-4";
  * content.
  */
 export default function LeadershipPage() {
-  const portraitSrc = resolvePublicImage([
-    "/jeff-whiteside.jpg",
-    "/jeff-whiteside.png",
-    "/placeholder/portrait.jpg",
-  ]);
-  const isPlaceholderPortrait = portraitSrc?.startsWith("/placeholder/") ?? false;
-
   return (
     <>
       {/*
@@ -61,68 +52,40 @@ export default function LeadershipPage() {
         photo alongside the text rather than a co-equal visual.
       */}
       <section id="introduction" className="relative scroll-mt-24 overflow-hidden">
-        <div className="page-container relative grid grid-cols-1 items-start gap-6 pt-8 pb-6 sm:pt-10 sm:pb-8 lg:grid-cols-[5fr_3fr] lg:gap-8">
-          <div>
-            <p className="eyebrow">My Leadership Philosophy</p>
-            <h1 className="text-hero mt-3">
-              Leadership Is About Creating the Conditions for People to{" "}
-              <span className="text-accent">Thrive.</span>
-            </h1>
-            <p className="measure-prose mt-4 text-muted">
-              My approach to leadership didn&rsquo;t come from a single book or framework. It
-              evolved over more than two decades of successes, mistakes, difficult
-              conversations, rapid growth, distributed teams, acquisitions, and periods of
-              significant change.
-            </p>
-            <p className="measure-prose mt-4 text-muted">
-              These five principles represent what I&rsquo;ve come to believe about building
-              high-performing engineering organizations where people do meaningful work and
-              deliver extraordinary results.
-            </p>
-          </div>
+        <div className="page-container relative pt-8 pb-4 sm:pt-10 sm:pb-6">
+          <p className="eyebrow">My Leadership Philosophy</p>
+          <h1 className="text-hero mt-3">
+            Leadership Is About Creating the Conditions for People to{" "}
+            <span className="text-accent">Thrive.</span>
+          </h1>
+          <p className="mt-4 text-muted">
+            My approach to leadership didn&rsquo;t come from a single book or framework. It
+            evolved over more than two decades of successes, mistakes, difficult conversations,
+            rapid growth, distributed teams, acquisitions, and periods of significant change.
+          </p>
+          <p className="mt-4 text-muted">
+            These five principles represent what I&rsquo;ve come to believe about building
+            high-performing engineering organizations where people do meaningful work and
+            deliver extraordinary results.
+          </p>
 
-          <div className="mx-auto w-full max-w-[10rem] sm:max-w-[12rem] lg:mx-0 lg:ml-auto lg:max-w-[18rem]">
-            {portraitSrc ? (
-              <Image
-                src={portraitSrc}
-                alt={isPlaceholderPortrait ? "" : "Jeff Whiteside"}
-                width={288}
-                height={288}
-                className="aspect-square w-full rounded-xl object-cover"
-              />
-            ) : (
-              <div
-                aria-hidden="true"
-                className="flex aspect-square w-full items-end rounded-xl border border-line bg-elevated p-4"
-              >
-                <span className="text-xs tracking-widest text-muted uppercase">Portrait</span>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-band pt-8 pb-12 text-band-ink sm:pt-10 sm:pb-16">
-        <div className="page-container">
-          <div className="mx-auto max-w-[60rem] text-center sm:text-left">
-            <h2 className="eyebrow">What I&rsquo;ve Come to Believe</h2>
-            <p className="measure-prose mt-3 text-band-muted sm:mx-0">
+            <p className="mt-4 text-muted">
               These aren&rsquo;t rules I&rsquo;ve mastered. They&rsquo;re principles I try to
               practice every day. Each one has been shaped by experience, mistakes, people
-              I&rsquo;ve worked with, and ideas I&rsquo;ve encountered along the way.
-            </p>
-            <p className="mt-4 text-sm text-band-muted">
-              <span className="font-semibold text-band-ink">Each principle explores:</span>{" "}
-              What I Believe <span className="text-accent">•</span> How I Practice It{" "}
-              <span className="text-accent">•</span> Experience{" "}
-              <span className="text-accent">•</span> Ideas That Shaped Me{" "}
-              <span className="text-accent">•</span> What I&rsquo;ve Learned
-            </p>
-          </div>
+              I&rsquo;ve worked with, and ideas I&rsquo;ve encountered along the way. They
+              are also continiously evolving as I learn and grow myself.
+            </p>          
+
+        </div>
+        
+      </section>
+
+      <section className="bg-band pt-6 pb-12 text-band-ink sm:pt-8 sm:pb-16">
+        <div className="page-container">
 
           {/* Mobile / tablet: a compact, JS-free jump-to-principle disclosure, replacing the
               sidebar rather than stacking it above the content. */}
-          <div className="mt-10 lg:hidden">
+          <div className="mt-6 lg:hidden">
             <details className="rounded-lg border border-band-line p-3">
               <summary className="cursor-pointer text-sm font-medium text-band-ink">
                 Jump to principle
@@ -149,7 +112,7 @@ export default function LeadershipPage() {
             </details>
           </div>
 
-          <div className="mt-8 mx-auto grid max-w-[65.5rem] grid-cols-1 gap-10 lg:mt-16 lg:grid-cols-[12.5rem_50rem] lg:gap-12">
+          <div className="mx-auto grid max-w-[65.5rem] grid-cols-1 gap-10 lg:grid-cols-[12.5rem_50rem] lg:gap-12">
             {/* Nudged down to align with "Elevate People" (below the 01/Principle badge row)
                 rather than the top of that badge. */}
             <aside className="hidden lg:sticky lg:top-24 lg:block lg:self-start lg:pt-14">
@@ -195,7 +158,7 @@ export default function LeadershipPage() {
                       <hr className="mt-6 border-band-line" />
 
                       {principle.comingSoon ? (
-                        <p className="measure-prose mt-8 text-band-muted">
+                        <p className="mt-8 text-band-muted">
                           This principle&rsquo;s full write-up is coming soon.
                         </p>
                       ) : (
@@ -203,7 +166,7 @@ export default function LeadershipPage() {
                           {/* A. What I Believe — plain editorial prose, no card, no icon. */}
                           <div className="mt-8">
                             <h3 className="text-lg">{BELIEVE_STEP.label}</h3>
-                            <div className="measure-prose mt-3 space-y-3">
+                            <div className="mt-3 space-y-3">
                               {principle.whatIBelieve?.map((paragraph) => (
                                 <p key={paragraph} className="text-band-muted">
                                   {paragraph}
@@ -234,7 +197,7 @@ export default function LeadershipPage() {
                             <p className="mt-2 text-lg text-band-ink">
                               {principle.experienceTagline}
                             </p>
-                            <p className="measure-prose mt-2 text-band-muted">
+                            <p className="mt-2 text-band-muted">
                               {principle.experienceParagraph}
                             </p>
                             {principle.experienceLinkHref ? (
@@ -291,7 +254,7 @@ export default function LeadershipPage() {
                             <p className="mt-3 font-serif text-2xl text-band-ink italic">
                               {principle.learnedTagline}
                             </p>
-                            <p className="measure-prose mt-4 text-band-muted">
+                            <p className="mt-4 text-band-muted">
                               {principle.learnedParagraph}
                             </p>
                           </div>
