@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { PrincipleNav } from "@/components/leadership-principle-nav";
 import { ArrowRight } from "@/components/ui/button";
 import {
@@ -130,9 +129,6 @@ export default function LeadershipPage() {
 
             <div>
               {PRINCIPLE_DETAILS.map((principle, index) => {
-                const previous = PRINCIPLE_DETAILS[index - 1];
-                const next = PRINCIPLE_DETAILS[index + 1];
-
                 return (
                   <div key={principle.id} className={index > 0 ? "mt-12" : undefined}>
                     <section
@@ -198,18 +194,13 @@ export default function LeadershipPage() {
                             <p className="mt-2 text-lg text-band-ink">
                               {principle.experienceTagline}
                             </p>
-                            <p className="mt-2 text-band-muted">
-                              {principle.experienceParagraph}
-                            </p>
-                            {principle.experienceLinkHref ? (
-                              <Link
-                                href={principle.experienceLinkHref}
-                                className="link mt-3 inline-flex items-center gap-2 text-sm"
-                              >
-                                {principle.experienceLinkLabel}
-                                <ArrowRight />
-                              </Link>
-                            ) : null}
+                            <div className="mt-2 space-y-3">
+                              {principle.experienceParagraph?.map((paragraph) => (
+                                <p key={paragraph} className="text-band-muted">
+                                  {paragraph}
+                                </p>
+                              ))}
+                            </div>
                           </div>
 
                           {/* D. Ideas That Shaped My Thinking — compact source cards, title
@@ -268,33 +259,16 @@ export default function LeadershipPage() {
                             <p className="mt-3 font-serif text-2xl text-band-ink italic">
                               {principle.learnedTagline}
                             </p>
-                            <p className="mt-4 text-band-muted">
-                              {principle.learnedParagraph}
-                            </p>
+                            <div className="mt-4 space-y-3">
+                              {principle.learnedParagraph?.map((paragraph) => (
+                                <p key={paragraph} className="text-band-muted">
+                                  {paragraph}
+                                </p>
+                              ))}
+                            </div>
                           </div>
                         </>
                       )}
-
-                      <div className="mt-12 flex items-center justify-between text-sm">
-                        <a
-                          href={previous ? `#${previous.id}` : "#introduction"}
-                          className="link inline-flex flex-col items-start"
-                        >
-                          <span className="text-band-muted">
-                            {previous ? "← Previous Principle" : "← Back to"}
-                          </span>
-                          <span>{previous ? previous.title : "Introduction"}</span>
-                        </a>
-                        {next ? (
-                          <a
-                            href={`#${next.id}`}
-                            className="link inline-flex flex-col items-end text-right"
-                          >
-                            <span className="text-band-muted">Next Principle →</span>
-                            <span>{next.title}</span>
-                          </a>
-                        ) : null}
-                      </div>
                     </section>
                   </div>
                 );

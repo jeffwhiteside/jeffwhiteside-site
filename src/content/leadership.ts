@@ -109,12 +109,12 @@ export interface PrincipleDetail {
   readonly whatIBelieve?: readonly string[];
   readonly howIPractice?: readonly PracticeItem[];
   readonly experienceTagline?: string;
-  readonly experienceParagraph?: string;
-  readonly experienceLinkLabel?: string;
-  readonly experienceLinkHref?: string;
+  /** One or more paragraphs, each rendered as its own `<p>`. */
+  readonly experienceParagraph?: readonly string[];
   readonly ideasThatShaped?: readonly IdeaSource[];
   readonly learnedTagline?: string;
-  readonly learnedParagraph?: string;
+  /** One or more paragraphs, each rendered as its own `<p>`. */
+  readonly learnedParagraph?: readonly string[];
 }
 
 /**
@@ -198,15 +198,19 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
           "direct feedback, and help others grow into greater responsibility.",
       },
     ],
-    experienceTagline: "Scaling an organization changed how I thought about leadership.",
-    experienceParagraph:
-      "Growing teams from 25 to more than 60 people taught me I couldn't be the source of " +
-      "all answers. I had to shift from being the expert to building the conditions for " +
-      "others to become experts. That meant investing in engineering managers, clarifying " +
-      "ownership, and creating feedback loops that helped people learn faster than I ever " +
-      "could.",
-    experienceLinkLabel: "Read more about my journey",
-    experienceLinkHref: "/experience",
+    experienceTagline: "Some of the best engineers I’ve worked with didn’t start out as engineers.",
+    experienceParagraph: [
+      "At Xcira, we partnered with LaunchCode to bring people into technology from " +
+      "very different careers, including former teachers and retail employees; many " +
+      "without traditional computer science backgrounds or college degrees.",
+      "We focused on potential: learning what people were good at, giving them " +
+      "meaningful work, coaching them, and challenging them to grow. Not every " +
+      "placement worked out, but several became some of the strongest developers " +
+      "and team members I’ve had the opportunity to lead.",
+      "That experience reinforced something I still believe: talent doesn’t always " +
+      "arrive with the expected résumé. A leader’s job is to recognize potential, " +
+      "create opportunity, and help people discover what they’re capable of.",
+    ],
     ideasThatShaped: [
       {
         type: "Book",
@@ -230,7 +234,7 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
           "Reinforced that great leadership isn't about treating everyone the same. " +
           "People have different strengths, motivations, aspirations, and ways of " + 
           "working. My responsibility is to understand those differences, help people " +
-          "build on what they do best, and create opportunities where they can contribute," +
+          "build on what they do best, and create opportunities where they can contribute, " +
           "grow, and succeed.",
         linkLabel: "View on Amazon",
         linkHref: "https://www.amazon.com/First-Break-All-Rules-Differently/dp/1595621113/ref=sr_1_1?crid=1UZV95L0X7LIP&dib=eyJ2IjoiMSJ9.z16oCMdycf7bEf4Synq2a4oMRSZGQ2ISAabdAGh7DwNHnoc-zGSLaRbYMCHd9Y2UN2LUNQ6YfBz75OaIxhuOQAUS6iNZ8kAGGvsDjvfBheVJJrDvqOB69a1Km1A5QrHDy94ff6nqSROCHu9M2ibWjp9Yfp2yntA-noEF_zMCFm0etD3dJRKIlZVG2PvhMD9tTrvJy9T7VFOe3dK5OCLqxRLAzsNIV5LDKmtE3t2Sbjc.x3upRVlUo1F9UBhRSMdp31etaQ6P-_6mzkjkBRFLR-o&dib_tag=se&keywords=first+break+all+the+rules&qid=1786507442&sprefix=first+break+a%2Caps%2C200&sr=8-1",
@@ -263,11 +267,17 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
         linkHref: "https://selfdeterminationtheory.org/wp-content/uploads/2020/10/2000_DeciRyan_PIWhatWhy.pdf",
       },      
     ],
-    learnedTagline: "I used to think protecting people from failure was my job.",
-    learnedParagraph:
-      "Early in my career, I tried to shield my team from risk. I realized I was " +
-      "depriving them of the chance to grow. Now I focus on giving people a safe " +
-      "environment to take smart risks, learn, and stretch.",
+    learnedTagline: "Great teams amplify talent",
+    learnedParagraph: [
+      "Hiring talented people is only the beginning. Put the right people together, " +
+      "give them clear purpose, useful systems, good tools, and room to exercise " +
+      "judgment—and their collective capability grows beyond what any one person " +
+      "can achieve alone.",
+      "Collaboration is a force multiplier. My job isn't to orchestrate every move, " +
+      "but to create the conditions where people can learn from one another, " +
+      "challenge one another, combine their strengths, and do work none of them " +
+      "could have done as well individually.",
+    ]
   },
   {
     number: "02",
