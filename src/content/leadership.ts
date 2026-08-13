@@ -602,10 +602,167 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
     number: "04",
     id: "build-great-teams",
     title: "Build Great Teams",
-    tagline: "Great teams accomplish what no individual can alone.",
+    tagline: "Great teams amplify talent",
     icon: LayersIcon,
     tile: "amber",
-    comingSoon: true,
+    whatIBelieve: [
+      "The most meaningful work is rarely accomplished by one person. It takes people " +
+      "with different strengths, experiences, perspectives, and expertise working toward " +
+      "something they could not accomplish alone. Individual capability matters, and the " +
+      "tools available to us can expand what one person can accomplish dramatically, " +
+      "but great teams amplify that capability even further.",
+      "Putting talented people together doesn't automatically create a great team. The " +
+      "strongest team isn't always the one with the strongest individuals. People need " +
+      "a shared purpose, clear ownership, and confidence that everyone is committed to the " +
+      " same outcome. The strongest teams combine complementary strengths and value people " +
+      "not only for what they contribute individually, but for how they make the people " +
+      "around them better.",
+      "Collaboration isn't about involving everyone in everything. It's about bringing " +
+      "together the right perspectives when they matter. Knowledge, experience, and ideas " +
+      "are distributed across people, disciplines, teams, and geographies. When those " +
+      "perspectives combine well, teams generate better ideas, find more creative solutions, " +
+      "challenge assumptions, innovate faster, and accomplish more than individuals working in isolation.",
+      "That requires people to contribute what they really think. Great teams aren't teams that " +
+      "always agree. People need to feel safe asking questions, admitting mistakes, offering " +
+      "unconventional ideas, and saying, “I think we're wrong.” Productive disagreement " +
+      "isn't dysfunction. Handled with trust and respect, it protects against groupthink " +
+      "and makes the eventual solution stronger.",
+      "I don't believe there is one ideal team structure. Stable, cross-functional teams are " +
+      "powerful when they fit the work, but structure should serve the problem rather than " +
+      "become an end in itself. Teams and their boundaries should be able to evolve as the " +
+      "work changes. Fluid doesn't mean unclear: purpose, ownership, decision-making, " +
+      "and accountability should remain clear while expertise can move across boundaries when needed."
+    ],
+    howIPractice: [
+      {
+        title: "Build for Collective Strengths",
+        description:
+          "Individual talent matters, but so does the effect someone has on everyone around them. " +
+          "I look for complementary strengths and for people who are curious, collaborative, growth-oriented, " +
+          "and invested in helping others succeed. The strongest team isn't always the one with the strongest " +
+          "individuals; it's the one where people make the whole stronger.",
+      },
+      {
+        title: "Amplify Each Other",
+        description:
+          "Real collaboration is more than dividing up work and completing pieces independently. Create " +
+          "opportunities for people to combine expertise, build on one another's ideas, and solve problems " +
+          "together so the team produces better ideas, more creativity, faster learning, and stronger " +
+          "outcomes than anyone could produce alone.",
+      },
+      {
+        title: "Create Psychological Safety",
+        description:
+          "People contribute more fully when they know they can ask questions, admit mistakes, " +
+          "challenge assumptions, offer unconventional ideas, and say “I think we’re wrong” without " +
+          "fear of embarrassment or retaliation. Safety doesn’t mean comfort or low standards; it " +
+          "creates the conditions for candor, learning, and better performance.",
+      },
+      {
+        title: "Encourage Productive Dissent",
+        description:
+          "Great teams need different perspectives and healthy disagreement. Actively seek input from people " +
+          "who see the problem differently, debate ideas with curiosity and respect, resist premature consensus " +
+          "and groupthink, then commit together once a decision is made.",
+      },    
+      {
+        title: "Share Ownership of the Outcome",
+        description:
+          "Great teams win and lose together. Make individual responsibilities clear while keeping the " +
+          "larger outcome collectively owned, so people help across boundaries, solve problems together, " +
+          "and optimize for the team’s success rather than protecting their role, function, or personal credit.",
+      },
+      {
+        title: "Design the Team for the Work",
+        description:
+          "There is no single team structure that works everywhere. I favor stable, cross-functional teams " +
+          "when continuity and ownership matter, but teams, roles, and interactions should evolve with the " +
+          "problem. Fluid doesn’t mean unclear: purpose, ownership, decision rights, and accountability " +
+          "should remain explicit.",
+      },        
+    ],
+    experienceTagline: "The right people in the wrong structure can still struggle.",
+    experienceParagraph: [
+      "Early in my leadership career at Gearworks, we were building distributed teams that " +
+      "included engineers in Belarus. We were still learning how to work effectively " +
+      "across geographies, and the way we had organized the work was creating unnecessary friction.",
+      "When I visited the Belarus office, one thing became obvious: standups, planning, and other " +
+      "working sessions were being held with large groups. Meetings took too long, many people " +
+      "were only marginally involved, and real collaboration was difficult.",
+      "We reorganized the work into smaller cross-functional teams, intentionally balancing technical " +
+      "strengths, working styles, and the needs of each product area. People had clearer ownership, " +
+      "more relevant conversations, and stronger relationships with the teammates they " +
+      "depended on every day. Collaboration improved, meetings became more focused, and the " +
+      "teams worked much more effectively.",
+    ],
+    ideasThatShaped: [
+      {
+        type: "Book",
+        title: "The Wisdom of Teams",
+        coverImage: "/books/wisdomofteams.jpg",
+        author: "Jon Katzenbach & Douglas Smith",
+        description:
+          "Reinforced my belief that great teams are more than collections of talented individuals. " +
+          "Complementary skills, shared purpose, common goals, and mutual accountability turn " +
+          "individual capability into collective performance. The strength comes from how people " +
+          "work together, not simply from the talent of each person.",
+        linkLabel: "View on Amazon",
+        linkHref: "https://www.amazon.com/Wisdom-Teams-Creating-High-Performance-Organization/dp/1633691063/ref=sr_1_1?crid=2ZHF12HHEP2KU&dib=eyJ2IjoiMSJ9.K065MMilvV-TkJ-GkwcUiZcgukleZxR6GNn79_CzuSFp5MOY-oE8MtFBTs4m-ccYQ0rjGOdD0j_QOvDQ1PLoo7sTkbgJY_zMtXeqR5NU2YUWWBU3LS8yO_wKmQwtbv5o1RuROgStJRLyv7aTD6m7PI8nH6xhJzR6Fqts5xphN-EIJpLxl1TOUuCHRWKP_Lo3yMByqJSpBAVvcMhj1aUPYCWBzvwIjLy0bJZ_vjFdDbE.VsKqagkgFk0A-pcITXXdthie81-ozyI6grKRMmT25MA&dib_tag=se&keywords=wisdom+of+teams&qid=1786648336&sprefix=wisdom+of+teams%2Caps%2C223&sr=8-1",
+      },
+      {
+        type: "Book",
+        title: "The Five Dysfunctions of a Team",
+        coverImage: "/books/fivedysfunctions.jpg",
+        author: "Patrick Lencioni",
+        description:
+          "Shaped how I think about trust and productive disagreement. Strong teams don't avoid conflict; " +
+          "they create enough trust to challenge ideas, surface concerns, and debate alternatives without " +
+          "making disagreement personal. Working through differences leads to stronger decisions and deeper commitment.",
+        linkLabel: "View on Amazon",
+        linkHref: "https://www.amazon.com/Five-Dysfunctions-Team-Leadership-Fable/dp/0787960756/ref=sr_1_1?crid=3FKGC6D7L1K1F&dib=eyJ2IjoiMSJ9.m-S3In8lXHSPxHFwaOT8TcJ8G6brbM9-l-BcdBydItOss61Ebzm15rR34htwURuC1A7PH4A7ba08wgvpJgAFuECn4dqcZTzFtjKVunKya6Gs7b6C4bRqCBIj-G5fJhZMU7UZENdoqie_kpe2phVuPFRrMY5T0TIttpOUoi5DuJBxJoCh_Nt8E-uQ6DDz_Iov-xH2dl0SUGZx1pfy0_ARiCre-kI8oHGtWE2CL8JytEo.by047hVf-mXvnhX9cfdEEYPVSKLBwGdoX06sNLr_I-8&dib_tag=se&keywords=five+dysfunctions+of+a+team&qid=1786653301&sprefix=five+dys%2Caps%2C199&sr=8-1",
+      },
+      {
+        type: "Book",
+        title: "Team Topologies",
+        coverImage: "/books/teamtopologies.jpg",
+        author: "Matthew Skelton & Manuel Pais",
+        description:
+          "Influenced how I think about designing teams around the work. Team boundaries, ownership, " +
+          "cognitive load, and how teams interact all affect performance. There isn't one ideal " +
+          "structure—the goal is to create clear ownership while allowing expertise and collaboration to " +
+          "flow where the work requires it.",
+        linkLabel: "View on Amazon",
+        linkHref: "https://www.amazon.com/Team-Topologies-2nd-Organizing-Technology/dp/1966280009/ref=sr_1_1?crid=20NBUK9FLDYBC&dib=eyJ2IjoiMSJ9.YEfDXTWenoXc04cAXSBXxXi72GK4-OpU9SGntdLoE4KoPqZq1Htfalxc5s_2l5km486fB6ktrX_HfczYrUcEGiJQ4csvwRvXvr_GP0VHrF0UTFglyh5HK9HTrr4nwUPO4cwykg-R6WcoRKR3hP0G0eVAv2aHH2Tq5Zf-J3-Xi7uyyv65rHzRzg5fCN6Iqsuurh53mg3_Qgd0JcMNSg492FjIGetUNxw-EEPA6VEXqhM.x8U3qDQx6qSVC0rCW3JdBRYUy4UDPolPDF3C1M1TE-A&dib_tag=se&keywords=team+topologies&qid=1786653441&sprefix=team+topologies%2Caps%2C177&sr=8-1",
+      },
+      {
+        type: "Research",
+        title: "Project Aristotle",
+        coverImage: "/books/research.jpg",
+        author: "Google Research",
+        description:
+          "Reinforced that team effectiveness depends on more than individual talent. Google's research " +
+          "highlighted psychological safety, dependability, structure and clarity, meaning, and " +
+          "impact as important dynamics of effective teams. It strengthened my belief that leaders " +
+          "need to create the conditions where people can contribute fully, take interpersonal risks, " +
+          "and succeed together.",
+        linkLabel: "Foundational Research",
+        linkHref: "https://business.google.com/us/think/future-of-marketing/five-dynamics-effective-team/?utm_source=chatgpt.com#page-content",
+      },      
+    ],
+    learnedTagline: "Great teams don't happen by accident.",
+    learnedParagraph: [
+      "I've learned that great teams require intentional design. Who you bring together matters, " +
+      "but so do the conditions around them: complementary strengths, shared purpose, " +
+      "psychological safety, clear ownership, and the way the work itself is structured. ",
+      "Psychological safety makes real collaboration possible. When people feel safe " +
+      "contributing what they know, challenging ideas, admitting mistakes, and building on " +
+      "one another's thinking, the team can generate ideas and solutions that no individual " +
+      "perspective would have produced alone.",
+      "Very little meaningful work happens in isolation. The best teams create something greater " +
+      "than the sum of their individual contributions—better ideas, more creative solutions, " +
+      "faster learning, and stronger outcomes. A leader's job is to intentionally create the " +
+      "conditions that allow that to happen."
+    ],
   },
   {
     number: "05",

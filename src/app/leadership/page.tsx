@@ -217,7 +217,7 @@ export default function LeadershipPage() {
                                         alt=""
                                         width={55}
                                         height={70}
-                                        className="shrink-0 rounded border border-band-line object-cover"
+                                        className="h-[70px] w-[55px] shrink-0 rounded border border-band-line object-cover"
                                       />
                                     ) : null}
                                     <div className="min-w-0">
