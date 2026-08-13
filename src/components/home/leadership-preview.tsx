@@ -36,21 +36,21 @@ const PRINCIPLES: ReadonlyArray<{
     tile: "green",
   },
   {
-    title: "Create Alignment",
+    title: "Connect to Purpose",
     description:
-      "Create a shared understanding of where we're going, why it matters, and how every " +
-      "team contributes to the mission.",
+      "Help people see why the work matters and how their contribution connects to the " +
+      "mission. People commit more fully when the purpose is clear.",
     tile: "violet",
   },
   {
-    title: "Create Clarity",
+    title: "Build Great Teams",
     description:
-      "Clear priorities, ownership, and expectations allow teams to make better decisions " +
-      "with confidence and autonomy.",
+      "Put the right people together, give them shared purpose and clear ownership, and " +
+      "help them combine their strengths into something no individual could do alone.",
     tile: "amber",
   },
   {
-    title: "Think in Systems",
+    title: "Improve the System",
     description:
       "The best leaders don't ask people to overcome broken systems. They continuously " +
       "improve the environment, processes, and feedback loops that enable teams to succeed.",
