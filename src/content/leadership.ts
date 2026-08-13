@@ -443,7 +443,160 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
     tagline: "People commit more fully when they understand why the work matters.",
     icon: CompassIcon,
     tile: "violet",
-    comingSoon: true,
+    whatIBelieve: [
+      "Technology matters because of what it enables. Sometimes the impact is " +
+      "significant and obvious. Other times it is a small improvement that saves " +
+      "someone time, removes frustration, or makes their work easier. Either way, " + 
+      "there are real people and real outcomes behind what we build. Part of my " +
+      "job as a leader is to make that impact visible—to connect the work to the " +
+      "people it serves and the business it helps succeed.",
+      "I also believe people need a future worth building toward. A compelling " +
+      "direction should help us imagine what could be better and stretch what we think " +
+      "is possible today. It should be ambitious enough to inspire people, but clear " +
+      "enough that everyone understands where we're going and why getting there matters.",
+      "Vision without shared context, however, isn't enough. People make better " +
+      "decisions when they understand the customer, the business, the strategy, the " +
+      "constraints, and the tradeoffs behind our direction. I want teams to understand " +
+      "the reasoning, not just receive the decisions. Shared context is what allows " +
+      "alignment and autonomy to coexist.",
+      "Ambition also needs a path. Shared goals and OKRs define what success looks like. " +
+      "Roadmaps and milestones give us a way to get there. The path doesn't need to " +
+      "be perfect or fully known upfront—meaningful progress is usually iterative and " +
+      "incremental. We deliver, learn, measure, adjust, and keep moving toward the " +
+      "outcome.",
+      "Ultimately, everyone should be able to connect the work in front of them " +
+      "to the larger purpose. Alignment isn't everyone doing the same thing; it's " +
+      "everyone making decisions in service of the same purpose. When people " +
+      "understand why the work matters, where we're going, and how their contribution " +
+      "helps us get there, they can move together without needing every step prescribed " +
+      "for them."
+    ],
+    howIPractice: [
+      {
+        title: "Make the Impact Visible",
+        description:
+          "People care more deeply about work when they understand who it helps and " +
+          "why it matters. I connect the work to real people, customer outcomes, " +
+          "and business impact so teams can see the difference their work makes" +
+          "—even when that impact isn't immediately obvious.",
+      },
+      {
+        title: "Paint an Ambitious Future",
+        description:
+          "People need something worth building toward. I create a clear picture of what " +
+          "could be better and set a direction that stretches what seems possible today, " +
+          "while making sure people understand why reaching it matters.",
+      },
+      {
+        title: "Create a Shared Context",
+        description:
+          "Distributed teams need a shared frame of reference. I make the customer need, " +
+          "business priorities, constraints, tradeoffs, and reasoning behind decisions " +
+          "visible so people across teams, geographies, and cultures are interpreting the " +
+          "work through the same lens and pulling in the same direction.",
+      },
+      {
+        title: "Turn Vision Into Goals",
+        description:
+          "Vision becomes actionable when people know what success looks like. I use " +
+          "shared goals and OKRs to translate direction into measurable outcomes, " +
+          "create focus, and make progress visible. Incremental wins build confidence, " +
+          "reinforce progress, and create momentum toward the larger goal.",
+      },    
+      {
+        title: "Build a Path Together",
+        description:
+          "Ambitious goals rarely come with a perfect roadmap. I work with teams to turn " +
+          "the destination into milestones and an adaptable roadmap, then make " + 
+          "progress iteratively—deliver, learn, measure, adjust, and keep moving.",
+      },
+      {
+        title: "Connect Strategy to the Work",
+        description:
+          "Alignment only works when people can connect the larger direction to the " +
+          "decisions they make every day. I continually reinforce priorities, goals, " +
+          "and context so teams understand what matters now, how their work contributes, " +
+          "and where they have the autonomy to make decisions.",
+      },        
+    ],
+    experienceTagline: "Big transformations need both a compelling future and a credible path to get there.",
+    experienceParagraph: [
+      "At Xcira, we were running on self-hosted infrastructure that required " +
+      "significant capital investments every few years and could not scale elastically " +
+      "when demand changed. Moving to the cloud was a massive shift, and not " +
+      "everyone initially believed it was the right direction.",
+      "Before we could execute, we had to create shared understanding around why the " +
+      "change mattered: cost, scalability, resilience, and the limitations of " +
+      "continuing with the existing model. Once we aligned on the destination, we " +
+      "broke the transformation into a step-by-step roadmap that let us modernize " +
+      "incrementally without disrupting the business.",
+      "That experience reinforced something I still believe: ambitious change becomes " +
+      "possible when people understand the reason for it, believe in the destination, " +
+      "and can see a practical path from where they are today to where they need to go."
+    ],
+    ideasThatShaped: [
+      {
+        type: "Book",
+        title: "Start with Why",
+        coverImage: "/books/startwithwhy.jpg",
+        author: "Simon Sinek",
+        description:
+          "Reinforced that people need more than a list of things to do—they need to " +
+          "understand why the work matters. Connecting decisions and priorities to a " +
+          "meaningful purpose creates context, helps people make better choices, " +
+          "and gives them something larger than the task itself to work toward.",
+        linkLabel: "View on Amazon",
+        linkHref: "https://www.amazon.com/s?k=start+with+why&crid=1C3WTBRRTJ7CT&sprefix=startwith+%2Caps%2C253&ref=nb_sb_ss_p13n-expert-pd-ops-ranker_ci_hl-bn-left_1_10",
+      },
+      {
+        type: "Book",
+        title: "Built to Last",
+        coverImage: "/books/builttolast.jpg",
+        author: "Jim Collins & Jerry Porras",
+        description:
+          "The concept of BHAGs shaped how I think about ambition. A compelling future " +
+          "should stretch beyond what seems easily achievable today, giving people " +
+          "something meaningful to rally around while creating belief that together " +
+          "we can accomplish more than we initially thought possible.",
+        linkLabel: "View on Amazon",
+        linkHref: "https://www.amazon.com/Built-Last-Successful-Visionary-Companies/dp/0060566108/ref=sr_1_1?crid=HHYKMSO39ZVV&dib=eyJ2IjoiMSJ9.nO1HibVit1y3YmhskLbT6YZbUEcUT37evfuorCfekd-W6Su6wQeGXKw9nq7S6T9ImHebazCUTFSwNfC6hh9sR10Gqg3x41GjSoAF_QnDEeV4ng3BKE5CzhmxQp9obrX3zRR9gXNHhnkeUGA4U6hMZryL15ec6bEOqErqRQJOjpID0IRCZKS9cZzQs3k0m7SkALa_ZmLaeN3bptmnR8CcvF0AMP2Fgx4ldhnV42C6UDw.W90X33Hpgi2HxWD_iLK2G5C3x65_cI633BynbVqi4QU&dib_tag=se&keywords=built+to+last&qid=1786644947&sprefix=built+to+last%2Caps%2C185&sr=8-1",
+      },
+      {
+        type: "Book",
+        title: "Measure What Matters",
+        coverImage: "/books/measurewhatmatters.jpg",
+        author: "John Doerr",
+        description:
+          "Helped shape how I translate ambition into execution. OKRs connect a larger " +
+          "purpose to clear, measurable outcomes, create alignment across teams, and " +
+          "make progress visible without prescribing exactly how people should achieve " +
+          "the goal.",
+        linkLabel: "View on Amazon",
+        linkHref: "https://www.amazon.com/Measure-What-Matters-Google-Foundation/dp/0525536221/ref=sr_1_1?crid=F3B56VBXDLW0&dib=eyJ2IjoiMSJ9.fdu3hAVgKrFzpb_aYtBKWVuvmpEX33m9XlCOaqqQ6LJ3oCrpJCEtbl8q1dPvMRKueb_M-xxxCRYJQq0GFyH-MUqZxdTJvIOjLhAj4HmwUsEr9kp0-AK1Zh8kv9OSzZ4CUrKHi1M5jxDPsAUM2dOmFuDYFp7CzfNCwacEy6v982pw5obu_fASr-B7qQczOb8BcvUhtZbo-anbRVEun99-I5dKHbODdQAEkaEPGPobc-M.LtLnc7PJ-ND3Oe3zUWQQCwp0idBDN3N_M3ovr9wT6qs&dib_tag=se&keywords=measure+what+matters+by+john+doerr&qid=1786645107&sprefix=measure%2Caps%2C306&sr=8-1",
+      },
+      {
+        type: "Research",
+        title: "The Progress Principle",
+        coverImage: "/books/research.jpg",
+        author: "Teresa Amabile & Steven Kramer",
+        description:
+          "Reinforced the importance of making progress visible. Meaningful work becomes " +
+          "more motivating when people can see that their effort is moving something " +
+          "forward. Small wins build confidence and momentum, especially when the larger " +
+          "destination is ambitious and still far away.",
+        linkLabel: "Foundational Research",
+        linkHref: "https://progressprinciple.com/portfolio-items/the-progress-principle-and-the-psychology-of-everyday-work-life/?utm_source=chatgpt.com",
+      },      
+    ],
+    learnedTagline: "Ambition needs a Path",
+    learnedParagraph: [
+      "I’ve learned that an inspiring vision can create energy, but without a credible " +
+      "path it can just as easily create skepticism. People need to see how today’s " +
+      "work connects to tomorrow’s ambition.",
+      "Break the journey into meaningful goals, make progress visible, celebrate the " +
+      "wins along the way, and adjust as you learn. Each step builds confidence " +
+      "and momentum. What once seemed impossible starts to feel achievable.",
+    ],
   },
   {
     number: "04",
