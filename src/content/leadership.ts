@@ -768,9 +768,165 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
     number: "05",
     id: "improve-the-system",
     title: "Improve the System",
-    tagline: "Fix the environment, not just the symptom.",
+    tagline: "Build systems that make better outcomes repeatable.",
     icon: GearsIcon,
     tile: "teal",
-    comingSoon: true,
+    whatIBelieve: [
+      "Organizations are systems. People, teams, processes, technology, architecture, incentives, " +
+      "and information all interact to produce outcomes. When something goes wrong, it is easy to " +
+      "focus on the person closest to the problem. Sometimes the person is the issue, but often " +
+      "the system around them is making success harder than it should be.",
+      "Good systems also have a shelf life. What works for one team, product, or stage of growth " +
+      "may fail at another. As scale, technology, customers, and complexity change, the systems " +
+      "around the work have to evolve with them. The goal isn't more process or structure—it's " +
+      "the simplest system that works for the context.",
+      "Improvement should focus on the outcome, not isolated efficiency. Making one part of " +
+      "a system faster does not help if another part remains the constraint. I want to understand " +
+      "the end-to-end flow of work, identify what is actually limiting performance, and focus " +
+      "improvement where it will change the outcome. ",
+      "That requires visibility and fast feedback. Metrics, observability, customer input, " +
+      "delivery data, and financial results should help us understand how the system behaves, " +
+      "test assumptions, and learn quickly. Measurement should create insight and guide " +
+      "improvement—not become a tool for judging individuals.",
+      "I believe in continuous improvement. Make a change, study the result, learn from it, " +
+      "and adapt. There is no final operating model. The leader’s responsibility is to keep " +
+      "improving the environment around the work so people and teams can succeed as the context changes.",
+    ],
+    howIPractice: [
+      {
+        title: "Start With the System",
+        description:
+          "When outcomes fall short, don't stop at the person closest to the problem. Trace " +
+          "the inputs and conditions around the work—goals, requirements, context, processes, " +
+          "tools, architecture, dependencies, skills, and incentives. Often the visible mistake " +
+          "is the result of something that happened earlier in the system.",
+      },
+      {
+        title: "Optimize for the Outcome",
+        description:
+          "Improving one part of a system doesn't necessarily improve the result. Look end to " +
+          "end, understand what is actually limiting performance or is a bottleneck. Focus " +
+          "improvement there. Local efficiency only matters when it improves the overall outcome. " +
+          "In some cases, optimizing one part can actually make the system perform worse.",
+      },
+      {
+        title: "Make It Visible",
+        description:
+          "You can't improve what you can't see. Use meaningful metrics, dashboards, observability, " +
+          "and qualitative feedback to understand flow, quality, reliability, customer impact, " +
+          "and business results. Measurement should create insight and guide decisions, not " +
+          "become surveillance.",
+      },
+      {
+        title: "Shorten the Feedback Loop",
+        description:
+          "Feedback is how systems learn. Reduce the time between action and understanding its " +
+          "impact through small increments, automated testing, observability, frequent delivery, " +
+          "and customer feedback. Learn sooner so teams can correct course before small problems " +
+          "become large ones.",
+      },    
+      {
+        title: "Evolve With Scale",
+        description:
+          "Systems have to fit their scale. What works for 10 people may break at 100, while " +
+          "processes designed for 100 can unnecessarily burden a team of 10. Add structure as " +
+          "teams, products, and complexity grow, but resist complexity that isn't needed. " +
+          "Use the simplest system that works for the scale you're operating at.",
+      },
+      {
+        title: "Learn and Adapt",
+        description:
+          "No system is ever finished. Experiment, study the results, learn from successes and " +
+          "failures, and continuously improve. Keep what works, change what doesn't, and " +
+          "challenge practices that no longer fit the people, product, technology, or business.",
+      },        
+    ],
+    experienceTagline: "Sometimes speeding up one part of the system makes the whole system slower.",
+    experienceParagraph: [
+      "At Wolters Kluwer, releases were taking too long. Software frequently entered the release " +
+      "process with behavioral or technical issues, and regression testing itself required " +
+      "significant time. The initial assumption was that Development needed to move faster, " +
+      "and there was pressure to add more development capacity.",
+      "When we studied the end-to-end flow, however, Development wasn't the constraint. QA and " +
+      "release verification were. Adding more developers would have simply created more work for " +
+      "an already constrained part of the system.",
+      "So we intentionally shifted development capacity toward improving the bottleneck. " +
+      "Developers added more unit testing, helped automate regression testing, and worked with " +
+      "QA earlier in the lifecycle. We also shortened the release cadence from monthly to biweekly, " +
+      "which reduced the amount of change being validated at once and gave us faster feedback.",
+      "The experience reinforced something that has stayed with me: improving the performance " +
+      "of one part of a system doesn't matter if the overall outcome doesn't improve. Sometimes " +
+      "the fastest way forward is to slow one part down so the whole system can move faster.",
+    ],
+    ideasThatShaped: [
+      {
+        type: "Book",
+        title: "Thinking in Systems",
+        coverImage: "/books/thinkinginsystems.jpg",
+        author: "Donella H. Meadows",
+        description:
+          "Shaped how I think about organizations as interconnected systems rather than collections " +
+          "of isolated problems. Feedback loops, delays, leverage points, and unintended consequences " +
+          "reinforced the importance of understanding how the parts interact before trying to improve " +
+          "them. Lasting improvement comes from changing the system, not simply treating the visible symptom.",
+        linkLabel: "View on Amazon",
+        linkHref: "https://www.amazon.com/Thinking-Systems-Donella-H-Meadows/dp/1603580557/ref=sr_1_1?crid=3Q3GWMV60TD4V&dib=eyJ2IjoiMSJ9.nGtz7jXKD6bUKvWQAPK-cdviAYN198S_Xfe_tAH9iyGR1zICI9Y_7N9qaWIv3gJzSpX05t1lIzP9tu9nZNBZtuCP1LczYDDCiF3i1OnL6LbWO-i4mvpJKM-fN6mP9-B7W6LzAYsEB9ZJgQhRy8RAi-rmzZvyzKfQUSJPTWBrEvMLvrhz4O6YVHBSFonVJ60_PPULWtS8iiMqQQQ8O0TgSzxil9RAuOub5_t78_LJBfI.VfuoXGSvoEyUQcyLtItZK5i7ZXIg2p-zl89SVvzuAho&dib_tag=se&keywords=thinking+systems&qid=1786660477&sprefix=thinkinginsystems%2Caps%2C167&sr=8-1",
+      },
+      {
+        type: "Book",
+        title: "Out of the Crisis",
+        coverImage: "/books/outofcrisis.jpg",
+        author: "W. Edwards Deming",
+        description:
+          "Deeply influenced how I think about management's responsibility for the environment " +
+          "in which people work. Performance is often shaped by the system around people—processes, " +
+          "information, incentives, tools, and constraints. Deming also reinforced my belief in " +
+          "measurement as a tool for understanding, and in continuous learning and improvement " +
+          "rather than simply demanding better results.",
+        linkLabel: "View on Amazon",
+        linkHref: "https://www.amazon.com/Out-Crisis-W-Edwards-Deming/dp/0911379010/ref=sr_1_1?crid=1D7SHRD5GD3UJ&dib=eyJ2IjoiMSJ9.P5qO2HPWKghHqTw6PzTSLNmcMlJ7L-34txcLu9rXNL1ywvws10GTd-maO6CkZoalUC05lgCeG6nN-dh1q6O5b0OypScBnIoKb3ZDdwoWWoHYQJ62gBkg2GRWdlvIYd5Cfa_30LcZ8oxVlAUvv4Kf1m1op57PJPvbbZoeB9q92SJB8ERLoIrVDHnPJ3US7mIOKvGuKWYtlgkyZUMuLOf6EVk3bTkJV87CLJPhzR7UlNI.mkeQblX4Fd8JoPDIaxEMrls9sN5f0A9qfQ-kyMpUQdQ&dib_tag=se&keywords=out+of+crisis&qid=1786660613&sprefix=out+of+crisis%2Caps%2C180&sr=8-1",
+      },
+      {
+        type: "Book",
+        title: "The Principles of Product Development Flow",
+        coverImage: "/books/principlesofproductdevelopmentflow.jpg",
+        author: "Donald G. Reinertsen",
+        description:
+          "Influenced how I think about flow, queues, batch size, feedback, and the economics " +
+          "of product development. Improving individual activities doesn't necessarily improve " +
+          "the overall outcome. The goal is to understand the end-to-end system, reduce delays " +
+          "and unnecessary work, and focus improvement where it meaningfully improves flow and " +
+          "business results.",
+        linkLabel: "View on Amazon",
+        linkHref: "https://www.amazon.com/Principles-Product-Development-Flow-Generation/dp/1935401033/ref=sr_1_1?crid=RYISOBPKM9G7&dib=eyJ2IjoiMSJ9.1Kp8u7to85q6RJ23sK2PwAj2U3t9OXqMUKhezD2ke2PidCUUVcGUFgZ0ozsEWX4eKnrGQaS5zf3IWiSF2Qq55JW9iaE5d7RAsu4HGnV91QqP9XpP1sX238yVdsKFGFyyJI_2KVPp2qVboQwN4vb5wv9daPyupInSr8TVTeRZY60TE2oDR4tR1RhcDua5o_qAEe2t-vLpe1DpL6RnEI-kGc2-ohaeyJKMtet12loqfWU._m4KadBv0TOPUEXVw-apLMhaK8AIujZCBsjHftFgs-g&dib_tag=se&keywords=principles+of+product+development+flow&qid=1786660792&sprefix=principles+of+product%2Caps%2C195&sr=8-1",
+      },
+      {
+        type: "Book",
+        title: "Accelerate",
+        coverImage: "/books/accelerate.jpg",
+        author: "Nicole Forsgren, Jez Humble & Gene Kim",
+        description:
+          "Reinforced these ideas with research from modern software organizations. Fast feedback, " +
+          "small changes, automation, continuous delivery, and strong technical practices can " +
+          "improve both delivery performance and stability. It helped shape my belief that speed " +
+          "and quality don't have to be opposing goals when the system is designed well.",
+        linkLabel: "View on Amazon",
+        linkHref: "https://www.amazon.com/Accelerate-Software-Performing-Technology-Organizations/dp/1942788339/ref=sr_1_1?crid=1HHU8DRGPRNV8&dib=eyJ2IjoiMSJ9.IP6dUF35B7QVgMFnqDAo6GZN7nlQCSKhq8Xk-v4rItdQfpTVk_1lqcFejXuRI5azsAzbKFkvXJdOwvEycLE4XOio5bxHAL2g6Y2efiYMvRvVRsBeTyci9Uw5ZgYsLio1lz9lIAoC230-y1puubtyOpxQQPHQcMVMc4BdD2lXtaHiq4CNQD9C3cMR2Vt2p9DlIzdwf6Y82xiMQ-UpszTtBeqrjGtjLe1ppxkZ-advPQo.xVXOR2bxRVPf7W1LRS3hi8Pk0bZ6Nn9k9leOfkvt2hA&dib_tag=se&keywords=accelerate&qid=1786660929&sprefix=accelerat%2Caps%2C226&sr=8-1",
+      },      
+    ],
+    learnedTagline: "Look for the constraint, not the culprit.",
+    learnedParagraph: [
+      "I've learned that the place where a problem becomes visible is often not where it began. " +
+      "Before adding people, pushing teams to work faster, or fixing the obvious symptom, " +
+      "look at how work moves through the entire system. Follow the queues, handoffs, delays, " +
+      "failures, and rework until you understand what is actually limiting the outcome.",
+      "More work in progress rarely makes a constrained system faster. Smaller batches, earlier " +
+      "feedback, and building quality into the process help problems surface sooner and keep " +
+      "work flowing. Sometimes improving the whole system even means deliberately slowing " +
+      "one part of it down.",
+      "Most importantly, keep asking why. Treat problems as opportunities to learn about the " +
+      "system, not just events to resolve. The goal isn't to keep people busy; it's to create " +
+      "a system that consistently produces better outcomes."
+    ],
   },
 ] as const;
