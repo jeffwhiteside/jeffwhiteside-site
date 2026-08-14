@@ -28,26 +28,19 @@ export function Hero() {
               until it suddenly doesn't fit. Deliberately conservative after the last miss —
               if it now reads too small, raise the clamp's middle (preferred) value.
             */}
-            <h1 className="text-[clamp(1rem,5.5vw,1.375rem)] leading-[1.15] tracking-tight sm:text-hero">
-              Elevating People.
-              <br />
-              Inspiring Trust.
-              <br />
-              <span className="text-accent">Delivering Results.</span>
-            </h1>
+           <h1 className="text-[clamp(1.75rem,7vw,2.5rem)] leading-[1.15] tracking-tight text-balance sm:text-hero">
+  Great engineering organizations{' '}
+  <span className="text-accent">don&rsquo;t happen by accident.</span>
+</h1>
 
-            {/* Mobile: shorter, to get the headline and CTAs above the fold. */}
-            <p className="measure-prose mt-6 text-muted sm:hidden">
-              Great engineering organizations don&rsquo;t happen by accident. They&rsquo;re
-              built by investing in people, creating trust and accountability, and empowering
-              teams to solve meaningful problems.
-            </p>
-            <p className="measure-prose mt-6 hidden text-muted sm:block">
-              I believe great engineering organizations don&rsquo;t happen by accident. They
-              are built by investing in people, creating environments where trust and
-              accountability thrive, and empowering teams to solve meaningful problems. When
-              people grow, customers benefit, and businesses succeed.
-            </p>
+<p className="measure-prose mt-6 text-muted">
+  They&rsquo;re built by investing in people, creating environments where
+  trust and accountability thrive, and empowering teams to solve meaningful
+  problems.{' '}
+  <span className="hidden sm:inline">
+    When people grow, customers benefit, and businesses succeed.
+  </span>
+</p>
 
             <div className="mt-6">
               <p className="eyebrow">20+ Years of Engineering Leadership</p>
@@ -107,13 +100,9 @@ export function Hero() {
               <figure className="absolute inset-x-0 bottom-0 hidden p-5 sm:block">
                 <blockquote>
                   <p className="text-right text-sm text-ink">
-                    <span aria-hidden="true" className="font-serif text-accent">
-                      &ldquo;
-                    </span>
+
                     {HERO_QUOTE}
-                    <span aria-hidden="true" className="font-serif text-accent">
-                      &rdquo;
-                    </span>
+
                   </p>
                 </blockquote>
               </figure>

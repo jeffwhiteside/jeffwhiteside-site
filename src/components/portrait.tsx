@@ -34,7 +34,7 @@ const FADE_MASK_V = "linear-gradient(to bottom, transparent 0%, #000 10%, #000 7
 export function Portrait() {
   const src = resolvePublicImage([
     "/jeff-whiteside.jpg",
-    "/jeff-whiteside.png",
+    "/jeff-whiteside1.png",
     "/placeholder/portrait.jpg",
   ]);
 

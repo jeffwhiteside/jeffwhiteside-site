@@ -85,7 +85,7 @@ export function LeadershipPreview() {
           <h2 id="principles-heading" className="text-section mt-3 scroll-mt-24">
             My Leadership Principles
           </h2>
-          <p className="eyebrow">guiding every decision I make</p>
+
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-10">
