@@ -73,7 +73,7 @@ export default function LeadershipPage() {
               These aren&rsquo;t rules I&rsquo;ve mastered. They&rsquo;re principles I try to
               practice every day. Each one has been shaped by experience, mistakes, people
               I&rsquo;ve worked with, and ideas I&rsquo;ve encountered along the way. They
-              are also continiously evolving as I learn and grow myself.
+              are also continuously evolving as I learn and grow myself.
             </p>          
 
         </div>

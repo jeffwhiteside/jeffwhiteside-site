@@ -29,11 +29,10 @@ export const PUBLICATIONS = [
     issue: "1",
     year: "2022",
     citation:
-      "Jeffery Whiteside, “Understanding the Leadership of Remote Work,” " +
+      "Jeff Whiteside, “Understanding the Leadership of Remote Work,” " +
       "Journal of Business and Educational Leadership, 34(1), 147–160.",
     summary: [
-      "My research into a question I've encountered throughout my career: What does " +
-        "effective leadership look like when teams aren't in the same room?",
+      "Research I co-authored with Dr. Deirdre Dixon of the University of Tampa, exploring a question I've encountered throughout my career: What does effective leadership look like when teams aren't in the same room?",
       "This teaching case explores authentic leadership in remote work environments and " +
         "how trust, communication, and leadership behavior influence the effectiveness of " +
         "distributed teams.",

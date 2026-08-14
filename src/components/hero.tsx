@@ -116,9 +116,6 @@ export function Hero() {
                     </span>
                   </p>
                 </blockquote>
-                <figcaption className="mt-3 text-right font-serif text-sm text-accent italic">
-                  — Jeff Whiteside
-                </figcaption>
               </figure>
             </div>
           </div>

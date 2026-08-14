@@ -254,7 +254,7 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
       },
       {
         type: "Research",
-        title: "Self-Dermination Theory",
+        title: "Self-Determination Theory",
         coverImage: "/books/research.jpg",
         author: "Edward Deci & Richard Ryan",
         description:
@@ -423,7 +423,7 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
           "someone is capable, genuinely cares about others, and behaves according to " +
           "principles people can rely on.",
         linkLabel: "Foundational Research",
-        linkHref: "https://www.makinggood.ac.nz/media/1270/mayeretal_1995_organizationaltrust.pdf?utm_source=chatgpt.com",
+        linkHref: "https://www.makinggood.ac.nz/media/1270/mayeretal_1995_organizationaltrust.pdf",
       },      
     ],
     learnedTagline: "Trust is earned—but someone has to go first.",
@@ -586,7 +586,7 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
           "forward. Small wins build confidence and momentum, especially when the larger " +
           "destination is ambitious and still far away.",
         linkLabel: "Foundational Research",
-        linkHref: "https://progressprinciple.com/portfolio-items/the-progress-principle-and-the-psychology-of-everyday-work-life/?utm_source=chatgpt.com",
+        linkHref: "https://progressprinciple.com/portfolio-items/the-progress-principle-and-the-psychology-of-everyday-work-life/",
       },      
     ],
     learnedTagline: "Ambition needs a Path",
@@ -747,7 +747,7 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
           "need to create the conditions where people can contribute fully, take interpersonal risks, " +
           "and succeed together.",
         linkLabel: "Foundational Research",
-        linkHref: "https://business.google.com/us/think/future-of-marketing/five-dynamics-effective-team/?utm_source=chatgpt.com#page-content",
+        linkHref: "https://business.google.com/us/think/future-of-marketing/five-dynamics-effective-team/",
       },      
     ],
     learnedTagline: "Great teams don't happen by accident.",
