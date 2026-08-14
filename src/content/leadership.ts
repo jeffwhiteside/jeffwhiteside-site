@@ -267,16 +267,17 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
         linkHref: "https://selfdeterminationtheory.org/wp-content/uploads/2020/10/2000_DeciRyan_PIWhatWhy.pdf",
       },      
     ],
-    learnedTagline: "Great teams amplify talent",
+    learnedTagline: "People grow when leaders create the conditions for growth.",
     learnedParagraph: [
-      "Hiring talented people is only the beginning. Put the right people together, " +
-      "give them clear purpose, useful systems, good tools, and room to exercise " +
-      "judgment—and their collective capability grows beyond what any one person " +
-      "can achieve alone.",
-      "Collaboration is a force multiplier. My job isn't to orchestrate every move, " +
-      "but to create the conditions where people can learn from one another, " +
-      "challenge one another, combine their strengths, and do work none of them " +
-      "could have done as well individually.",
+      "I've learned that developing people isn't about having all the answers for " +
+      "them. Set clear expectations, give people meaningful ownership, coach before " +
+      "solving, provide honest feedback, and create opportunities that stretch what " +
+      "they believe they can do.",
+      "Growth also requires belief. People are more willing to take on difficult " +
+      "challenges when they know someone sees their potential, supports them when they " + 
+      "struggle, and will give them the space to learn. The goal isn't dependence on the " +
+      "leader—it's greater confidence, judgment, capability, and autonomy.",
+      "The best measure of developing someone is that they need you less over time, not more."
     ]
   },
   {
