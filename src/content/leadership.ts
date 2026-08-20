@@ -298,10 +298,12 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
       "less energy protecting themselves and more energy doing the work. They can " +
       "disagree, experiment, admit mistakes, ask for help, and challenge one another " +
       "without questioning whether doing so will be used against them.",
-      "I don't see trust as the absence of accountability. The strongest teams I've " +
-      "worked with combine high trust with high standards. People tell each other the " +
-      "truth, keep their commitments, own mistakes, and hold one another accountable " +
-      "because they know everyone is working toward the same outcome.",
+      "I don't see trust as the absence of accountability. The strongest teams I've worked " +
+      "with combine high trust with high standards. People tell each other the truth, make " +
+      "clear commitments, follow through on them, own mistakes, and hold one another " +
+      "accountable because they know everyone is working toward the same outcome. " +
+      "Commitments have to mean something—leaders set that expectation by keeping their " +
+      "own word and consistently following up on what others have agreed to do.",
       "Trustworthiness requires competence and authenticity. Good intentions are not " +
       "enough; people need confidence in your judgment and need to know they are " +
       "dealing with the real person—not a managed version of the leader. That means " +
@@ -321,11 +323,12 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
           "or weaken that trust.",
       },
       {
-        title: "Earn It Daily",
+        title: "Make Commitments Matter",
         description:
-          "Trust is built through repeated actions over time. Keep commitments, follow " +
-          "through, apply standards fairly, admit mistakes, and show up consistently. " +
-          "Small successes accumulate into confidence that people can rely on you.",
+          "Be clear about what we’re committing to, who owns it, and what success looks like. " +
+          "Then follow through. Leaders model this by keeping their word, following up on commitments, " +
+          "and resetting expectations when circumstances change. Trust grows when people know that " +
+          "commitments matter.",
       },
       {
         title: "Be Vulnerable",
