@@ -29,8 +29,8 @@ const HEIGHT = 640;
  * `object-cover` + `object-top` crop the same square image down to that wide strip — the
  * fade mask is percentage-based, so it re-fits the new shape with no separate tuning needed.
  */
-const FADE_MASK_H = "linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%)";
-const FADE_MASK_V = "linear-gradient(to bottom, transparent 0%, #000 10%, #000 76%, transparent 100%)";
+const FADE_MASK_H = "linear-gradient(to right, transparent 0%, #000 24%, #000 76%, transparent 100%)";
+const FADE_MASK_V = "linear-gradient(to bottom, transparent 0%, #000 16%, #000 68%, transparent 100%)";
 export function Portrait() {
   const src = resolvePublicImage([
     "/jeff-whiteside.jpg",
