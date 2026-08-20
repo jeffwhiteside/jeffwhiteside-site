@@ -309,7 +309,7 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
       "dealing with the real person—not a managed version of the leader. That means " +
       "being honest about what you know, what you don’t know, what you believe, and " +
       "where you’ve made mistakes.",
-      "Leaders have to go first. Trust is earned through consistency, transparency, " +
+      "Leaders have to go first. Trust is strengthened through consistency, transparency, " +
       "vulnerability, and doing what you say you'll do—but it also has to be extended. " +
       "If I expect people to take ownership, make decisions, and bring me the truth, " +
       "I have to demonstrate that I trust them enough to do it."
