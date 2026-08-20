@@ -1,8 +1,24 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { PageShell } from "@/components/page-shell";
-import { BookOpenIcon, CalendarIcon, DocumentIcon } from "@/components/ui/icons";
+import {
+  AwardIcon,
+  BookOpenIcon,
+  CalendarIcon,
+  DocumentIcon,
+  GraduationCapIcon,
+  HistoryIcon,
+  PeopleIcon,
+} from "@/components/ui/icons";
 import { ArrowRight } from "@/components/ui/button";
 import { RESUME_PATH } from "@/components/ui/resume-button";
+import {
+  CURRENT_CREDENTIALS,
+  EARLIER_CREDENTIALS,
+  EDUCATION_ENTRIES,
+  EDUCATION_INTRO,
+} from "@/content/credentials";
 import {
   EARLY_ROLES,
   FEATURED_ROLES,
@@ -11,7 +27,30 @@ import {
 } from "@/content/experience";
 import { TILE_CLASSES, TILE_TEXT_CLASSES } from "@/content/leadership";
 import { getSection } from "@/content/sections";
+import { PUBLICATIONS } from "@/content/writing";
 import { resolvePublicImage } from "@/lib/assets";
+
+/** An institution's or credential's logo if one exists in public/logos/, else an empty
+ * spacer of the same size so the text beside it stays aligned with rows that do have a
+ * logo — the same real-asset-first pattern the portrait and project icons use. Drop a file
+ * at one of `candidates` and it replaces the empty space on the next build. */
+function Logo({ candidates, alt }: { candidates: readonly string[]; alt: string }) {
+  const logo = resolvePublicImage(candidates);
+
+  if (logo) {
+    return (
+      <Image
+        src={logo}
+        alt={alt}
+        width={80}
+        height={80}
+        className="size-20 shrink-0 rounded-md object-contain"
+      />
+    );
+  }
+
+  return <span aria-hidden="true" className="size-20 shrink-0" />;
+}
 
 const section = getSection("experience");
 
@@ -154,6 +193,155 @@ export default function ExperiencePage() {
                 </p>
               ))}
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Education, Credentials & Research. */}
+      <div className="mt-16 flex items-start gap-4">
+        <span
+          aria-hidden="true"
+          className="flex size-14 shrink-0 items-center justify-center rounded-2xl border border-line bg-accent/10 text-accent"
+        >
+          <GraduationCapIcon className="size-6" />
+        </span>
+        <div>
+          <h2 className="text-section tracking-wide uppercase">
+            Education, Credentials &amp; Research
+          </h2>
+          <span aria-hidden="true" className="mt-2 block h-1 w-10 rounded-full bg-accent" />
+          <p className="mt-4 max-w-2xl text-muted">{EDUCATION_INTRO}</p>
+        </div>
+      </div>
+
+      <div className="mt-8 grid grid-cols-1 gap-5 lg:grid-cols-3">
+        <div className="card p-3">
+          <div className="flex items-center gap-2">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-tile-green text-white">
+              <GraduationCapIcon className="size-4" />
+            </span>
+            <p className="text-xs font-semibold tracking-wide text-tile-green uppercase">
+              Education
+            </p>
+          </div>
+
+          <div className="mt-3 space-y-4">
+            {EDUCATION_ENTRIES.map((entry, index) => (
+              <div key={entry.institution}>
+                <div className="flex items-start gap-2">
+                  <Logo candidates={entry.logoCandidates} alt={`${entry.institution} logo`} />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold text-ink">{entry.institution}</p>
+                    <p className="mt-0.5 text-xs text-muted">{entry.degree}</p>
+                    {entry.detail ? <p className="text-xs text-muted">{entry.detail}</p> : null}
+                  </div>
+                </div>
+                {entry.honor ? (
+                  <div className="mt-3 flex items-start gap-2 text-xs">
+                    <PeopleIcon className="mt-0.5 size-4 shrink-0 text-tile-green" />
+                    <div>
+                      <p className="font-medium text-tile-green">{entry.honor.role}</p>
+                      <p className="text-muted">{entry.honor.org}</p>
+                    </div>
+                  </div>
+                ) : null}
+
+                {index === 0
+                  ? PUBLICATIONS.map((publication) => (
+                      <div
+                        key={publication.slug}
+                        className="mt-3 flex items-start gap-2 text-xs"
+                      >
+                        <Link
+                          href={`/writing#${publication.slug}`}
+                          aria-label={`Read ${publication.title} in Writing`}
+                          className="mt-0.5 shrink-0 text-tile-blue transition-colors hover:text-accent-strong"
+                        >
+                          <BookOpenIcon className="size-4" />
+                        </Link>
+                        <div>
+                          <p className="font-medium text-tile-blue">Published Research</p>
+                          <p className="text-muted italic">
+                            {publication.title} - {publication.venue}
+                          </p>
+                        </div>
+                      </div>
+                    ))
+                  : null}
+
+                {index < EDUCATION_ENTRIES.length - 1 ? (
+                  <hr className="mt-4 border-line" />
+                ) : null}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="card p-3">
+          <div className="flex items-center gap-2">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-tile-violet text-white">
+              <AwardIcon className="size-4" />
+            </span>
+            <p className="text-xs font-semibold tracking-wide text-tile-violet uppercase">
+              Current Credentials
+            </p>
+          </div>
+
+          <div className="mt-3 space-y-3">
+            {CURRENT_CREDENTIALS.map((credential, index) => (
+              <div key={credential.title}>
+                {index > 0 ? <hr className="mb-3 border-line" /> : null}
+                <div className="flex items-start gap-2">
+                  <Logo
+                    candidates={credential.logoCandidates}
+                    alt={`${credential.issuer} logo`}
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-bold text-ink" title={credential.title}>
+                      {credential.title}
+                    </p>
+                    <p className="text-xs text-muted">{credential.issuer}</p>
+                    {credential.status ? (
+                      <p className="text-xs text-muted">{credential.status}</p>
+                    ) : null}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="card p-3">
+          <div className="flex items-center gap-2">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-tile-amber text-white">
+              <HistoryIcon className="size-4" />
+            </span>
+            <p className="text-xs font-semibold tracking-wide text-tile-amber uppercase">
+              Earlier Credentials
+            </p>
+          </div>
+
+          <div className="mt-3 space-y-3">
+            {EARLIER_CREDENTIALS.map((credential, index) => (
+              <div key={credential.title}>
+                {index > 0 ? <hr className="mb-3 border-line" /> : null}
+                <div className="flex items-start gap-2">
+                  <Logo
+                    candidates={credential.logoCandidates}
+                    alt={`${credential.issuer} logo`}
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-bold text-ink" title={credential.title}>
+                      {credential.title}
+                    </p>
+                    <p className="text-xs text-muted">{credential.issuer}</p>
+                    {credential.status ? (
+                      <p className="text-xs text-muted">{credential.status}</p>
+                    ) : null}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

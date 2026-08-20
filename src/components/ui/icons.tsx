@@ -350,6 +350,38 @@ export function CalendarIcon({ className }: IconProps) {
   );
 }
 
+/** A current credential. */
+export function AwardIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <circle cx="12" cy="8" r="5" />
+      <path d="M9 12.5 7 21l5-3 5 3-2-8.5" />
+    </svg>
+  );
+}
+
+/** A lapsed credential, kept for the record. */
+export function HistoryIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M3.5 9a8.5 8.5 0 1 1 1.1 7" />
+      <path d="M3.5 4v5h5" />
+      <path d="M12 7.5v5l3.5 2" />
+    </svg>
+  );
+}
+
+/** A footnote worth reading. */
+export function InfoIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="8" r="0.75" fill="currentColor" stroke="none" />
+      <path d="M12 11v6" />
+    </svg>
+  );
+}
+
 /** A mobile-first product. */
 export function PhoneIcon({ className }: IconProps) {
   return (

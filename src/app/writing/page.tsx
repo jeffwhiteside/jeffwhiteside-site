@@ -51,7 +51,8 @@ export default function WritingPage() {
           return (
             <li
               key={publication.slug}
-              className="card grid grid-cols-1 gap-8 p-8 sm:grid-cols-[16rem_1fr]"
+              id={publication.slug}
+              className="card scroll-mt-24 grid grid-cols-1 gap-8 p-8 sm:grid-cols-[16rem_1fr]"
             >
               {cover ? (
                 <Image
