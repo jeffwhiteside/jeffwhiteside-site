@@ -65,9 +65,9 @@ export const ROLES = [
         label: "Scale & Organization",
         stat: "25 → 60+",
         description:
-          "Scaled engineering and product from 25 to 60+ across seven SaaS products while modernizing the platform, " +
-          "strengthening delivery and reliability practices, and expanding AI across both engineering workflows " +
-          "and customer-facing products.",
+          "Scaled engineering and product from 25 to 60+ across seven SaaS products, supporting expanding " +
+          "product lines and business growth. Built distributed teams across North America, Latin America, " +
+          "and the Philippines while strengthening the leadership structure and operating model needed to scale.",
       },
       {
         icon: RobotIcon,
@@ -159,7 +159,7 @@ export const ROLES = [
         icon: RefreshIcon,
         tile: "blue",
         label: "Delivery Improvement",
-        stat: "2x",
+        stat: "Monthly → Biweekly",
         description:
           "Improved release cadence from monthly to bi-weekly and increased predictability " +
           "through Agile and lean flow practices.",
@@ -168,7 +168,7 @@ export const ROLES = [
         icon: ShieldCheckIcon,
         tile: "teal",
         label: "Quality & Compliance",
-        stat: "Stronger",
+        stat: "Build Quality In",
         description:
           "Built QA, automation, and release gates that improved quality, compliance, and " +
           "audit readiness across enterprise products.",
@@ -177,7 +177,7 @@ export const ROLES = [
         icon: PeopleIcon,
         tile: "violet",
         label: "Agile Leadership",
-        stat: "Teams",
+        stat: "Enterprise Agile",
         description:
           "Coached teams and leaders in Agile, change management, and continuous improvement " +
           "across distributed organizations.",
@@ -260,34 +260,6 @@ export interface EarlyRole {
  */
 export const EARLY_ROLES: readonly EarlyRole[] = [
   {
-    company: "GE Capital / Cargill",
-    category: "Enterprise Software",
-    title: "Consultant – Support Engineer",
-    period: "1998 – 2000",
-    icon: InstitutionIcon,
-    tile: "green",
-    description:
-      "My first professional software engineering role. Worked directly with Cargill grain " +
-      "elevator operators to understand software issues, resolve problems, and incorporate " +
-      "fixes back into the platform. Working in Smalltalk gave me a strong foundation in " +
-      "object-oriented design, patterns, and engineering practices I still use today.",
-    tags: ["Smalltalk", "Customer Support", "Software Design", "Enterprise Patterns"],
-  },
-  {
-    company: "Thomson Prometric",
-    category: "Testing & Assessment Technology",
-    title: "Software Engineer",
-    period: "1996 – 1998",
-    icon: MonitorIcon,
-    tile: "violet",
-    description:
-      "Built software for internet-based, high-stakes testing before cloud infrastructure was " +
-      "commonplace. Used a combination of UDP and HTTP to support real-time testing for exams " +
-      "like FAA private pilot. Gained deep insight into networks, reliability, requirements " +
-      "management, and the psychometrics behind testing and assessment.",
-    tags: ["Distributed Systems", "Testing", "Requirements"],
-  },
-  {
     company: "RxHub",
     category: "Healthcare Technology",
     title: "Software Engineer",
@@ -300,6 +272,19 @@ export const EARLY_ROLES: readonly EarlyRole[] = [
       "patient history, and electronic prescribing workflows where interoperability, " +
       "reliability, and accurate information mattered.",
     tags: ["Java", "Healthcare", "Integrations"],
+  },
+  {
+    company: "Programix",
+    category: "Teaching",
+    title: "Java Instructor",
+    period: "2000 - 2002",
+    icon: GraduationCapIcon,
+    tile: "green",
+    description:
+      "Taught Java programming at the community-college level while working as a software " +
+      "engineer. Teaching strengthened my ability to break down complex ideas, communicate " +
+      "clearly, and help others develop their own understanding.",
+    tags: ["Java", "Teaching", "Communication"],
   },
   {
     company: "Coherent Solutions / HealthNexis",
@@ -316,17 +301,32 @@ export const EARLY_ROLES: readonly EarlyRole[] = [
     tags: ["Requirements", "Design", "Collaboration"],
   },
   {
-    company: "Programix",
-    category: "Teaching",
-    title: "Java Instructor",
-    period: "Early 2000s (Evenings)",
-    icon: GraduationCapIcon,
+    company: "Thomson Prometric",
+    category: "Testing & Assessment Technology",
+    title: "Software Engineer",
+    period: "1998 – 2000",
+    icon: MonitorIcon,
+    tile: "violet",
+    description:
+      "Built software for internet-based, high-stakes testing before cloud infrastructure was " +
+      "commonplace. Used a combination of UDP and HTTP to support real-time testing for exams " +
+      "like FAA private pilot. Gained deep insight into networks, reliability, requirements " +
+      "management, and the psychometrics behind testing and assessment.",
+    tags: ["Distributed Systems", "Testing", "Requirements"],
+  },
+  {
+    company: "GE Capital / Cargill",
+    category: "Enterprise Software",
+    title: "Consultant – Support Engineer",
+    period: "1997 – 1998",
+    icon: InstitutionIcon,
     tile: "green",
     description:
-      "Taught Java programming at the community-college level while working as a software " +
-      "engineer. Teaching strengthened my ability to break down complex ideas, communicate " +
-      "clearly, and help others develop their own understanding.",
-    tags: ["Java", "Teaching", "Communication"],
+      "My first professional software engineering role. Worked directly with Cargill grain " +
+      "elevator operators to understand software issues, resolve problems, and incorporate " +
+      "fixes back into the platform. Working in Smalltalk gave me a strong foundation in " +
+      "object-oriented design, patterns, and engineering practices I still use today.",
+    tags: ["Smalltalk", "Customer Support", "Software Design", "Enterprise Patterns"],
   },
 ];
 

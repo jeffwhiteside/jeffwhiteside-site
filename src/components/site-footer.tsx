@@ -21,8 +21,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-line bg-elevated">
       <div className="page-container py-6 sm:py-7">
-        <p className="eyebrow">Let&rsquo;s Connect</p>
-        <h2 className="text-section mt-1">Let&rsquo;s Build Something That Matters</h2>
+        <h2 className="text-section mt-1">Let&rsquo;s Connect</h2>
         <span aria-hidden="true" className="mt-2 block h-0.5 w-12 rounded-full bg-accent" />
 
         <p className="measure-prose mt-2 text-muted">
