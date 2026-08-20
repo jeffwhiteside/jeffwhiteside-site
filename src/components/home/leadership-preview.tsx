@@ -94,7 +94,7 @@ export function LeadershipPreview() {
               {/* <ShieldCheckIcon className="text-accent" /> */}
               <h3 className="mt-3 text-lg">Leadership begins with authenticity.</h3>
               <p className="mt-2 text-sm text-band-muted">
-                I lead as my authentic self — honest, transparent, and human. Everything else
+                I lead as my authentic self - honest, transparent, and human. Everything else
                 builds from that foundation.
               </p>
             </div>
