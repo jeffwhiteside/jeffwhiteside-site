@@ -3,6 +3,13 @@ import { ArrowRight, ButtonLink } from "@/components/ui/button";
 import { ResumeButton } from "@/components/ui/resume-button";
 import { HERO_QUOTE } from "@/content/impact";
 
+const SCOPE_FACTS = [
+  "Scaling Engineering Organizations",
+  "Developing Engineering Leaders",
+  "SaaS & Platform Modernization",
+  "AI-Enabled Engineering",
+];
+
 /**
  * The hero.
  *
@@ -44,18 +51,35 @@ export function Hero() {
 
             <div className="mt-6">
               <p className="eyebrow">20+ Years of Engineering Leadership</p>
-              <p className="mt-1 text-sm text-ink">
-                SaaS Platforms &amp; Organizations{" "}
-                <span aria-hidden="true" className="text-accent">
-                  •
-                </span>{" "}
-                Developing Leaders
-                <br />
-                Platform Modernization{" "}
-                <span aria-hidden="true" className="text-accent">
-                  •
-                </span>{" "}
-                AI-Enabled Engineering
+
+              {/* Mobile: a real stacked list, one fact per line with a leading bullet. */}
+              <ul className="mt-1 space-y-1 text-sm text-ink sm:hidden">
+                {SCOPE_FACTS.map((fact) => (
+                  <li key={fact} className="flex items-baseline gap-2">
+                    <span aria-hidden="true" className="text-accent">
+                      •
+                    </span>
+                    {fact}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Desktop: two wrapping lines (forced break after the 2nd fact), separated by bullets. */}
+              <p className="mt-1 hidden text-sm text-ink sm:block">
+                {SCOPE_FACTS.map((fact, index) => (
+                  <span key={fact} className="whitespace-nowrap">
+                    {fact}
+                    {index < SCOPE_FACTS.length - 1 && index !== 1 ? (
+                      <>
+                        {" "}
+                        <span aria-hidden="true" className="text-accent">
+                          •
+                        </span>{" "}
+                      </>
+                    ) : null}
+                    {index === 1 ? <br /> : null}
+                  </span>
+                ))}
               </p>
             </div>
 
