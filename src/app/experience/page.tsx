@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
-import { BookOpenIcon, DocumentIcon } from "@/components/ui/icons";
+import { BookOpenIcon, CalendarIcon, DocumentIcon } from "@/components/ui/icons";
 import { ArrowRight } from "@/components/ui/button";
 import { RESUME_PATH } from "@/components/ui/resume-button";
-import { FEATURED_ROLES } from "@/content/experience";
+import {
+  EARLY_ROLES,
+  FEATURED_ROLES,
+  FOUNDATION_INTRO,
+  FOUNDATION_REFLECTION,
+} from "@/content/experience";
 import { TILE_CLASSES, TILE_TEXT_CLASSES } from "@/content/leadership";
 import { getSection } from "@/content/sections";
 import { resolvePublicImage } from "@/lib/assets";
@@ -84,6 +89,74 @@ export default function ExperiencePage() {
           </li>
         ))}
       </ol>
+
+      {/* Earlier, pre-leadership roles: compact cards rather than full write-ups, since the
+          résumé download below already covers them in detail. */}
+      <div className="mt-16">
+        <p className="eyebrow">Earlier in My Career</p>
+        <h2 className="text-section mt-3">Building the Foundation</h2>
+        <p className="mt-4 text-muted">{FOUNDATION_INTRO}</p>
+        <span aria-hidden="true" className="mt-5 block h-1 w-10 rounded-full bg-accent" />
+      </div>
+
+      <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {EARLY_ROLES.map((role) => (
+          <div key={role.company} className="card p-5">
+            <div className="flex items-start gap-3">
+              <span
+                className={`flex size-11 shrink-0 items-center justify-center rounded-full text-white ${
+                  TILE_CLASSES[role.tile]
+                }`}
+              >
+                <role.icon className="size-5" />
+              </span>
+              <div>
+                <p
+                  className={`text-xs font-semibold tracking-wide uppercase ${
+                    TILE_TEXT_CLASSES[role.tile]
+                  }`}
+                >
+                  {role.category}
+                </p>
+                <h3 className="mt-1 text-lg font-bold text-ink">{role.company}</h3>
+              </div>
+            </div>
+
+            <p className="mt-2 font-medium text-accent">{role.title}</p>
+            <p className="mt-1 flex items-center gap-1.5 text-sm text-muted">
+              <CalendarIcon className="size-3.5" />
+              {role.period}
+            </p>
+
+            <hr className="mt-4 border-line" />
+            <p className="mt-4 text-sm text-muted">{role.description}</p>
+            <hr className="mt-4 border-line" />
+
+            <p className={`mt-4 text-sm font-medium ${TILE_TEXT_CLASSES[role.tile]}`}>
+              {role.tags.join(" • ")}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div className="card mt-5 p-6 sm:p-8">
+        <div className="flex flex-wrap items-start gap-4 sm:flex-nowrap">
+          <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-tile-blue text-white">
+            <BookOpenIcon className="size-5" />
+          </span>
+          <div>
+            <p className="eyebrow">The Foundation That Stayed With Me</p>
+            <h3 className="mt-1 text-xl font-bold text-ink">{FOUNDATION_REFLECTION.heading}</h3>
+            <div className="mt-3 space-y-3">
+              {FOUNDATION_REFLECTION.paragraphs.map((paragraph) => (
+                <p key={paragraph} className="text-sm text-muted">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
 
       {resume ? (
         <a

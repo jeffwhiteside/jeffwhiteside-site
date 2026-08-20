@@ -297,6 +297,59 @@ export function TrendingUpIcon({ className }: IconProps) {
   );
 }
 
+/** An institution: enterprise software, a bank, a foundation. */
+export function InstitutionIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M3 9.5 12 4l9 5.5" />
+      <path d="M4.5 9.5v10M19.5 9.5v10" />
+      <path d="M8 9.5v10M12 9.5v10M16 9.5v10" />
+      <path d="M3 21.5h18" />
+    </svg>
+  );
+}
+
+/** Testing and assessment software. */
+export function MonitorIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <rect x="3" y="4.5" width="18" height="12" rx="1.5" />
+      <path d="M8.5 20.5h7M12 16.5v4" />
+    </svg>
+  );
+}
+
+/** Healthcare technology. */
+export function HeartPulseIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M12 20s-7.5-4.6-9.7-9.3C.9 7.4 2.6 4 6 4c2 0 3.5 1.2 4.2 2.4L12 8.8l1.8-2.4C14.5 5.2 16 4 18 4c3.4 0 5.1 3.4 3.7 6.7C19.5 15.4 12 20 12 20Z" />
+      <path d="M4.5 11h3l1.5-3 2 5 1.5-3h4" />
+    </svg>
+  );
+}
+
+/** Teaching. */
+export function GraduationCapIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M12 6 2.5 10.5 12 15l9.5-4.5L12 6Z" />
+      <path d="M6.5 12.7v4c0 1 2.5 2.3 5.5 2.3s5.5-1.3 5.5-2.3v-4" />
+      <path d="M21.5 10.5v5" />
+    </svg>
+  );
+}
+
+/** A date range. */
+export function CalendarIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <rect x="3.5" y="5" width="17" height="15" rx="1.5" />
+      <path d="M3.5 9.5h17M8 3v3.5M16 3v3.5" />
+    </svg>
+  );
+}
+
 /** A mobile-first product. */
 export function PhoneIcon({ className }: IconProps) {
   return (
