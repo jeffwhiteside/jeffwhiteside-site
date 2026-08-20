@@ -68,8 +68,8 @@ const RESULT_ITEMS = [
 /**
  * Homepage "operating principles" section, set directly below the hero.
  *
- * A second light band, by request — the site's general rule is one light section (see
- * ExperiencePreview), but the owner asked for this one to match their mockup instead. The
+ * A second light band, by request — the site's general rule is one light section, but the
+ * owner asked for this one to match their mockup instead. The
  * numbered principle rows use a translucent tint of their tile colour (`TILE_SOFT_CLASSES`)
  * rather than a flat pastel, so they stay correct if the tile hues ever change. The result
  * banner is the one part that stays dark on purpose, for contrast, matching the mockup.

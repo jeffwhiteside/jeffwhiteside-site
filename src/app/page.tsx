@@ -1,5 +1,4 @@
 import { Hero } from "@/components/hero";
-import { ExperiencePreview } from "@/components/home/experience-preview";
 import { ImpactAndProjects } from "@/components/home/impact-and-projects";
 import { LeadershipPreview } from "@/components/home/leadership-preview";
 
@@ -12,7 +11,6 @@ export default function Home() {
     <>
       <Hero />
       <LeadershipPreview />
-      <ExperiencePreview />
       {/* <ImpactAndProjects /> */}
     </>
   );

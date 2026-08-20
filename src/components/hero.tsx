@@ -90,7 +90,7 @@ export function Hero() {
                 Explore How I Lead
                 <ArrowRight />
               </ButtonLink>
-              <ButtonLink href="#experience-heading" variant="ghost" className="w-full">
+              <ButtonLink href="/experience" variant="ghost" className="w-full">
                 Explore My Journey
                 <ArrowRight />
               </ButtonLink>
@@ -102,7 +102,7 @@ export function Hero() {
                 Explore How I Lead
                 <ArrowRight />
               </ButtonLink>
-              <ButtonLink href="#experience-heading" variant="secondary">
+              <ButtonLink href="/experience" variant="secondary">
                 Explore My Journey
                 <ArrowRight />
               </ButtonLink>
