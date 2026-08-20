@@ -230,6 +230,83 @@ export function LightbulbIcon({ className }: IconProps) {
   );
 }
 
+/** AI-driven productivity. */
+export function RobotIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <rect x="5" y="8.5" width="14" height="10.5" rx="2.5" />
+      <path d="M12 8.5V5.5M3 11.5v4M21 11.5v4" />
+      <circle cx="12" cy="4.3" r="1.1" fill="currentColor" stroke="none" />
+      <circle cx="9" cy="13.5" r="1" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="13.5" r="1" fill="currentColor" stroke="none" />
+      <path d="M9 17h6" />
+    </svg>
+  );
+}
+
+/** Reliability, measured. */
+export function GaugeIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M4.5 16a7.5 7.5 0 1 1 15 0" />
+      <path d="M12 16 15.5 11" />
+      <circle cx="12" cy="16" r="1.1" fill="currentColor" stroke="none" />
+      <path d="M4.5 16H3M20 16h-1.5" />
+    </svg>
+  );
+}
+
+/** Migrated to the cloud. */
+export function CloudIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M7.5 18a4 4 0 0 1-.5-7.97A5 5 0 0 1 16.6 8.2 4.5 4.5 0 0 1 16.5 18h-9Z" />
+    </svg>
+  );
+}
+
+/** Growth, measured over time. */
+export function ChartUpIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M4.5 20V14M11 20V9.5M17.5 20V5" />
+      <path d="M3 20h18" />
+    </svg>
+  );
+}
+
+/** Faster release cycles. */
+export function RefreshIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M5 11a7 7 0 0 1 12-4.9L19 8" />
+      <path d="M19 4v4h-4" />
+      <path d="M19 13a7 7 0 0 1-12 4.9L5 16" />
+      <path d="M5 20v-4h4" />
+    </svg>
+  );
+}
+
+/** Career growth. */
+export function TrendingUpIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M3.5 16.5 10 10l4 4 6.5-6.5" />
+      <path d="M15 7.5h5.5V13" />
+    </svg>
+  );
+}
+
+/** A mobile-first product. */
+export function PhoneIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <rect x="7" y="2.5" width="10" height="19" rx="2" />
+      <path d="M11 18.5h2" />
+    </svg>
+  );
+}
+
 export function LinkedInIcon({ className }: IconProps) {
   return (
     <svg

@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
-import { ROLES } from "@/content/experience";
+import { BookOpenIcon, DocumentIcon } from "@/components/ui/icons";
+import { ArrowRight } from "@/components/ui/button";
+import { RESUME_PATH } from "@/components/ui/resume-button";
+import { FEATURED_ROLES } from "@/content/experience";
+import { TILE_CLASSES, TILE_TEXT_CLASSES } from "@/content/leadership";
 import { getSection } from "@/content/sections";
+import { resolvePublicImage } from "@/lib/assets";
 
 const section = getSection("experience");
 
@@ -11,16 +16,29 @@ export const metadata: Metadata = {
 };
 
 export default function ExperiencePage() {
+  const resume = resolvePublicImage([RESUME_PATH]);
+
   return (
     <PageShell
-      title="Experience"
-      intro="Twenty years leading engineering across SaaS, marketplace, and regulated platforms."
+      title="My Journey So Far"
+      intro={
+        <>
+          I’ve spent more than twenty years leading engineering across SaaS, marketplace, and
+          regulated platforms. Along the way, I’ve learned more than I ever expected—from hard work,
+          missteps, great teams, strong mentors, and leaders who challenged me to grow.
+          <br /> <br />
+          What follows are a few of the chapters that shaped how I lead, build teams, and think
+          about engineering today.
+        </>
+      }
+      accentBar
+      wideIntro
     >
       <ol className="space-y-10">
-        {ROLES.map((role) => (
-          <li key={`${role.company}-${role.period}`} className="card p-6">
+        {FEATURED_ROLES.map((role) => (
+          <li key={`${role.company}-${role.period}`} className="card p-6 sm:p-8">
             <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-              <h2 className="text-lg">{role.company}</h2>
+              <h2 className="text-lg font-bold text-ink">{role.company}</h2>
               <p className="text-sm text-muted">{role.period}</p>
             </div>
 
@@ -29,22 +47,60 @@ export default function ExperiencePage() {
 
             <p className="mt-4 text-muted">{role.summary}</p>
 
-            {role.highlights.length > 0 ? (
-              <ul className="mt-4 space-y-2">
-                {role.highlights.map((highlight) => (
-                  <li key={highlight} className="flex gap-3 text-sm text-muted">
-                    <span
-                      aria-hidden="true"
-                      className="mt-2 size-1.5 shrink-0 rounded-full bg-accent"
-                    />
-                    <span>{highlight}</span>
-                  </li>
+            {role.metrics ? (
+              <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                {role.metrics.map((metric) => (
+                  <div key={metric.label} className="rounded-lg border border-line p-4">
+                    <div className="flex items-center gap-3">
+                      <span
+                        className={`flex size-9 shrink-0 items-center justify-center rounded-full text-white ${
+                          TILE_CLASSES[metric.tile]
+                        }`}
+                      >
+                        <metric.icon className="size-4" />
+                      </span>
+                      <span className={`text-sm font-medium ${TILE_TEXT_CLASSES[metric.tile]}`}>
+                        {metric.label}
+                      </span>
+                    </div>
+                    <p className="mt-3 text-2xl font-bold text-ink">{metric.stat}</p>
+                    <p className="mt-2 text-sm text-muted">{metric.description}</p>
+                  </div>
                 ))}
-              </ul>
+              </div>
+            ) : null}
+
+            {role.whatILearned ? (
+              <div className="mt-6 flex flex-wrap items-start gap-x-4 gap-y-2">
+                <div className="flex shrink-0 items-center gap-2 text-sm font-semibold text-accent">
+                  <BookOpenIcon className="size-4" />
+                  What I Learned
+                </div>
+                <p className="min-w-[16rem] flex-1 border-l border-line pl-4 text-sm text-muted">
+                  {role.whatILearned}
+                </p>
+              </div>
             ) : null}
           </li>
         ))}
       </ol>
+
+      {resume ? (
+        <a
+          href={resume}
+          download
+          className="mt-10 flex flex-wrap items-center justify-center gap-4 rounded-full border border-line px-6 py-4 text-center transition-colors hover:border-ink sm:justify-between"
+        >
+          <span className="flex items-center gap-3">
+            <DocumentIcon className="size-5 text-accent" />
+            <span className="font-semibold text-ink">View Full Resume (PDF)</span>
+          </span>
+          <span className="flex items-center gap-2 text-sm text-muted">
+            For a complete overview of experience, skills, and education.
+            <ArrowRight />
+          </span>
+        </a>
+      ) : null}
     </PageShell>
   );
 }

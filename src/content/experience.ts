@@ -1,11 +1,38 @@
+import {
+  type Icon,
+  ChartUpIcon,
+  CloudIcon,
+  GaugeIcon,
+  GlobeIcon,
+  PeopleIcon,
+  PhoneIcon,
+  RefreshIcon,
+  RobotIcon,
+  ShieldCheckIcon,
+  TrendingUpIcon,
+} from "@/components/ui/icons";
+import { type TileColor } from "@/content/leadership";
+
+export interface Metric {
+  readonly icon: Icon;
+  readonly tile: TileColor;
+  readonly label: string;
+  readonly stat: string;
+  readonly description: string;
+}
+
 export interface Role {
   readonly company: string;
   readonly location: string;
   readonly title: string;
   readonly period: string;
   readonly summary: string;
-  readonly highlights: readonly string[];
-  /** Shown in the home page timeline. Older roles appear only on the experience page. */
+  /** Three headline figures shown as stat tiles. Only the featured roles carry these. */
+  readonly metrics?: readonly Metric[];
+  /** The one-line reflection closing out the role. Only the featured roles carry this. */
+  readonly whatILearned?: string;
+  /** Shown in the home page timeline and on the experience page. Older roles are covered by
+   * the résumé download instead of a full write-up here. */
   readonly isFeatured: boolean;
 }
 
@@ -24,16 +51,46 @@ export const ROLES = [
     title: "Vice President, Software Engineering & Products",
     period: "May 2024 – June 2026",
     summary:
-      "Scaled an engineering organization from 25 to 60+ while growing new SaaS products, " +
-      "modernizing the platform, and strengthening how teams built and released software. " +
-      "It was also a lesson in scale: what works at 30 people doesn’t work at 60, and great " + 
-      "leaders have to evolve themselves, their systems, and their organizations as they grow.",
-    highlights: [
-      "Drove agentic coding and AI-enabled SDLC adoption using Cursor, Claude Code, AI-assisted code review, and spec-driven planning; improved engineering productivity by approximately 40% while preserving engineer ownership and release quality",
-      "Established architecture, reliability, and secure-delivery standards across React front ends, APIs, AWS, CI/CD, observability, SLO/SLI practices, SOC 2 readiness, incident response, and RCA; sustained 99.8%+ stability",
-      "Led legacy platform consolidation across three codebases, reducing service coupling and moving teams toward more independently deployable architecture",
-      "Built engineering operating metrics across availability, cycle time, defect escape rate, deployment frequency, and sprint predictability; scaled the organization from approximately 25 to 60+",
+      "Scaled an engineering organization from 25 to 60+ while growing seven SaaS products. " +
+      "Modernized the platform, strengthened engineering practices, and introduced AI-enabled " +
+      "workflows that improved productivity and quality.",
+    metrics: [
+      {
+        icon: PeopleIcon,
+        tile: "blue",
+        label: "Scale & Organization",
+        stat: "25 → 60+",
+        description:
+          "Scaled engineering and product from 25 to 60+ across seven SaaS products while modernizing the platform, " +
+          "strengthening delivery and reliability practices, and expanding AI across both engineering workflows " +
+          "and customer-facing products.",
+      },
+      {
+        icon: RobotIcon,
+        tile: "teal",
+        label: "AI Enablement",
+        stat: "Engineering + Product",
+        description:
+          "Led practical AI adoption across both engineering workflows and customer-facing products. " +
+          "Introduced AI-assisted development and code review while building shared service capabilities " +
+          "to support features such as summarization, routing, content generation, and voice workflows",
+      },
+      {
+        icon: GaugeIcon,
+        tile: "violet",
+        label: "Platform Modernization",
+        stat: "Legacy → Modern",
+        description:
+          "Modernized a legacy MVC/PHP platform toward React-based experiences, a Data API layer, " +
+          "and independently deployable microservices. Reduced coupling and created a more scalable " +
+          "foundation for new products and AI-enabled capabilities.",
+      },
     ],
+    whatILearned:
+      "Scale changes the job of the leader. What works at 30 people will not work at 60, and what works " +
+      "at 60 will not work at 100. Operational rigor, clear standards and playbooks, strong leaders, and consistent " +
+      "follow-through have to be built before growth makes them urgent. The biggest lesson for me was " +
+      "learning to evolve my own leadership as quickly as the organization was evolving.",
     isFeatured: true,
   },
   {
@@ -42,54 +99,132 @@ export const ROLES = [
     title: "Vice President, Software Development & Infrastructure",
     period: "August 2015 – May 2024",
     summary:
-      "Spent nearly a decade building technology for the complex world of live auctions " +
-      "and marketplaces, while growing engineering teams and modernizing the platform from " +
-      "legacy client-server systems toward cloud, web, mobile, and service-based architecture. " +
-      "This chapter taught me how to modernize critical systems without losing sight of the customers " +
-      "and businesses that depend on them every day.",
-    highlights: [
-      "Led multi-year modernization from on-premise systems to AWS and from legacy web applications to React/API-based platforms; decommissioned data centers and reduced infrastructure costs by approximately 30%",
-      "Established architecture reviews, CI/CD pipelines, automated QA gates, on-call discipline, and incident response; reduced escaped defects by 45% while sustaining 99.95% uptime",
-      "Led go/no-go decisions for revenue-critical releases and global live events under zero-failure expectations",
-      "Scaled engineering from 15 to 30+ people while developing technical leaders and managing headcount, cloud spend, and vendor relationships",
+      "Led technology for a global, multi-industry auction platform spanning automotive, livestock, " +
+      "bloodstock, heavy construction, and fine art. Supported both live and timed auctions, including " +
+      "high-profile events such as the Elton John Estate auction, while modernizing the platform, scaling " +
+      "distributed teams, and navigating acquisition-driven growth.",
+    metrics: [
+      {
+        icon: CloudIcon,
+        tile: "green",
+        label: "Marketplace & Product Scale",
+        stat: "Multi-Industry Platform",
+        description:
+          "Expanded a shared auction platform across automotive, livestock, bloodstock, heavy construction, " +
+          "and fine art. Supported live weekly auctions, timed auctions, and major global events across multiple " +
+          "customer segments and operating models.",
+      },
+      {
+        icon: ShieldCheckIcon,
+        tile: "violet",
+        label: "Platform Modernization",
+        stat: "On-Prem → AWS",
+        description:
+          "Modernized the platform from on-prem infrastructure and legacy PHP front ends toward AWS, React, " +
+          "and Java-based services. Built a new automotive Auction Management System to replace the legacy " +
+          "desktop product and supported broader platform modernization across web and backend systems.",
+      },
+      {
+        icon: ChartUpIcon,
+        tile: "amber",
+        label: "Organization & Scale",
+        stat: "15 → 30+",
+        description:
+          "Scaled the engineering organization while building teams across North America and India, managing " +
+          "project-based contractor partners, and maintaining delivery continuity through acquisition, distributed " +
+          "growth, and the shift from co-located work to remote during COVID.",
+      },
     ],
+    whatILearned:
+      "Complex platforms can evolve without losing customer trust. The key is understanding which parts must remain " +
+      "stable, which can change, and how to sequence modernization so the business can keep operating while the " +
+      "technology underneath it evolves.",
     isFeatured: true,
   },
   {
     company: "Wolters Kluwer TeamMate",
-    location: "Tampa, FL",
+    location: "Bolivia (Remote)",
     title: "Enterprise Agile Coach & Release Manager",
     period: "January 2013 – August 2015",
     summary:
-      "Stepped outside traditional engineering leadership to focus on how large " +
-      "organizations build and deliver software. Helped evolve the SDLC using " + 
-      "Agile practices across both legacy client-server and modern SaaS products " +
-      "supporting mission-critical tax and audit work for major enterprises and " +
-      "government agencies. This chapter shaped how I think about systems and processes, " + 
-      "continuous improvement, and enabling teams to deliver effectively at scale.",
-    highlights: [
-      "Designed enterprise SDLC and release governance integrating Agile/SAFe delivery, automated testing, SOC/PCI controls, and compliance-sensitive release gates",
-      "Served as Release Train Engineer across legacy and greenfield programs, facilitating PI Planning and quarterly roadmap alignment",
-      "Coached Product Owners, Scrum Masters, engineers, and leaders on TDD and delivery discipline; delayed releases when quality, security, or reliability thresholds were not met",
+      "Stepped outside traditional engineering leadership to focus on how large organizations " +
+      "build and deliver software. Evolved SDLC using Agile practices across client-server and " +
+      "modern SaaS products in regulated environments.",
+    metrics: [
+      {
+        icon: RefreshIcon,
+        tile: "blue",
+        label: "Delivery Improvement",
+        stat: "2x",
+        description:
+          "Improved release cadence from monthly to bi-weekly and increased predictability " +
+          "through Agile and lean flow practices.",
+      },
+      {
+        icon: ShieldCheckIcon,
+        tile: "teal",
+        label: "Quality & Compliance",
+        stat: "Stronger",
+        description:
+          "Built QA, automation, and release gates that improved quality, compliance, and " +
+          "audit readiness across enterprise products.",
+      },
+      {
+        icon: PeopleIcon,
+        tile: "violet",
+        label: "Agile Leadership",
+        stat: "Teams",
+        description:
+          "Coached teams and leaders in Agile, change management, and continuous improvement " +
+          "across distributed organizations.",
+      },
     ],
+    whatILearned:
+      "Process change only works when people understand the why and have support to adopt " +
+      "new ways of working.",
     isFeatured: true,
   },
   {
     company: "Gearworks / Xora",
-    location: "St. Paul, MN",
+    location: "Tampa, FL (and Remote)",
     title: "Senior Engineer, Architect, Director of Engineering",
     period: "June 2004 – January 2013",
     summary:
-      "Grew from a hands-on software engineer into engineering leadership while building mobile " +
-      "workforce technology before smartphones and GPS became commonplace. Experimenting with " +
-      "distributed teams in Belarus taught me how to lead across distance, cultures, and time " +
-      "zones—and that great teams are built through trust, communication, and shared purpose, " +
-      "regardless of where people work.",
-    highlights: [
-      "Introduced Scrum/XP, TDD, CI/CD, and engineering metrics, improving release cadence from four-month production cycles to biweekly pre-production and monthly production releases",
-      "Directed a zero-downtime data-center and platform migration without service interruption",
-      "Led merger integration across onshore and offshore teams, aligning architecture, tooling, and engineering standards",
+      "Grew from engineer to director while building mobile workforce and field service " +
+      "software. Led distributed teams across countries and time zones through rapid product " +
+      "and customer growth.",
+    metrics: [
+      {
+        icon: TrendingUpIcon,
+        tile: "green",
+        label: "Career Growth",
+        stat: "Engineer → Director",
+        description:
+          "Advanced through engineering and leadership roles, taking on increasing ownership " +
+          "of people, products, and outcomes.",
+      },
+      {
+        icon: GlobeIcon,
+        tile: "violet",
+        label: "Distributed Leadership",
+        stat: "Global Teams",
+        description:
+          "Led teams across US, India, Belarus, and other regions. Built trust, communication, " +
+          "and alignment across distance and cultures.",
+      },
+      {
+        icon: PhoneIcon,
+        tile: "amber",
+        label: "Product Impact",
+        stat: "Mobile First",
+        description:
+          "Built mobile workforce platforms before smartphones were mainstream, delivering " +
+          "real value to field teams.",
+      },
     ],
+    whatILearned:
+      "Strong relationships, shared purpose, and clear communication are the foundation for " +
+      "high-performing distributed teams.",
     isFeatured: true,
   },
   {
@@ -101,7 +236,6 @@ export const ROLES = [
       "Built Java-based, secure, real-time integration software connecting hospitals, " +
       "clinics, pharmacies, PBMs, and insurers for eligibility, formulary, patient history, " +
       "and electronic prescribing workflows.",
-    highlights: [],
     isFeatured: false,
   },
 ] as const satisfies readonly Role[];
