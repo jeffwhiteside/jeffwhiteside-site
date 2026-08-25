@@ -1,0 +1,68 @@
+<p>One of my favorite books I often share with fellow leaders and engineers is <em><a href="https://northriverpress.com/the-goal-30th-anniversary-edition/" target="_blank" rel="noopener noreferrer">The Goal: A Process of Ongoing Improvement</a></em> by Eliyahu M. Goldratt and Jeff Cox. This book tells the fictional story of a newly promoted GM of an underperforming factory. It lays out the Theory of Constraints and shows the reader how to walk through a continuous improvement effort. The premise ties system effectiveness to identifying the constraint limiting overall throughput. The Theory of Constraints argues that system throughput can only increase by improving the current constraint. Improvements away from the constraint may improve local efficiency, but they cannot increase system throughput while the constraint remains unchanged. They can sometimes make the system worse by creating additional work at the constraint.</p>
+
+<p>The introduction of AI-assisted development is particularly interesting when viewed through the lens of the Theory of Constraints. For decades, implementation capacity was scarce and expensive enough that much of software engineering practice evolved around making changes to software cheaper, faster, and safer. Design patterns, continuous integration, and automated testing all serve that end, and the industry has invested in them heavily. These practices have improved how software is delivered.</p>
+
+<p>Enter AI-assisted development. AI has dramatically expanded our capacity to generate and modify code. The marginal effort required to generate plausible code has collapsed. The effort required to produce trustworthy, scalable, resilient software has not. The increased capacity is changing the conversation about engineering organizations. I hear leaders ask why they need the same number of engineers when AI allows a smaller team to produce more code. Whether AI is actually driving reduced software hiring is far from settled, but the assumption is already shaping how leaders think about engineering capacity.</p>
+
+<p>There may be some truth in the productivity premise, but &ldquo;How many fewer engineers do we need?&rdquo; is the wrong systems question. The 2025 DORA report, <em><a href="https://dora.dev/research/2025/dora-report/" target="_blank" rel="noopener noreferrer">State of AI-assisted Software Development</a></em>, found that AI adoption was associated with higher software-delivery throughput, but also with increased delivery instability. DORA describes AI as an amplifier of the strengths and weaknesses already present in an organization&rsquo;s delivery system.</p>
+
+<h2>The Assumption Underneath the Question</h2>
+
+<p>The case for heavy investment in AI-assisted coding assumes that code generation is the limiting factor in software delivery. So does the question I keep hearing. A leader who asks how many fewer engineers they need has already answered it. They believe engineering capacity was the limit. Take the premise seriously, then. If implementation was the constraint, and AI has expanded implementation capacity beyond the rest of the system&rsquo;s ability to absorb it, implementation is not the constraint anymore.</p>
+
+<blockquote>The constraint has moved.</blockquote>
+
+<p>And if implementation was never your constraint, the news is worse rather than better. It means the capacity has been going somewhere it could never have helped. Under Goldratt&rsquo;s logic that doesn&rsquo;t leave the system unchanged; it floods the real constraint with work it still can&rsquo;t process.</p>
+
+<p>Where implementation was the binding constraint, the Theory of Constraints tells us what happens next. Continuing to optimize for code production can make the overall system less effective. If AI allows engineers to produce twice as many changes, but the rest of the system cannot absorb those changes, we haven&rsquo;t increased throughput.</p>
+
+<p>The consequences can be significant. If validation cannot keep pace, defects escape. If security reviews cannot keep pace, risk increases. If changes outpace customers&rsquo; ability to absorb them, customer satisfaction can suffer. And if we haven&rsquo;t adequately understood and prioritized the problem, AI simply allows us to build the wrong thing faster.</p>
+
+<p>That is exactly what we would expect from a constrained system. When work arrives at the next constraint faster than that constraint can process it, queues grow, cycle time increases, and system throughput stops improving.</p>
+
+<p>It is crucial to remember that code is output, but it isn&rsquo;t throughput. The goal of an engineering organization is to achieve customer and business value through software. The leadership question, then, isn&rsquo;t how much more code we can produce. It&rsquo;s where the additional capacity is causing work to pile up.</p>
+
+<p>Continuing to optimize implementation is a local optimization. Suppose AI allows ten engineers to produce as much code as twenty once did. The obvious response is to conclude that we need only ten. The more useful question is where the freed capacity could raise throughput at the system&rsquo;s new constraint. That may not mean reassigning those engineers directly. There may be no skillset match. But a skills gap is an argument for reskilling, not for cutting. Deciding which one you&rsquo;re looking at is the job.</p>
+
+<p>The Theory of Constraints also offers a reason for caution. Non-constraints are supposed to carry protective capacity: slack that exists so the constraint never starves and so ordinary variability doesn&rsquo;t propagate through the system. This is the lesson of the matchstick game in <em>The Goal</em>: a chain of dependent steps, each with identical average capacity, still falls steadily behind, because the shortfalls accumulate down the line and the good runs don&rsquo;t make them up. Cutting a non-constraint to its theoretical minimum doesn&rsquo;t just save money. It removes the buffer that keeps the constraint fed. The savings are local, immediate, and easy to put in a spreadsheet. The throughput loss is systemic and may not appear until quarters later.</p>
+
+<h2>Where Does the Constraint Go?</h2>
+
+<p>Because constraints are local and dynamic, every organization must determine where work is now accumulating. As the system improves, that constraint will move again. Three areas seem particularly worth investigating: What should we build? Are we building it correctly? Did we create value? AI dramatically accelerates the implementation that happens between these decisions, but it does not automatically improve our ability to answer them. In fact, faster implementation may make weaknesses in these areas more consequential.</p>
+
+<p><strong>What should we build?</strong> This means deeply understanding our customers and their problems, establishing organizational priorities, and creating the shared context required to make good decisions. If this is a constraint in your organization, leadership needs to invest in ensuring these activities produce high-quality results and that people in the organization understand their importance.</p>
+
+<p><strong>Are we building it correctly?</strong> Technical judgment, architecture, review of AI-generated output, security, reliability, and maintainability all become more important as implementation accelerates. As AI-assisted development becomes more widespread and easier to use, developing and spreading technical judgment across teams will become increasingly crucial. Leadership needs to intentionally focus on increasing capacity here.</p>
+
+<p><strong>Did we create value?</strong> Evaluating our successes and failures, and learning quickly from them, is another potential constraint. The agile and lean concept of fast feedback is even more important now. Engineering teams need to remain engaged after release, understanding how customers respond and whether the expected outcomes materialize. Before releasing a change, teams should define how success will be measured and how they will respond to what they learn.</p>
+
+<p>These are candidate areas, not predetermined constraints. The actual constraint may be much narrower: look for the specific point where work queues, waits, or loses quality. AI can dramatically accelerate work across these activities, but increasing the speed of any one of them does not automatically improve the system. Ensure you are looking at the true system constraint.</p>
+
+<h2>Applying the Five Focusing Steps</h2>
+
+<p>As an example, suppose an organization discovers that its constraint is no longer implementation. Instead, it is the ability to define the right problem to solve. Goldratt&rsquo;s five focusing steps tell us what to do: identify the constraint, exploit it, subordinate everything else to it, elevate it, and then start over.</p>
+
+<p><strong>Identify the Constraint:</strong> Product/customer understanding is restricting throughput.</p>
+
+<p><strong>Exploit the Constraint:</strong> Make sure the limited product/discovery capacity is spent on the highest-value problem and produces excellent context.</p>
+
+<p><strong>Subordinate to the Constraint:</strong> Don&rsquo;t let engineering generate mountains of speculative work faster than the organization can make good decisions. Limit WIP and align engineering capacity around the constraint.</p>
+
+<p><strong>Elevate the Constraint:</strong> Invest in discovery, customer research, product leadership, better data, experimentation, or engineers working directly with customers.</p>
+
+<p><strong>Repeat:</strong> Once the constraint is broken, find the next one.</p>
+
+<p>Finally, there is little doubt that AI has increased output. The question is whether it has increased throughput as well. Even if we accept the most optimistic productivity claims about AI, the system question remains. Increasing capacity at one stage only increases system throughput while that stage remains the constraint. Once the constraint moves, further optimization there produces diminishing (or no) system-level benefit. Without looking at the entire system, that extra capacity stands a strong chance of producing unexpectedly worse results over time, degrading customer value. Viewed through systems thinking and the Theory of Constraints, the path to capturing AI&rsquo;s value is not simply producing more. It is finding and managing the constraint that increased production exposes next.</p>
+
+<p>The question engineering leaders should be asking is not, &ldquo;How many fewer engineers do we need now that we have AI?&rdquo;</p>
+
+<blockquote>It is, &ldquo;Where has the constraint moved?&rdquo;</blockquote>
+
+<p>Find it. Exploit it. Subordinate the system to it. Elevate it. Then look again.</p>
+
+<h2>References</h2>
+
+<ul>
+  <li><a href="https://northriverpress.com/the-goal-30th-anniversary-edition/" target="_blank" rel="noopener noreferrer">Goldratt, Eliyahu M., and Jeff Cox. The Goal: A Process of Ongoing Improvement. 30th Anniversary Edition. North River Press, 2014.</a></li>
+  <li><a href="https://dora.dev/research/2025/dora-report/" target="_blank" rel="noopener noreferrer">DORA. State of AI-assisted Software Development 2025. Google Cloud, 2025.</a></li>
+</ul>

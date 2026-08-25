@@ -1,4 +1,5 @@
 export interface Publication {
+  readonly kind: "publication";
   /** Locates `/writing/<slug>.pdf` and, optionally, `/writing/<slug>-cover.jpg`. */
   readonly slug: string;
   readonly title: string;
@@ -22,6 +23,7 @@ export interface Publication {
  */
 export const PUBLICATIONS = [
   {
+    kind: "publication",
     slug: "leadership-of-remote-work",
     title: "Understanding the Leadership of Remote Work",
     venue: "Journal of Business and Educational Leadership",
@@ -40,3 +42,41 @@ export const PUBLICATIONS = [
     url: null,
   },
 ] as const satisfies readonly Publication[];
+
+export interface Article {
+  readonly kind: "article";
+  /**
+   * Locates the article's body at `src/content/articles/<slug>.html` — a plain HTML fragment
+   * edited directly, no build step required — and, optionally, a cover image at
+   * `public/writing/<slug>-cover.jpg` or `.png`.
+   */
+  readonly slug: string;
+  readonly title: string;
+  /** Display date, e.g. "Aug 25, 2026". */
+  readonly date: string;
+  readonly category: readonly string[];
+  /** Teaser shown on the writing index card. */
+  readonly summary: string;
+}
+
+export const ARTICLES = [
+  {
+    kind: "article",
+    slug: "ai-is-moving-the-constraint",
+    title: "AI Is Moving the Constraint in Software Engineering",
+    date: "Aug 25, 2026",
+    category: ["Engineering", "AI & Technology"],
+    summary:
+      "AI is changing software engineering, but not simply by making engineers more " +
+      "productive. Using the Theory of Constraints, I explore how AI is shifting the " +
+      "bottleneck from writing code to understanding problems, defining solutions, and " +
+      "making better decisions.",
+  },
+] as const satisfies readonly Article[];
+
+export type WritingItem = Article | Publication;
+
+/** Everything shown on the writing index, most recent first. Ordered by hand — there are
+ * few enough entries that a manual chronological order is simpler than a sort key that mixes
+ * an article's display date with a publication's year. */
+export const WRITING_ITEMS: readonly WritingItem[] = [...ARTICLES, ...PUBLICATIONS];

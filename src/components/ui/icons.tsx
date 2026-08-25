@@ -350,6 +350,16 @@ export function CalendarIcon({ className }: IconProps) {
   );
 }
 
+/** A category or topic. */
+export function TagIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M12.3 3.5H6a1 1 0 0 0-1 1v6.3c0 .27.1.52.3.7l8.2 8.2a1 1 0 0 0 1.4 0l6-6a1 1 0 0 0 0-1.4L13 3.8a1 1 0 0 0-.7-.3Z" />
+      <circle cx="9" cy="8" r="1.2" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 /** A current credential. */
 export function AwardIcon({ className }: IconProps) {
   return (

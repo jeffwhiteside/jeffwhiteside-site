@@ -109,6 +109,65 @@
   }
 }
 
+/**
+ * Styles the raw HTML tags inside an article body (src/content/articles/<slug>.html) —
+ * that file has no classes of its own, just semantic markup, so it stays plain to edit.
+ */
+@utility article-prose {
+  & p {
+    margin-top: 1.25rem;
+    color: var(--color-muted);
+  }
+
+  & p:first-child {
+    margin-top: 0;
+  }
+
+  & h2 {
+    margin-top: 2.5rem;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    color: var(--color-ink);
+  }
+
+  & strong {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  & em {
+    font-style: italic;
+  }
+
+  & a {
+    color: var(--color-accent);
+    transition: color 150ms ease-out;
+  }
+
+  & a:hover {
+    color: var(--color-accent-strong);
+  }
+
+  & blockquote {
+    margin-top: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-ink);
+  }
+
+  & ul {
+    margin-top: 1.25rem;
+    padding-left: 1.25rem;
+    list-style-type: disc;
+  }
+
+  & li {
+    margin-top: 0.5rem;
+    color: var(--color-muted);
+  }
+}
+
 @layer base {
   body {
     background-color: var(--color-canvas);
