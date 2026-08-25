@@ -64,6 +64,16 @@ export const SECTIONS = [
       "leadership of remote work.",
   },
   {
+    id: "resources",
+    href: "/resources",
+    title: "Resources",
+    navLabel: "Resources",
+    navHref: null,
+    description:
+      "Books, research, and frameworks that shape how Jeff Whiteside leads, builds teams, " +
+      "and creates outcomes — plus what he reads beyond work.",
+  },
+  {
     id: "about",
     href: "/about",
     title: "About",

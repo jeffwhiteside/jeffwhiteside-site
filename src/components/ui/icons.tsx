@@ -381,6 +381,34 @@ export function HistoryIcon({ className }: IconProps) {
   );
 }
 
+/** Software and engineering craft. */
+export function CodeIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="m9 7-5 5 5 5M15 7l5 5-5 5" />
+    </svg>
+  );
+}
+
+/** Reading for its own sake, not for work. */
+export function HeartIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M12 20s-7.5-4.6-9.7-9.3C.9 7.4 2.6 4 6 4c2 0 3.5 1.2 4.2 2.4L12 8.8l1.8-2.4C14.5 5.2 16 4 18 4c3.4 0 5.1 3.4 3.7 6.7C19.5 15.4 12 20 12 20Z" />
+    </svg>
+  );
+}
+
+/** Search the resource library. */
+export function SearchIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <circle cx="10.5" cy="10.5" r="6.5" />
+      <path d="m20 20-4.8-4.8" />
+    </svg>
+  );
+}
+
 /** A footnote worth reading. */
 export function InfoIcon({ className }: IconProps) {
   return (
