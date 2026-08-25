@@ -24,7 +24,7 @@ export const metadata: Metadata = {
  */
 export default function ResourcesPage() {
   return (
-    <article className="page-container py-12 sm:py-16">
+    <article className="page-container pt-8 pb-12 sm:pt-10 sm:pb-16">
       <h1 className="text-hero">Resources</h1>
       <span aria-hidden="true" className="mt-4 block h-1 w-12 rounded-full bg-accent" />
       <p className="mt-4 text-lg font-semibold text-accent">Ideas That Shape My Thinking</p>

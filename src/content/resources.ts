@@ -166,7 +166,7 @@ export const RESOURCE_GROUPS: readonly ResourceGroup[] = [
           {
             slug: "thinking-fast-thinking-slow",
             title: "Thinking Fast, Thinking Slow",
-            description: "Deepened my awareness of cognitive bias and how easily intuition can influence judgment and decision-making.",
+            whyItMattersToMe: "Deepened my awareness of cognitive bias and how easily intuition can influence judgment and decision-making.",
             author: "Daniel Kahneman",
             coverCandidates: ["/books/thinking-fast-thinking-slow.jpg"],
             url: "https://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman/dp/0374533555/ref=sr_1_1?crid=36GPC4PB0T12G&dib=eyJ2IjoiMSJ9.ceqZU8DyU2py75144OBkf9zHGHjPP8egj_5tnRTf3vYvhSfwAwthYHM73CbJGseOZzZBYy_oDK_AMsA-BzME8D_AEyIe1EulFz4-cDgp_CbzVKRvDTeg1_jCw2GaKKpddZOSVVfQR5HsFOX-Lg7cBFkNt2P0nbg9HQEvzyiXMo0SP94Zo_gylyOmEMjuKZtCCOIWTGL5VIKohHZE7jst5AFwU59C3RUN9t9bQCSTCCc.docxLb_x3uYI6AdUcYPeR1MP3HHuCah34_r_c2Dw0VU&dib_tag=se&keywords=thinking+fast&qid=1787696385&sprefix=thinking+fast%2Caps%2C174&sr=8-1",
