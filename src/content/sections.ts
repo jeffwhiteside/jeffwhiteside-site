@@ -41,7 +41,7 @@ export const SECTIONS = [
     href: "/experience",
     title: "Selected experience",
     navLabel: "Experience",
-    navHref: "/#experience-heading",
+    navHref: null,
     description:
       "Selected engineering leadership experience: CommandLink and Ritchie Bros. / Xcira.",
   },
