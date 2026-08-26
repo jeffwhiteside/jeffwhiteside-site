@@ -166,7 +166,7 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
           "to step in and solve the problem yourself.",
       },
       {
-        title: "Trust Them",
+        title: "Give Meaningful Ownership",
         description:
           "People grow when they own problems that matter and have room to solve them " +
           "their way. They may solve it differently than you would. Embrace and encourage " +
