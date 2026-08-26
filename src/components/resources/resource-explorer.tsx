@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { ResourceCover } from "@/components/resource-cover";
 import { ResourceIcon } from "@/components/resources/resource-icon";
 import { ChevronDownIcon, LaunchIcon, SearchIcon } from "@/components/ui/icons";
 import type { ResourceCategory } from "@/content/resources";
 import { TILE_CLASSES } from "@/content/leadership";
+import { resolveBackLinkTarget, type BackLinkTarget } from "@/content/navigation-context";
 
 interface ResourceExplorerProps {
   categories: readonly ResourceCategory[];
@@ -33,10 +34,17 @@ export function ResourceExplorer({ categories, covers }: ResourceExplorerProps) 
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [expandedSlug, setExpandedSlug] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
+  /** Set only when the visitor arrived via a `?resource=&from=&section=` deep link — drives
+   * both the "Back to X" link and the brief highlight, and is cleared once the visitor changes
+   * the search or category filter (their own browsing takes over from the deep link). */
+  const [deepLink, setDeepLink] = useState<{ resourceSlug: string; back: BackLinkTarget | null } | null>(
+    null,
+  );
+  const [highlightedSlug, setHighlightedSlug] = useState<string | null>(null);
 
-  // One-time sync from the URL (an external system) on mount — the query/category state has to
-  // start empty during SSR since window isn't available there, so this necessarily runs once
-  // after mount rather than during the initial render.
+  // One-time sync from the URL (an external system) on mount — state has to start empty during
+  // SSR since window isn't available there, so this necessarily runs once after mount rather
+  // than during the initial render.
   /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -46,6 +54,35 @@ export function ResourceExplorer({ categories, covers }: ResourceExplorerProps) 
     if (category && categories.some((c) => c.slug === category)) {
       setActiveCategory(category);
     }
+
+    const resourceSlug = params.get("resource");
+    const resourceExists =
+      resourceSlug && categories.some((c) => c.resources.some((r) => r.slug === resourceSlug));
+    if (resourceSlug && resourceExists) {
+      const back = resolveBackLinkTarget(params.get("from"), params.get("section"));
+      setDeepLink({ resourceSlug, back });
+      setExpandedSlug(resourceSlug);
+      setHighlightedSlug(resourceSlug);
+
+      // Wait for the expanded card and highlight to actually paint before scrolling, so the
+      // jump lands in the right place instead of firing against pre-render layout. Scroll to
+      // the back-link line itself when there is one, so it lands in view alongside the card
+      // instead of just above the visible area.
+      const scrollTargetId = back ? `${resourceSlug}-context` : resourceSlug;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.getElementById(scrollTargetId)?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        });
+      });
+
+      const clearHighlight = setTimeout(() => setHighlightedSlug(null), 2000);
+      setHydrated(true);
+      return () => clearTimeout(clearHighlight);
+    }
+
     setHydrated(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -55,12 +92,18 @@ export function ResourceExplorer({ categories, covers }: ResourceExplorerProps) 
     if (!hydrated) {
       return;
     }
-    const params = new URLSearchParams();
+    const params = new URLSearchParams(window.location.search);
     if (query) params.set("q", query);
+    else params.delete("q");
     if (activeCategory) params.set("category", activeCategory);
+    else params.delete("category");
     const search = params.toString();
     router.replace(search ? `${pathname}?${search}` : pathname, { scroll: false });
   }, [query, activeCategory, hydrated, pathname, router]);
+
+  // A deep link is only relevant until the visitor starts browsing on their own — derived
+  // rather than cleared via an effect, since it's fully computable from existing state.
+  const activeDeepLink = deepLink && !query && !activeCategory ? deepLink : null;
 
   const normalizedQuery = query.trim().toLowerCase();
 
@@ -149,7 +192,7 @@ export function ResourceExplorer({ categories, covers }: ResourceExplorerProps) 
           <section
             key={category.slug}
             id={category.slug}
-            className={`scroll-mt-24 ${index === 0 ? "mt-3" : "mt-5"}`}
+            className={`scroll-mt-32 ${index === 0 ? "mt-3" : "mt-5"}`}
           >
             <div className="flex items-center gap-3">
               <span
@@ -168,6 +211,7 @@ export function ResourceExplorer({ categories, covers }: ResourceExplorerProps) 
             <ul className="mt-3 grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {category.resources.map((resource) => {
                 const isExpanded = expandedSlug === resource.slug;
+                const isHighlighted = highlightedSlug === resource.slug;
                 const hasMoreDetail = Boolean(
                   resource.description ||
                     resource.ideasCarriedForward?.length ||
@@ -175,11 +219,13 @@ export function ResourceExplorer({ categories, covers }: ResourceExplorerProps) 
                 );
                 const detailId = `${resource.slug}-detail`;
 
-                return (
+                const card = (
                   <li
                     key={resource.slug}
                     id={resource.slug}
-                    className="card scroll-mt-24 relative flex h-full flex-col px-2 py-1"
+                    className={`card scroll-mt-32 relative flex h-full flex-col px-2 py-1 transition-shadow duration-700 ${
+                      isHighlighted ? "ring-2 ring-accent/50" : ""
+                    }`}
                   >
                     {resource.url ? (
                       <a
@@ -299,6 +345,27 @@ export function ResourceExplorer({ categories, covers }: ResourceExplorerProps) 
                     ) : null}
                   </li>
                 );
+
+                if (activeDeepLink?.resourceSlug === resource.slug && activeDeepLink.back) {
+                  return (
+                    <Fragment key={resource.slug}>
+                      <li
+                        id={`${resource.slug}-context`}
+                        className="col-span-full -mb-2 scroll-mt-32 list-none"
+                      >
+                        <a
+                          href={activeDeepLink.back.href}
+                          className="link inline-flex items-center gap-1.5 text-xs"
+                        >
+                          ← Back to {activeDeepLink.back.label}
+                        </a>
+                      </li>
+                      {card}
+                    </Fragment>
+                  );
+                }
+
+                return card;
               })}
             </ul>
           </section>

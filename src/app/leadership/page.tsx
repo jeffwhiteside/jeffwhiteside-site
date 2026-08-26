@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { PrincipleNav } from "@/components/leadership-principle-nav";
 import { ArrowRight } from "@/components/ui/button";
 import {
@@ -220,28 +221,36 @@ export default function LeadershipPage() {
                                 const kind = resource.kind ?? "Book";
                                 const linkLabel =
                                   kind === "Research" ? "Foundational Research" : "View on Amazon";
+                                const resourceHref = `/resources?resource=${resource.slug}&from=leadership&section=${principle.id}`;
 
                                 return (
                                   <li key={resource.slug} className={IDEA_CARD_CLASSES}>
                                     <div className="flex gap-3">
                                       {cover ? (
-                                        <Image
-                                          src={cover}
-                                          alt=""
-                                          width={55}
-                                          height={70}
-                                          className="h-[70px] w-[55px] shrink-0 rounded border border-band-line object-cover"
-                                        />
+                                        <Link href={resourceHref} className="shrink-0">
+                                          <Image
+                                            src={cover}
+                                            alt=""
+                                            width={55}
+                                            height={70}
+                                            className="h-[70px] w-[55px] rounded border border-band-line object-cover"
+                                          />
+                                        </Link>
                                       ) : null}
                                       <div className="min-w-0">
-                                        <span className="inline-block rounded border border-band-line px-2 py-0.5 text-xs font-medium tracking-wide text-band-muted uppercase">
-                                          {kind}
-                                        </span>
-                                        <p className="mt-2 text-base font-semibold text-band-ink">
+                                        <Link
+                                          href={resourceHref}
+                                          className="text-base font-semibold text-band-ink hover:text-accent"
+                                        >
                                           {resource.title}
-                                        </p>
+                                        </Link>
+                                        {resource.subtitle ? (
+                                          <p className="mt-0.5 truncate font-serif text-xs text-band-muted italic">
+                                            {resource.subtitle}
+                                          </p>
+                                        ) : null}
                                         {resource.author ? (
-                                          <p className="text-sm text-band-muted">
+                                          <p className="mt-1 text-sm text-band-muted">
                                             {resource.author}
                                           </p>
                                         ) : null}
