@@ -2,9 +2,8 @@ import { type ResourceIconName } from "@/components/resources/resource-icon";
 import { type TileColor } from "@/content/leadership";
 
 export interface Resource {
-  /** Anchor id on the full library page (/resources/library#<slug>) — the resources index
-   * links a book's thumbnail/title straight to its entry there rather than a page of its own.
-   * Unique across the whole library, not just within its category. */
+  /** Anchor id on the Resources page (/resources#<slug>). Unique across the whole page, not
+   * just within its category. */
   readonly slug: string;
   readonly title: string;
   readonly subtitle?: string;
@@ -12,14 +11,14 @@ export interface Resource {
   /** "Book" unless set — used for the type badge on the Leadership page's idea-source cards,
    * which look resources up from here rather than duplicating title/author/cover/url. */
   readonly kind?: "Book" | "Research";
-  /** Neutral summary of what the work is about. Library page only. */
+  /** Neutral summary of what the work is about. Shown only when the card is expanded. */
   readonly description?: string;
-  /** The personal reflection: shown on both the resources index preview and the library page. */
+  /** The personal reflection — shown on the collapsed card, the reason a resource is here. */
   readonly whyItMattersToMe?: string;
-  /** Specific ideas or practices taken from this work. Library page only. */
+  /** Specific ideas or practices taken from this work. Shown only when the card is expanded. */
   readonly ideasCarriedForward?: readonly string[];
-  /** Where this shows up in the owner's actual work — a project, a decision, a habit. Library
-   * page only. */
+  /** Where this shows up in the owner's actual work — a project, a decision, a habit. Shown
+   * only when the card is expanded. */
   readonly whereItShowsUpInMyWork?: string;
   /** Public-relative cover candidates, most preferred first — same real-asset-first pattern
    * as the portrait and the Leadership page's idea sources. Drop a file at one of these paths
@@ -46,6 +45,12 @@ export interface ResourceGroup {
   readonly categories: readonly ResourceCategory[];
 }
 
+/** The Resources page's opening blurb. */
+export const RESOURCES_INTRO =
+"Books, research, and ideas that have shaped how I think about leadership, " +
+"engineering, organizations, and the world around me. I capture what I take " +
+"from each so I can return to it later and share what has been useful."
+
 /**
  * Books, research, and reading that inform how the site's owner leads and what he reads for
  * its own sake.
@@ -63,7 +68,7 @@ export const RESOURCE_GROUPS: readonly ResourceGroup[] = [
     tile: "blue",
     description:
       "Books, research, and frameworks that influence how I lead, build teams, and create " +
-      "outcomes.",
+      "outcomes. ",
     categories: [
       {
         slug: "leadership-people",
@@ -560,7 +565,8 @@ whereItShowsUpInMyWork:
 /**
  * Looks up a resource by slug across every group and category — the Leadership page's idea
  * sources reference resources here by slug instead of duplicating title, author, cover, and
- * link, since the same book often anchors both a principle's reflection and a library entry.
+ * link, since the same book often anchors both a principle's reflection and a Resources-page
+ * entry.
  */
 export function findResourceBySlug(slug: string): Resource | null {
   for (const group of RESOURCE_GROUPS) {

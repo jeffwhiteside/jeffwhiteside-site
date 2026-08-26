@@ -4,7 +4,7 @@ import { BookOpenIcon } from "@/components/ui/icons";
 interface ResourceCoverProps {
   /** Result of resolveResourceCover (src/lib/resource-covers.ts), or null for the drawn
    * placeholder. Takes the resolved value rather than the resource itself so this stays safe
-   * to render from a Client Component (see ResourceLibrary) — resolving touches the
+   * to render from a Client Component (see ResourceExplorer) — resolving touches the
    * filesystem and must happen server-side. */
   cover: string | null;
   /** Larger size for the resource detail page; the compact 55x70 default matches the

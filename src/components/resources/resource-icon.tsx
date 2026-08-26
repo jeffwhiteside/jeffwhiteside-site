@@ -39,7 +39,7 @@ const ICONS_BY_NAME: Record<ResourceIconName, typeof LightbulbIcon> = {
 /**
  * Resolves a group's or category's icon by name rather than storing the icon component
  * directly on the data. RESOURCE_GROUPS crosses from the server page into the client
- * ResourceLibrary component as a prop, and React component references can't be serialized
+ * ResourceExplorer component as a prop, and React component references can't be serialized
  * across that boundary — a plain string name can. This file is imported independently by
  * both sides, so the lookup itself never has to cross the boundary either.
  */

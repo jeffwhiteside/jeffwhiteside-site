@@ -399,7 +399,7 @@ export function HeartIcon({ className }: IconProps) {
   );
 }
 
-/** Search the resource library. */
+/** Search the Resources page. */
 export function SearchIcon({ className }: IconProps) {
   return (
     <svg {...svgProps(className)}>

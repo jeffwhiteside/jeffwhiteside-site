@@ -73,7 +73,7 @@
 }
 
 @utility text-hero {
-  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1.12;
   letter-spacing: -0.025em;
 }
