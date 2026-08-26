@@ -152,14 +152,14 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
     ],
     howIPractice: [
       {
-        title: "Know them",
+        title: "Understand the Individual",
         description:
           "Understand their strengths, motivations, aspirations, working style, and " +
           "where they want to grow. Ask good questions, listen carefully, and look " + 
           "for opportunities that stretch them in ways that matter.",
       },
       {
-        title: "Coach them",
+        title: "Coach Before Solving",
         description:
           "I ask questions first. My goal is to build judgment and confidence, not " +
           "dependence. One of the hardest parts of leadership is resisting the urge " +
@@ -173,7 +173,7 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
           "that. Ensure both autonomy and accountability",
       },
       {
-        title: "Challenge them",
+        title: "Set High Standards",
         description:
           "I’m clear about what good looks like and hold myself and others accountable " +
           "to it. High standards are a form of belief: I challenge people because I " + 
@@ -181,18 +181,18 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
           "on them.",
       },
       {
-        title: "Recognize them",
+        title: "Make Progress Visible",
         description:
           "Celebrate real progress, reinforce what is working, and help people regain " +
           "confidence when the work gets difficult. Small wins matter. Recognition helps " +
           "people see their own growth and build momentum.",
       },      
       {
-        title: "Develop them",
+        title: "Develop Leaders",
         description:
-          "My impact multiplies through leaders who develop the people they lead. " +
-          "I coach managers to create clarity, give meaningful ownership, provide " + 
-          "direct feedback, and help others grow into greater responsibility.",
+          "My impact multiplies through leaders who develop the people they lead. I coach " +
+          "managers to create clarity, delegate meaningful ownership, give direct feedback, " +
+          "and build the judgment and confidence needed to lead at the next level.",
       },
     ],
     experienceTagline: "Some of the best engineers I’ve worked with didn’t start out as engineers.",
