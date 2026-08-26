@@ -220,7 +220,11 @@ export function ResourceExplorer({ categories, covers }: ResourceExplorerProps) 
                         <p className="text-xs font-semibold tracking-wide text-ink uppercase">
                           Why It Matters to Me
                         </p>
-                        <p className="mt-0.5 line-clamp-2 text-xs text-muted">
+                        <p
+                          className={`mt-0.5 text-xs text-muted ${
+                            isExpanded ? "" : "line-clamp-2"
+                          }`}
+                        >
                           {resource.whyItMattersToMe}
                         </p>
                       </div>
@@ -237,7 +241,7 @@ export function ResourceExplorer({ categories, covers }: ResourceExplorerProps) 
                             {resource.description ? (
                               <div className="mt-2">
                                 <p className="text-xs font-semibold tracking-wide text-ink uppercase">
-                                  About the Resource
+                                  Summary
                                 </p>
                                 <p className="mt-0.5 text-xs text-muted">
                                   {resource.description}

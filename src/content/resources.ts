@@ -92,8 +92,7 @@ export const RESOURCE_GROUPS: readonly ResourceGroup[] = [
               "Use people's strengths rather than trying to make everyone the same",
               "Measure leadership by the capability you build in others"
             ],
-whereItShowsUpInMyWork:
-  "This has shaped how I coach engineers and engineering managers. I try to coach before solving, give leaders real ownership instead of becoming the decision bottleneck, and use questions to help people develop their own judgment. As my organizations grew, this became increasingly important: my impact depended less on the problems I could solve myself and more on the capability and confidence I could build in others.",            
+            whereItShowsUpInMyWork: "This has shaped how I coach engineers and engineering managers. I try to coach before solving, give leaders real ownership instead of becoming the decision bottleneck, and use questions to help people develop their own judgment. As my organizations grew, this became increasingly important: my impact depended less on the problems I could solve myself and more on the capability and confidence I could build in others.",
             coverCandidates: ["/books/multipliers.jpg"],
             url: "https://www.amazon.com/dp/B01KT18416",
           },
@@ -189,6 +188,48 @@ whereItShowsUpInMyWork:
         icon: "people",
         tile: "green",
         resources: [
+          {
+            slug: "ceo-excellence",
+            title: "CEO Excellence",
+            subtitle: "The Six Mindsets that Distinguish the Best Leaders from the Rest",
+            author: "Carolyn Dewar, Scott Keller, Vikram Malhotra",
+            description:"Examines the practices of high-performing CEOs across setting direction, aligning organizations, mobilizing leaders, engaging stakeholders, and managing their own effectiveness.",
+            whyItMattersToMe:"Strengthened how I think about leadership as an integrated system. Setting a clear direction is only the beginning; leaders also have to align people and resources, establish operating rhythms, develop other leaders, and create the conditions for disciplined execution.",
+            ideasCarriedForward: [
+              "Create a clear north star that helps people make decisions",
+              "Co-create direction because people support what they help build",
+              "Allocate resources for the good of the whole, not individual teams",
+              "Build an operating rhythm that connects strategy to execution",
+              "Be explicit about standards while remaining kind to the person",
+              "Spend leadership time on the things only you can do",
+              "Define reality while giving people genuine reasons for hope"
+            ],
+            whereItShowsUpInMyWork:"This shows up in how I build engineering operating systems around clear priorities, regular leadership check-ins, metrics, release readiness, and explicit decision-making. As my organizations grew, I learned that I could not personally drive every outcome. My role increasingly became creating clarity, developing leaders, allocating attention and resources, and establishing the rhythms and standards that allowed teams to execute without depending on me for every decision.",
+            coverCandidates: ["/books/ceoexcellence.jpg"],
+            url: "https://www.amazon.com/CEO-Excellence-Mindsets-Distinguish-Leaders/dp/1982179678/ref=sr_1_1?crid=270LA2ABKN7BG&dib=eyJ2IjoiMSJ9.RS97UdSbau3h48ujDg0EDC_7GCWSVg4LLhowlYJU2jEioLl4NICTgGEBmOKOaU8gdjPAe1wjlgaF40aVnLb5zqMGJDI39Y_1lCuHm4CQo77HX69ywXn9IVaiaYVo1cb3YXzQeEaO1CWYcBcS-FcKXP6mBHRcIfJfzM2oBkwQdCRQEjqX4NYrRh1XmO6YFHjtgDOl5n11ffFW3K4zrAim9iUedTMGqpLtJm174sP1sq8.opmKiJJsbX5nSG96yw3cNa-yFDTqOr6xcBzOdXG2sYo&dib_tag=se&keywords=ceo+excellence+book&qid=1787758184&sprefix=ceo+ex%2Caps%2C209&sr=8-1",
+          },
+          {
+            slug: "the-first-ninety-days",
+            title: "The First 90 Days",
+            subtitle: "Proven Strategies for Getting Up to Speed Faster and Smarter",
+            author: "Michael Watkins",
+            description: "A practical framework for navigating leadership transitions by accelerating learning, diagnosing the situation, building relationships, aligning the organization, and creating early momentum.",
+            whyItMattersToMe: "Reinforced the importance of learning before acting. Every organization has its own history, culture, strengths, and constraints, and effective leadership starts with understanding that context rather than arriving with predetermined answers.",
+            ideasCarriedForward: [
+              "Diagnose the situation before prescribing solutions",
+              "Create a deliberate learning agenda for the first 30 days",
+              "Ask consistent questions across stakeholders and look for patterns",
+              "Adapt your leadership approach to the situation rather than importing an old playbook",
+              "Clarify expectations with your leader early and revisit them often",
+              "Build credibility through early wins that support longer-term goals",
+              "Understand informal influence networks, not just the org chart",
+              "Assess strategy, structure, processes, skills, and culture as an interconnected system",
+              "Create explicit 30-, 60-, and 90-day milestones"
+            ],
+            whereItShowsUpInMyWork:"This shaped how I approach entering a new organization or taking responsibility for a new team. I start by learning: meeting with leaders, engineers, product partners, and other stakeholders; asking consistent questions; understanding how the organization reached its current state; and looking for patterns before deciding what should change. From there, I establish priorities, align expectations, identify a few meaningful early wins, and build a longer-term plan around what the organization actually needs rather than what worked somewhere else.",
+            coverCandidates: ["/books/firstnintydays.jpg"],
+            url: "https://www.amazon.com/First-90-Days-Strategies-Expanded/dp/1422188612/ref=sr_1_1?crid=2N93WG7229S8Z&dib=eyJ2IjoiMSJ9.M4IrddlCoRuB_CZM8chDulPY-qQDwBB-Lbju2eGQaobRT0v9QMLMevrxET-TcTfCN-sU6InWw6PcheuEOKI24ZB6tLxVQwHs6sERP2mNiUI0C2Eu_keWKNEyxZKaVE4uThrxBGJTw4jcShHMztk-BQyRbm5-LYjLj_CP1R0m_O5iyqJfW2900aVONT3WEwdQuWw3Eu7Q24gMJnkHJvDz9L4Ng0Y554I1FrqgN4lfZLQ.JWXa_hk_25FLfh5bDUvhkMvVRrBHR8R8cotpiqC5c6k&dib_tag=se&keywords=the+first+90+days&qid=1787759211&sprefix=the+first+%2Caps%2C222&sr=8-1",
+          },
           {
             slug: "leaders-eat-last",
             title: "Leaders Eat Last",
