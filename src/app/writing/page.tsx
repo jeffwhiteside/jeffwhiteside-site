@@ -46,7 +46,7 @@ export default function WritingPage() {
       <p className="eyebrow">Ideas &amp; Writing</p>
       <h1 className="text-hero mt-3">Ideas Worth Exploring</h1>
       <span aria-hidden="true" className="mt-4 block h-0.5 w-12 rounded-full bg-accent" />
-      <p className="measure-prose mt-4 text-muted">
+      <p className="mt-4 text-muted">
         Throughout my career, I&rsquo;ve learned as much from asking questions as answering
         them. This is where I share ideas I&rsquo;m exploring around leadership, engineering
         culture, distributed teams, technology, and the changing way we build software.
