@@ -409,6 +409,25 @@ export function SearchIcon({ className }: IconProps) {
   );
 }
 
+/** Opens an external link. */
+export function LaunchIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6" />
+      <path d="M15 3h6v6M10 14 20.5 3.5" />
+    </svg>
+  );
+}
+
+/** Expand/collapse a disclosure. Rotate 180deg for the collapsed/expanded state. */
+export function ChevronDownIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
+
 /** A footnote worth reading. */
 export function InfoIcon({ className }: IconProps) {
   return (

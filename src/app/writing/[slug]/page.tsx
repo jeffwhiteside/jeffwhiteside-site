@@ -64,7 +64,7 @@ export default async function ArticlePage({ params }: PageProps<"/writing/[slug]
             width={320}
             height={220}
             priority
-            className="h-24 w-auto shrink-0 rounded-lg border border-line sm:h-28"
+            className="hidden h-24 w-auto shrink-0 rounded-lg border border-line sm:block sm:h-28"
           />
         ) : null}
 

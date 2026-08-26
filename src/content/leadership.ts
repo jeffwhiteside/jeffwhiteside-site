@@ -79,16 +79,13 @@ export interface PracticeItem {
 }
 
 export interface IdeaSource {
-  /** Shown as a small tag: "Book", "Research", "Experience", etc. */
-  readonly type: string;
-  readonly title: string;
-  readonly author?: string;
+  /** Slug of the canonical resource in RESOURCE_GROUPS (content/resources.ts). Title, author,
+   * cover, and external link are looked up from there at render time — kept in one place
+   * rather than duplicated between the Leadership and Resources pages. */
+  readonly resourceSlug: string;
+  /** Why this resource shaped THIS principle specifically — distinct from (and often more
+   * specific than) that resource's general whyItMattersToMe on the Resources page. */
   readonly description: string;
-  readonly linkLabel?: string;
-  readonly linkHref?: string;
-  /** Public-relative path to a small cover image (e.g. "/books/dare-to-lead.jpg"), shown at
-   * 55x70 beside the title. Omit when no cover art is available for this source. */
-  readonly coverImage?: string;
 }
 
 export interface PrincipleDetail {
@@ -213,59 +210,39 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
     ],
     ideasThatShaped: [
       {
-        type: "Book",
-        title: "Multipliers",
-        coverImage: "/books/multipliers.jpg",
-        author: "Liz Wiseman",
+        resourceSlug: "multipliers",
         description:
           "Helped change how I thought about my role as a leader. My job isn't to have " +
           "all the answers; it's to draw out the intelligence and capability of the " +
           "people around me, give them room to lead, and help them become better than " +
           "they thought they could be",
-        linkLabel: "View on Amazon",
-        linkHref: "https://www.amazon.com/Multipliers-Revised-Updated-Leaders-Everyone-ebook/dp/B01KT18416/ref=sr_1_1?crid=2RAJP4JC2FL38&dib=eyJ2IjoiMSJ9.OThPxUt9yF3tkHb44wZb0DlEBYjGqoKcnJ4KDlpsW4bLZDfCt5E7dXf2G7U7bcSbkI3xOw225fIqyY1UsShy_-i01IoGgIF-Kfjuv5RT94Lt-RxR66OMNxb1NqR94vSaANqyyUXoIauAEqa_OuRpdDzFPgxgiVAkPFdF7lGLwYzDdpApq_-ICJ0P6sXBo0lE0tjaNrUsklBP8_MFfECEjqKFvlcQ2rHFS4NkDdRtJbM.i7FQyIZMyIiJFxfaQ0Kbq5pseOdMzGgvBChIDGqMUBk&dib_tag=se&keywords=multipliers&qid=1786504212&sprefix=multiplier%2Caps%2C255&sr=8-1",
       },
       {
-        type: "Book",
-        title: "First Break All The Rules",
-        coverImage: "/books/firstbreakalltherules.jpg",
-        author: "Marcus Buckingham & Curt Coffman",
+        resourceSlug: "first-break-all-the-rules",
         description:
           "Reinforced that great leadership isn't about treating everyone the same. " +
-          "People have different strengths, motivations, aspirations, and ways of " + 
+          "People have different strengths, motivations, aspirations, and ways of " +
           "working. My responsibility is to understand those differences, help people " +
           "build on what they do best, and create opportunities where they can contribute, " +
           "grow, and succeed.",
-        linkLabel: "View on Amazon",
-        linkHref: "https://www.amazon.com/First-Break-All-Rules-Differently/dp/1595621113/ref=sr_1_1?crid=1UZV95L0X7LIP&dib=eyJ2IjoiMSJ9.z16oCMdycf7bEf4Synq2a4oMRSZGQ2ISAabdAGh7DwNHnoc-zGSLaRbYMCHd9Y2UN2LUNQ6YfBz75OaIxhuOQAUS6iNZ8kAGGvsDjvfBheVJJrDvqOB69a1Km1A5QrHDy94ff6nqSROCHu9M2ibWjp9Yfp2yntA-noEF_zMCFm0etD3dJRKIlZVG2PvhMD9tTrvJy9T7VFOe3dK5OCLqxRLAzsNIV5LDKmtE3t2Sbjc.x3upRVlUo1F9UBhRSMdp31etaQ6P-_6mzkjkBRFLR-o&dib_tag=se&keywords=first+break+all+the+rules&qid=1786507442&sprefix=first+break+a%2Caps%2C200&sr=8-1",
       },
       {
-        type: "Book",
-        title: "Dare to Lead",
-        coverImage: "/books/daretolead.jpg",
-        author: "Brené Brown",
+        resourceSlug: "dare-to-lead",
         description:
           "Reinforced that helping people grow requires both courage and vulnerability. " +
           "Leaders need to set clear expectations, give honest feedback, admit when " +
           "they don't have the answer, and create an environment where people can " +
           "do the same",
-        linkLabel: "View on Amazon",
-        linkHref: "https://www.amazon.com/s?k=Dare+to+Lead+Brene+Brown",
       },
       {
-        type: "Research",
-        title: "Self-Determination Theory",
-        coverImage: "/books/research.jpg",
-        author: "Edward Deci & Richard Ryan",
+        resourceSlug: "self-determination-theory",
         description:
           "Gave me a deeper framework for understanding motivation. People are more " +
           "likely to thrive when their needs for autonomy, competence, and connection " +
           "to others are supported. It reinforced my belief that leaders don't " +
           "create motivation through control; they create conditions where motivation " +
           "and growth can flourish.",
-        linkLabel: "Foundational Research",
-        linkHref: "https://selfdeterminationtheory.org/wp-content/uploads/2020/10/2000_DeciRyan_PIWhatWhy.pdf",
-      },      
+      },
     ],
     learnedTagline: "People grow when leaders create the conditions for growth.",
     learnedParagraph: [
@@ -378,55 +355,35 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
     ],
     ideasThatShaped: [
       {
-        type: "Book",
-        title: "Trust & Inspire",
-        coverImage: "/books/trustandinspire.jpg",
-        author: "Stephen M. R. Covey",
+        resourceSlug: "trust-and-inspire",
         description:
           "Reinforced that trust has to be extended, not just earned. Leaders demonstrate " +
           "trust by giving people real responsibility, autonomy, and the freedom to " +
           "exercise judgment. Trusting people first creates the opportunity for them to " +
           "rise to that trust.",
-        linkLabel: "View on Amazon",
-        linkHref: "https://www.amazon.com/Trust-Inspire-Leaders-Unleash-Greatness/dp/1982143754/ref=sr_1_1?crid=2QHVN4Z2OIKW4&dib=eyJ2IjoiMSJ9.K_6CtKt3x-qJYhX7oAcqLVaqaLzp6Yvj2XLHQptpShke6Ire7f1DOlN_vrkVNLxVcPk8ZHGAJdGzYBogte2Slt52Jpno399cc_1XcF9HCjP5Y8W16nAPmmkW0H7wiJjbuvFfAu8sM9LlIz1UBlpfVCABuaRfOsv_M0Kd5pEZqdE6_DBbYW7Ba5fXkaQhv-ONv5GEIy1U6h-RTpZxRA6dkr3O8s-35cD_NJvAlOH1Z1o.45saHg8DYwCZKdJnwqHFtQzU0e5gce4PvjbBMVX8nUc&dib_tag=se&keywords=Trust+and+inspire&qid=1786559667&sprefix=trust+and+inspire%2Caps%2C173&sr=8-1",
       },
       {
-        type: "Book",
-        title: "Culture code",
-        coverImage: "/books/culturecode.jpg",
-        author: "Daniel Coyle",
+        resourceSlug: "the-culture-code",
         description:
           "Helped me see trust as something built through everyday interactions. " +
           "Belonging, vulnerability, and repeated signals of safety create an environment " +
           "where people are willing to speak honestly, take risks, and rely on one another.",
-        linkLabel: "View on Amazon",
-        linkHref: "https://www.amazon.com/Culture-Code-Secrets-Highly-Successful/dp/0804176981/ref=sr_1_1?crid=14VZQM3AWE86W&dib=eyJ2IjoiMSJ9.l4LRxcquvBuu74AHnRbaz50Kb4cenEqdMZzn2ClrBFf9bLSnoNuWQCtPrR6MgZw87h8nOBRULm-FVEtpWN-Ltf7wyhfjKSQa7TjJvFN7FJPbl5pdwR2Lbdt0d8MvSYXUSL7K_EXCN4njGLR4NNOxjw.VBNNiYwHXScAMxlVs_XNxvHCfM6S2ciGPFW8Mv9e5eM&dib_tag=se&keywords=culturecode&qid=1786559886&sprefix=culturecode%2Caps%2C173&sr=8-1",
       },
       {
-        type: "Book",
-        title: "Team of Teams",
-        coverImage: "/books/teamofteams.jpg",
-        author: "Gen. Stanley McChrystal",
+        resourceSlug: "team-of-teams",
         description:
           "Showed me how trust becomes an organizational advantage. When people share " +
           "information freely and trust one another to act, decisions can move closer " +
           "to the work and teams can collaborate without depending on the hierarchy " +
           "for every answer.",
-        linkLabel: "View on Amazon",
-        linkHref: "https://www.amazon.com/Team-Teams-Rules-Engagement-Complex/dp/1591847486/ref=sr_1_1?crid=1U9C8WMNS6TDV&dib=eyJ2IjoiMSJ9.tTUYP9et1Ikm6AavQGxm2w2HR-z2N_kFLih1JE7MgqzmeD-lW9FSBpDalzH0aNl8he-GMCRsGxqrgoawRiS0HG9bS0vsjP71bCXcB3xHwY-rcUH0QVLKHakXf9sBnjxmVYjcimp1rSSoazIB7n23hd8hP5hTG7O3jJQCQPkfTX68zT3-rFgtCX2tHHE3izcrsXUgPXUBGsfoMZPY5Q_T1_EfbIK37epDyaJhEXJrBKE.sapzEHUTba55P1Zz99eduXq8JZIJk8g4_5-ucpwCtPM&dib_tag=se&keywords=team+of+teams&qid=1786560044&sprefix=team+of+team%2Caps%2C182&sr=8-1",
       },
       {
-        type: "Research",
-        title: "An Integrated Model of Organizational Trust",
-        coverImage: "/books/research.jpg",
-        author: "Mayer, Davis & Schoorman",
+        resourceSlug: "trust-in-a-manager",
         description:
           "Gave me a research-based framework for understanding why we trust people. " +
           "Trustworthiness is shaped by ability, benevolence, and integrity: whether " +
           "someone is capable, genuinely cares about others, and behaves according to " +
           "principles people can rely on.",
-        linkLabel: "Foundational Research",
-        linkHref: "https://www.makinggood.ac.nz/media/1270/mayeretal_1995_organizationaltrust.pdf",
       },      
     ],
     learnedTagline: "Trust is earned—but someone has to go first.",
@@ -540,57 +497,37 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
     ],
     ideasThatShaped: [
       {
-        type: "Book",
-        title: "Start with Why",
-        coverImage: "/books/startwithwhy.jpg",
-        author: "Simon Sinek",
+        resourceSlug: "start-with-why",
         description:
           "Reinforced that people need more than a list of things to do—they need to " +
           "understand why the work matters. Connecting decisions and priorities to a " +
           "meaningful purpose creates context, helps people make better choices, " +
           "and gives them something larger than the task itself to work toward.",
-        linkLabel: "View on Amazon",
-        linkHref: "https://www.amazon.com/s?k=start+with+why&crid=1C3WTBRRTJ7CT&sprefix=startwith+%2Caps%2C253&ref=nb_sb_ss_p13n-expert-pd-ops-ranker_ci_hl-bn-left_1_10",
       },
       {
-        type: "Book",
-        title: "Built to Last",
-        coverImage: "/books/builttolast.jpg",
-        author: "Jim Collins & Jerry Porras",
+        resourceSlug: "built-to-last",
         description:
           "The concept of BHAGs shaped how I think about ambition. A compelling future " +
           "should stretch beyond what seems easily achievable today, giving people " +
           "something meaningful to rally around while creating belief that together " +
           "we can accomplish more than we initially thought possible.",
-        linkLabel: "View on Amazon",
-        linkHref: "https://www.amazon.com/Built-Last-Successful-Visionary-Companies/dp/0060566108/ref=sr_1_1?crid=HHYKMSO39ZVV&dib=eyJ2IjoiMSJ9.nO1HibVit1y3YmhskLbT6YZbUEcUT37evfuorCfekd-W6Su6wQeGXKw9nq7S6T9ImHebazCUTFSwNfC6hh9sR10Gqg3x41GjSoAF_QnDEeV4ng3BKE5CzhmxQp9obrX3zRR9gXNHhnkeUGA4U6hMZryL15ec6bEOqErqRQJOjpID0IRCZKS9cZzQs3k0m7SkALa_ZmLaeN3bptmnR8CcvF0AMP2Fgx4ldhnV42C6UDw.W90X33Hpgi2HxWD_iLK2G5C3x65_cI633BynbVqi4QU&dib_tag=se&keywords=built+to+last&qid=1786644947&sprefix=built+to+last%2Caps%2C185&sr=8-1",
       },
       {
-        type: "Book",
-        title: "Measure What Matters",
-        coverImage: "/books/measurewhatmatters.jpg",
-        author: "John Doerr",
+        resourceSlug: "measure-what-matters",
         description:
           "Helped shape how I translate ambition into execution. OKRs connect a larger " +
           "purpose to clear, measurable outcomes, create alignment across teams, and " +
           "make progress visible without prescribing exactly how people should achieve " +
           "the goal.",
-        linkLabel: "View on Amazon",
-        linkHref: "https://www.amazon.com/Measure-What-Matters-Google-Foundation/dp/0525536221/ref=sr_1_1?crid=F3B56VBXDLW0&dib=eyJ2IjoiMSJ9.fdu3hAVgKrFzpb_aYtBKWVuvmpEX33m9XlCOaqqQ6LJ3oCrpJCEtbl8q1dPvMRKueb_M-xxxCRYJQq0GFyH-MUqZxdTJvIOjLhAj4HmwUsEr9kp0-AK1Zh8kv9OSzZ4CUrKHi1M5jxDPsAUM2dOmFuDYFp7CzfNCwacEy6v982pw5obu_fASr-B7qQczOb8BcvUhtZbo-anbRVEun99-I5dKHbODdQAEkaEPGPobc-M.LtLnc7PJ-ND3Oe3zUWQQCwp0idBDN3N_M3ovr9wT6qs&dib_tag=se&keywords=measure+what+matters+by+john+doerr&qid=1786645107&sprefix=measure%2Caps%2C306&sr=8-1",
       },
       {
-        type: "Research",
-        title: "The Progress Principle",
-        coverImage: "/books/research.jpg",
-        author: "Teresa Amabile & Steven Kramer",
+        resourceSlug: "the-progress-principle",
         description:
           "Reinforced the importance of making progress visible. Meaningful work becomes " +
           "more motivating when people can see that their effort is moving something " +
           "forward. Small wins build confidence and momentum, especially when the larger " +
           "destination is ambitious and still far away.",
-        linkLabel: "Foundational Research",
-        linkHref: "https://progressprinciple.com/portfolio-items/the-progress-principle-and-the-psychology-of-everyday-work-life/",
-      },      
+      },
     ],
     learnedTagline: "Ambition needs a Path",
     learnedParagraph: [
@@ -701,57 +638,37 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
     ],
     ideasThatShaped: [
       {
-        type: "Book",
-        title: "The Wisdom of Teams",
-        coverImage: "/books/wisdomofteams.jpg",
-        author: "Jon Katzenbach & Douglas Smith",
+        resourceSlug: "the-wisdom-of-teams",
         description:
           "Reinforced my belief that great teams are more than collections of talented individuals. " +
           "Complementary skills, shared purpose, common goals, and mutual accountability turn " +
           "individual capability into collective performance. The strength comes from how people " +
           "work together, not simply from the talent of each person.",
-        linkLabel: "View on Amazon",
-        linkHref: "https://www.amazon.com/Wisdom-Teams-Creating-High-Performance-Organization/dp/1633691063/ref=sr_1_1?crid=2ZHF12HHEP2KU&dib=eyJ2IjoiMSJ9.K065MMilvV-TkJ-GkwcUiZcgukleZxR6GNn79_CzuSFp5MOY-oE8MtFBTs4m-ccYQ0rjGOdD0j_QOvDQ1PLoo7sTkbgJY_zMtXeqR5NU2YUWWBU3LS8yO_wKmQwtbv5o1RuROgStJRLyv7aTD6m7PI8nH6xhJzR6Fqts5xphN-EIJpLxl1TOUuCHRWKP_Lo3yMByqJSpBAVvcMhj1aUPYCWBzvwIjLy0bJZ_vjFdDbE.VsKqagkgFk0A-pcITXXdthie81-ozyI6grKRMmT25MA&dib_tag=se&keywords=wisdom+of+teams&qid=1786648336&sprefix=wisdom+of+teams%2Caps%2C223&sr=8-1",
       },
       {
-        type: "Book",
-        title: "The Five Dysfunctions of a Team",
-        coverImage: "/books/fivedysfunctions.jpg",
-        author: "Patrick Lencioni",
+        resourceSlug: "the-five-dysfunctions-of-a-team",
         description:
           "Shaped how I think about trust and productive disagreement. Strong teams don't avoid conflict; " +
           "they create enough trust to challenge ideas, surface concerns, and debate alternatives without " +
           "making disagreement personal. Working through differences leads to stronger decisions and deeper commitment.",
-        linkLabel: "View on Amazon",
-        linkHref: "https://www.amazon.com/Five-Dysfunctions-Team-Leadership-Fable/dp/0787960756/ref=sr_1_1?crid=3FKGC6D7L1K1F&dib=eyJ2IjoiMSJ9.m-S3In8lXHSPxHFwaOT8TcJ8G6brbM9-l-BcdBydItOss61Ebzm15rR34htwURuC1A7PH4A7ba08wgvpJgAFuECn4dqcZTzFtjKVunKya6Gs7b6C4bRqCBIj-G5fJhZMU7UZENdoqie_kpe2phVuPFRrMY5T0TIttpOUoi5DuJBxJoCh_Nt8E-uQ6DDz_Iov-xH2dl0SUGZx1pfy0_ARiCre-kI8oHGtWE2CL8JytEo.by047hVf-mXvnhX9cfdEEYPVSKLBwGdoX06sNLr_I-8&dib_tag=se&keywords=five+dysfunctions+of+a+team&qid=1786653301&sprefix=five+dys%2Caps%2C199&sr=8-1",
       },
       {
-        type: "Book",
-        title: "Team Topologies",
-        coverImage: "/books/teamtopologies.jpg",
-        author: "Matthew Skelton & Manuel Pais",
+        resourceSlug: "team-topologies",
         description:
           "Influenced how I think about designing teams around the work. Team boundaries, ownership, " +
           "cognitive load, and how teams interact all affect performance. There isn't one ideal " +
           "structure—the goal is to create clear ownership while allowing expertise and collaboration to " +
           "flow where the work requires it.",
-        linkLabel: "View on Amazon",
-        linkHref: "https://www.amazon.com/Team-Topologies-2nd-Organizing-Technology/dp/1966280009/ref=sr_1_1?crid=20NBUK9FLDYBC&dib=eyJ2IjoiMSJ9.YEfDXTWenoXc04cAXSBXxXi72GK4-OpU9SGntdLoE4KoPqZq1Htfalxc5s_2l5km486fB6ktrX_HfczYrUcEGiJQ4csvwRvXvr_GP0VHrF0UTFglyh5HK9HTrr4nwUPO4cwykg-R6WcoRKR3hP0G0eVAv2aHH2Tq5Zf-J3-Xi7uyyv65rHzRzg5fCN6Iqsuurh53mg3_Qgd0JcMNSg492FjIGetUNxw-EEPA6VEXqhM.x8U3qDQx6qSVC0rCW3JdBRYUy4UDPolPDF3C1M1TE-A&dib_tag=se&keywords=team+topologies&qid=1786653441&sprefix=team+topologies%2Caps%2C177&sr=8-1",
       },
       {
-        type: "Research",
-        title: "Project Aristotle",
-        coverImage: "/books/research.jpg",
-        author: "Google Research",
+        resourceSlug: "project-aristotle",
         description:
           "Reinforced that team effectiveness depends on more than individual talent. Google's research " +
           "highlighted psychological safety, dependability, structure and clarity, meaning, and " +
           "impact as important dynamics of effective teams. It strengthened my belief that leaders " +
           "need to create the conditions where people can contribute fully, take interpersonal risks, " +
           "and succeed together.",
-        linkLabel: "Foundational Research",
-        linkHref: "https://business.google.com/us/think/future-of-marketing/five-dynamics-effective-team/",
-      },      
+      },
     ],
     learnedTagline: "Great teams don't happen by accident.",
     learnedParagraph: [
@@ -864,59 +781,39 @@ export const PRINCIPLE_DETAILS: readonly PrincipleDetail[] = [
     ],
     ideasThatShaped: [
       {
-        type: "Book",
-        title: "Thinking in Systems",
-        coverImage: "/books/thinkinginsystems.jpg",
-        author: "Donella H. Meadows",
+        resourceSlug: "thinking-in-systems",
         description:
           "Shaped how I think about organizations as interconnected systems rather than collections " +
           "of isolated problems. Feedback loops, delays, leverage points, and unintended consequences " +
           "reinforced the importance of understanding how the parts interact before trying to improve " +
           "them. Lasting improvement comes from changing the system, not simply treating the visible symptom.",
-        linkLabel: "View on Amazon",
-        linkHref: "https://www.amazon.com/Thinking-Systems-Donella-H-Meadows/dp/1603580557/ref=sr_1_1?crid=3Q3GWMV60TD4V&dib=eyJ2IjoiMSJ9.nGtz7jXKD6bUKvWQAPK-cdviAYN198S_Xfe_tAH9iyGR1zICI9Y_7N9qaWIv3gJzSpX05t1lIzP9tu9nZNBZtuCP1LczYDDCiF3i1OnL6LbWO-i4mvpJKM-fN6mP9-B7W6LzAYsEB9ZJgQhRy8RAi-rmzZvyzKfQUSJPTWBrEvMLvrhz4O6YVHBSFonVJ60_PPULWtS8iiMqQQQ8O0TgSzxil9RAuOub5_t78_LJBfI.VfuoXGSvoEyUQcyLtItZK5i7ZXIg2p-zl89SVvzuAho&dib_tag=se&keywords=thinking+systems&qid=1786660477&sprefix=thinkinginsystems%2Caps%2C167&sr=8-1",
       },
       {
-        type: "Book",
-        title: "Out of the Crisis",
-        coverImage: "/books/outofcrisis.jpg",
-        author: "W. Edwards Deming",
+        resourceSlug: "out-of-the-crisis",
         description:
           "Deeply influenced how I think about management's responsibility for the environment " +
           "in which people work. Performance is often shaped by the system around people—processes, " +
           "information, incentives, tools, and constraints. Deming also reinforced my belief in " +
           "measurement as a tool for understanding, and in continuous learning and improvement " +
           "rather than simply demanding better results.",
-        linkLabel: "View on Amazon",
-        linkHref: "https://www.amazon.com/Out-Crisis-W-Edwards-Deming/dp/0911379010/ref=sr_1_1?crid=1D7SHRD5GD3UJ&dib=eyJ2IjoiMSJ9.P5qO2HPWKghHqTw6PzTSLNmcMlJ7L-34txcLu9rXNL1ywvws10GTd-maO6CkZoalUC05lgCeG6nN-dh1q6O5b0OypScBnIoKb3ZDdwoWWoHYQJ62gBkg2GRWdlvIYd5Cfa_30LcZ8oxVlAUvv4Kf1m1op57PJPvbbZoeB9q92SJB8ERLoIrVDHnPJ3US7mIOKvGuKWYtlgkyZUMuLOf6EVk3bTkJV87CLJPhzR7UlNI.mkeQblX4Fd8JoPDIaxEMrls9sN5f0A9qfQ-kyMpUQdQ&dib_tag=se&keywords=out+of+crisis&qid=1786660613&sprefix=out+of+crisis%2Caps%2C180&sr=8-1",
       },
       {
-        type: "Book",
-        title: "The Principles of Product Development Flow",
-        coverImage: "/books/principlesofproductdevelopmentflow.jpg",
-        author: "Donald G. Reinertsen",
+        resourceSlug: "the-principles-of-product-development-flow",
         description:
           "Influenced how I think about flow, queues, batch size, feedback, and the economics " +
           "of product development. Improving individual activities doesn't necessarily improve " +
           "the overall outcome. The goal is to understand the end-to-end system, reduce delays " +
           "and unnecessary work, and focus improvement where it meaningfully improves flow and " +
           "business results.",
-        linkLabel: "View on Amazon",
-        linkHref: "https://www.amazon.com/Principles-Product-Development-Flow-Generation/dp/1935401033/ref=sr_1_1?crid=RYISOBPKM9G7&dib=eyJ2IjoiMSJ9.1Kp8u7to85q6RJ23sK2PwAj2U3t9OXqMUKhezD2ke2PidCUUVcGUFgZ0ozsEWX4eKnrGQaS5zf3IWiSF2Qq55JW9iaE5d7RAsu4HGnV91QqP9XpP1sX238yVdsKFGFyyJI_2KVPp2qVboQwN4vb5wv9daPyupInSr8TVTeRZY60TE2oDR4tR1RhcDua5o_qAEe2t-vLpe1DpL6RnEI-kGc2-ohaeyJKMtet12loqfWU._m4KadBv0TOPUEXVw-apLMhaK8AIujZCBsjHftFgs-g&dib_tag=se&keywords=principles+of+product+development+flow&qid=1786660792&sprefix=principles+of+product%2Caps%2C195&sr=8-1",
       },
       {
-        type: "Book",
-        title: "Accelerate",
-        coverImage: "/books/accelerate.jpg",
-        author: "Nicole Forsgren, Jez Humble & Gene Kim",
+        resourceSlug: "accelerate",
         description:
           "Reinforced these ideas with research from modern software organizations. Fast feedback, " +
           "small changes, automation, continuous delivery, and strong technical practices can " +
           "improve both delivery performance and stability. It helped shape my belief that speed " +
           "and quality don't have to be opposing goals when the system is designed well.",
-        linkLabel: "View on Amazon",
-        linkHref: "https://www.amazon.com/Accelerate-Software-Performing-Technology-Organizations/dp/1942788339/ref=sr_1_1?crid=1HHU8DRGPRNV8&dib=eyJ2IjoiMSJ9.IP6dUF35B7QVgMFnqDAo6GZN7nlQCSKhq8Xk-v4rItdQfpTVk_1lqcFejXuRI5azsAzbKFkvXJdOwvEycLE4XOio5bxHAL2g6Y2efiYMvRvVRsBeTyci9Uw5ZgYsLio1lz9lIAoC230-y1puubtyOpxQQPHQcMVMc4BdD2lXtaHiq4CNQD9C3cMR2Vt2p9DlIzdwf6Y82xiMQ-UpszTtBeqrjGtjLe1ppxkZ-advPQo.xVXOR2bxRVPf7W1LRS3hi8Pk0bZ6Nn9k9leOfkvt2hA&dib_tag=se&keywords=accelerate&qid=1786660929&sprefix=accelerat%2Caps%2C226&sr=8-1",
-      },      
+      },
     ],
     learnedTagline: "Look for the constraint, not the culprit.",
     learnedParagraph: [

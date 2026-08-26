@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { ResourceCover } from "@/components/resource-cover";
 import { ResourceIcon } from "@/components/resources/resource-icon";
-import { SearchIcon } from "@/components/ui/icons";
+import { ChevronDownIcon, LaunchIcon, SearchIcon } from "@/components/ui/icons";
 import type { ResourceGroup } from "@/content/resources";
 import { TILE_CLASSES, TILE_TEXT_CLASSES } from "@/content/leadership";
 
@@ -27,6 +27,7 @@ interface ResourceLibraryProps {
 export function ResourceLibrary({ groups, covers }: ResourceLibraryProps) {
   const [query, setQuery] = useState("");
   const normalizedQuery = query.trim().toLowerCase();
+  const [expandedSlug, setExpandedSlug] = useState<string | null>(null);
 
   const filteredGroups = useMemo(() => {
     if (!normalizedQuery) {
@@ -118,76 +119,126 @@ export function ResourceLibrary({ groups, covers }: ResourceLibraryProps) {
                   <p className="mt-1 text-sm text-muted">{category.description}</p>
 
                   <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    {category.resources.map((resource) => (
-                      <li
-                        key={resource.slug}
-                        id={resource.slug}
-                        className="card scroll-mt-24 flex gap-3 p-4"
-                      >
-                        <ResourceCover cover={covers[resource.slug] ?? null} />
-                        <div className="min-w-0 flex-1">
-                          <p className="text-sm font-bold text-ink">{resource.title}</p>
-                          {resource.subtitle ? (
-                            <p className="text-xs text-muted">{resource.subtitle}</p>
-                          ) : null}
-                          {resource.author ? (
-                            <p className="text-xs text-muted">{resource.author}</p>
-                          ) : null}
+                    {category.resources.map((resource) => {
+                      const isExpanded = expandedSlug === resource.slug;
+                      const hasMoreDetail = Boolean(
+                        resource.description ||
+                          resource.ideasCarriedForward?.length ||
+                          resource.whereItShowsUpInMyWork,
+                      );
+                      const detailId = `${resource.slug}-detail`;
 
-                          {resource.description ? (
-                            <p className="mt-2 text-xs text-muted">{resource.description}</p>
-                          ) : null}
+                      return (
+                        <li
+                          key={resource.slug}
+                          id={resource.slug}
+                          className="card scroll-mt-24 flex gap-3 p-4"
+                        >
+                          <ResourceCover cover={covers[resource.slug] ?? null} />
+                          <div className="min-w-0 flex-1">
+                            <p className="flex items-center gap-1.5 text-sm font-bold text-ink">
+                              {resource.title}
+                              {resource.url ? (
+                                <a
+                                  href={resource.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  aria-label={`View ${resource.title}`}
+                                  className="text-muted transition-colors hover:text-accent"
+                                >
+                                  <LaunchIcon className="size-3.5" />
+                                </a>
+                              ) : null}
+                            </p>
+                            {resource.subtitle ? (
+                              <p className="text-xs text-muted">{resource.subtitle}</p>
+                            ) : null}
+                            {resource.author ? (
+                              <p className="text-xs text-muted">{resource.author}</p>
+                            ) : null}
 
-                          {resource.whyItMattersToMe ? (
-                            <div className="mt-2">
-                              <p className="text-xs font-semibold tracking-wide text-ink uppercase">
-                                Why It Matters to Me
-                              </p>
-                              <p className="mt-0.5 text-xs text-muted">
-                                {resource.whyItMattersToMe}
-                              </p>
-                            </div>
-                          ) : null}
+                            {resource.whyItMattersToMe ? (
+                              <div className="mt-2">
+                                <p className="text-xs font-semibold tracking-wide text-ink uppercase">
+                                  Why It Matters to Me
+                                </p>
+                                <p className="mt-0.5 text-xs text-muted">
+                                  {resource.whyItMattersToMe}
+                                </p>
+                              </div>
+                            ) : null}
 
-                          {resource.ideasCarriedForward?.length ? (
-                            <div className="mt-2">
-                              <p className="text-xs font-semibold tracking-wide text-ink uppercase">
-                                Ideas I Carried Forward
-                              </p>
-                              <ul className="mt-0.5 list-disc space-y-0.5 pl-4">
-                                {resource.ideasCarriedForward.map((idea) => (
-                                  <li key={idea} className="text-xs text-muted">
-                                    {idea}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ) : null}
+                            {hasMoreDetail ? (
+                              <>
+                                <div
+                                  id={detailId}
+                                  className="grid transition-[grid-template-rows] duration-200 ease-out"
+                                  style={{ gridTemplateRows: isExpanded ? "1fr" : "0fr" }}
+                                >
+                                  <div className="overflow-hidden">
+                                    {resource.description ? (
+                                      <div className="mt-2">
+                                        <p className="text-xs font-semibold tracking-wide text-ink uppercase">
+                                          Short Summary
+                                        </p>
+                                        <p className="mt-0.5 text-xs text-muted">
+                                          {resource.description}
+                                        </p>
+                                      </div>
+                                    ) : null}
 
-                          {resource.whereItShowsUpInMyWork ? (
-                            <div className="mt-2">
-                              <p className="text-xs font-semibold tracking-wide text-ink uppercase">
-                                Where It Shows Up in My Work
-                              </p>
-                              <p className="mt-0.5 text-xs text-muted">
-                                {resource.whereItShowsUpInMyWork}
-                              </p>
-                            </div>
-                          ) : null}
+                                    {resource.ideasCarriedForward?.length ? (
+                                      <div className="mt-2">
+                                        <p className="text-xs font-semibold tracking-wide text-ink uppercase">
+                                          Ideas I Carried Forward
+                                        </p>
+                                        <ul className="mt-0.5 list-disc space-y-0.5 pl-4">
+                                          {resource.ideasCarriedForward.map((idea) => (
+                                            <li key={idea} className="text-xs text-muted">
+                                              {idea}
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      </div>
+                                    ) : null}
 
-                          {resource.url ? (
-                            <a
-                              href={resource.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="link mt-2 inline-block text-xs"
-                            >
-                              View →
-                            </a>
-                          ) : null}
-                        </div>
-                      </li>
-                    ))}
+                                    {resource.whereItShowsUpInMyWork ? (
+                                      <div className="mt-2">
+                                        <p className="text-xs font-semibold tracking-wide text-ink uppercase">
+                                          Where It Shows Up in My Work
+                                        </p>
+                                        <p className="mt-0.5 text-xs text-muted">
+                                          {resource.whereItShowsUpInMyWork}
+                                        </p>
+                                      </div>
+                                    ) : null}
+                                  </div>
+                                </div>
+
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    setExpandedSlug((prev) =>
+                                      prev === resource.slug ? null : resource.slug,
+                                    )
+                                  }
+                                  aria-expanded={isExpanded}
+                                  aria-controls={detailId}
+                                  className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-accent transition-colors hover:text-accent-strong"
+                                >
+                                  {isExpanded ? "Less detail" : "More detail"}
+                                  <ChevronDownIcon
+                                    className={`size-3.5 transition-transform duration-200 ${
+                                      isExpanded ? "rotate-180" : ""
+                                    }`}
+                                  />
+                                </button>
+                              </>
+                            ) : null}
+                          </div>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               ))}

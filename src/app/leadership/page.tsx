@@ -10,7 +10,9 @@ import {
   TILE_CLASSES,
   TILE_TEXT_CLASSES,
 } from "@/content/leadership";
+import { findResourceBySlug } from "@/content/resources";
 import { getSection } from "@/content/sections";
+import { resolveResourceCover } from "@/lib/resource-covers";
 
 const section = getSection("leadership");
 
@@ -208,46 +210,60 @@ export default function LeadershipPage() {
                           <div className="mt-10">
                             <h3 className="text-lg">{IDEAS_STEP.label}</h3>
                             <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                              {principle.ideasThatShaped?.map((idea) => (
-                                <li key={idea.title} className={IDEA_CARD_CLASSES}>
-                                  <div className="flex gap-3">
-                                    {idea.coverImage ? (
-                                      <Image
-                                        src={idea.coverImage}
-                                        alt=""
-                                        width={55}
-                                        height={70}
-                                        className="h-[70px] w-[55px] shrink-0 rounded border border-band-line object-cover"
-                                      />
-                                    ) : null}
-                                    <div className="min-w-0">
-                                      <span className="inline-block rounded border border-band-line px-2 py-0.5 text-xs font-medium tracking-wide text-band-muted uppercase">
-                                        {idea.type}
-                                      </span>
-                                      <p className="mt-2 text-base font-semibold text-band-ink">
-                                        {idea.title}
-                                      </p>
-                                      {idea.author ? (
-                                        <p className="text-sm text-band-muted">{idea.author}</p>
+                              {principle.ideasThatShaped?.map((idea) => {
+                                const resource = findResourceBySlug(idea.resourceSlug);
+                                if (!resource) {
+                                  return null;
+                                }
+
+                                const cover = resolveResourceCover(resource);
+                                const kind = resource.kind ?? "Book";
+                                const linkLabel =
+                                  kind === "Research" ? "Foundational Research" : "View on Amazon";
+
+                                return (
+                                  <li key={resource.slug} className={IDEA_CARD_CLASSES}>
+                                    <div className="flex gap-3">
+                                      {cover ? (
+                                        <Image
+                                          src={cover}
+                                          alt=""
+                                          width={55}
+                                          height={70}
+                                          className="h-[70px] w-[55px] shrink-0 rounded border border-band-line object-cover"
+                                        />
                                       ) : null}
+                                      <div className="min-w-0">
+                                        <span className="inline-block rounded border border-band-line px-2 py-0.5 text-xs font-medium tracking-wide text-band-muted uppercase">
+                                          {kind}
+                                        </span>
+                                        <p className="mt-2 text-base font-semibold text-band-ink">
+                                          {resource.title}
+                                        </p>
+                                        {resource.author ? (
+                                          <p className="text-sm text-band-muted">
+                                            {resource.author}
+                                          </p>
+                                        ) : null}
+                                      </div>
                                     </div>
-                                  </div>
-                                  <p className="mt-2 text-sm text-band-muted">
-                                    {idea.description}
-                                  </p>
-                                  {idea.linkHref ? (
-                                    <a
-                                      href={idea.linkHref}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="link mt-2 inline-flex items-center gap-1 text-sm"
-                                    >
-                                      {idea.linkLabel}
-                                      <ArrowRight />
-                                    </a>
-                                  ) : null}
-                                </li>
-                              ))}
+                                    <p className="mt-2 text-sm text-band-muted">
+                                      {idea.description}
+                                    </p>
+                                    {resource.url ? (
+                                      <a
+                                        href={resource.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="link mt-2 inline-flex items-center gap-1 text-sm"
+                                      >
+                                        {linkLabel}
+                                        <ArrowRight />
+                                      </a>
+                                    ) : null}
+                                  </li>
+                                );
+                              })}
                             </ul>
                           </div>
 
