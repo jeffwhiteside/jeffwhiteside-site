@@ -80,6 +80,7 @@ export const RESOURCE_GROUPS: readonly ResourceGroup[] = [
           {
             slug: "multipliers",
             title: "Multipliers",
+            subtitle: "How the Best Leaders Make Everyone Smarter",
             author: "Liz Wiseman",
             description: "Explores how leaders can either amplify or diminish the intelligence, capability, and contribution of the people around them.",
             whyItMattersToMe: "Reinforced my belief that leadership is less about having the answers and more about creating the conditions for others to think, grow, and take meaningful ownership.",

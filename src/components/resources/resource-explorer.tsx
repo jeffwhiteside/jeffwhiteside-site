@@ -6,7 +6,7 @@ import { ResourceCover } from "@/components/resource-cover";
 import { ResourceIcon } from "@/components/resources/resource-icon";
 import { ChevronDownIcon, LaunchIcon, SearchIcon } from "@/components/ui/icons";
 import type { ResourceCategory } from "@/content/resources";
-import { TILE_CLASSES, TILE_TEXT_CLASSES } from "@/content/leadership";
+import { TILE_CLASSES } from "@/content/leadership";
 
 interface ResourceExplorerProps {
   categories: readonly ResourceCategory[];
@@ -107,7 +107,7 @@ export function ResourceExplorer({ categories, covers }: ResourceExplorerProps) 
 
   return (
     <div>
-      <div className="sticky top-16 z-30 mt-3 flex flex-wrap items-center gap-2 border-b border-line bg-canvas/95 py-3 backdrop-blur">
+      <div className="sticky top-16 z-30 mt-1.5 flex flex-wrap items-center gap-2 border-b border-line bg-canvas/95 py-3 backdrop-blur">
         <div className="relative w-full max-w-48">
           <SearchIcon className="absolute top-1/2 left-2.5 size-3.5 -translate-y-1/2 text-muted" />
           <input
@@ -149,7 +149,7 @@ export function ResourceExplorer({ categories, covers }: ResourceExplorerProps) 
           <section
             key={category.slug}
             id={category.slug}
-            className={`scroll-mt-24 ${index === 0 ? "mt-6" : "mt-10"}`}
+            className={`scroll-mt-24 ${index === 0 ? "mt-3" : "mt-5"}`}
           >
             <div className="flex items-center gap-3">
               <span
@@ -163,10 +163,6 @@ export function ResourceExplorer({ categories, covers }: ResourceExplorerProps) 
                 <h2 className="text-section">{category.title}</h2>
                 <p className="text-sm text-muted">{category.description}</p>
               </div>
-              <span className={`ml-auto text-xs font-semibold ${TILE_TEXT_CLASSES[category.tile]}`}>
-                {category.resources.length}{" "}
-                {category.resources.length === 1 ? "resource" : "resources"}
-              </span>
             </div>
 
             <ul className="mt-3 grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -203,13 +199,16 @@ export function ResourceExplorer({ categories, covers }: ResourceExplorerProps) 
                         {resource.subtitle ? (
                           <p
                             title={resource.subtitle}
-                            className="mt-0.5 truncate font-serif text-sm text-muted italic"
+                            className="mt-0.5 truncate font-serif text-xs text-muted italic"
                           >
                             {resource.subtitle}
                           </p>
                         ) : null}
                         {resource.author ? (
-                          <p title={resource.author} className="mt-1 truncate text-xs text-muted">
+                          <p
+                            title={resource.author}
+                            className="mt-1 truncate text-[10px] text-muted"
+                          >
                             {resource.author}
                           </p>
                         ) : null}
@@ -217,18 +216,18 @@ export function ResourceExplorer({ categories, covers }: ResourceExplorerProps) 
                     </div>
 
                     {resource.whyItMattersToMe ? (
-                      <div className="mt-3">
+                      <div className="mt-1.5">
                         <p className="text-xs font-semibold tracking-wide text-ink uppercase">
                           Why It Matters to Me
                         </p>
-                        <p className="mt-0.5 line-clamp-3 text-xs text-muted">
+                        <p className="mt-0.5 line-clamp-2 text-xs text-muted">
                           {resource.whyItMattersToMe}
                         </p>
                       </div>
                     ) : null}
 
                     {hasMoreDetail ? (
-                      <div className="mt-auto pt-2">
+                      <div className="mt-auto pt-1">
                         <div
                           id={detailId}
                           className="grid transition-[grid-template-rows] duration-200 ease-out"
@@ -283,7 +282,7 @@ export function ResourceExplorer({ categories, covers }: ResourceExplorerProps) 
                           }
                           aria-expanded={isExpanded}
                           aria-controls={detailId}
-                          className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-accent transition-colors hover:text-accent-strong"
+                          className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-accent transition-colors hover:text-accent-strong"
                         >
                           {isExpanded ? "Less detail" : "More detail"}
                           <ChevronDownIcon

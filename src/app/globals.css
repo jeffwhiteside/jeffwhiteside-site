@@ -73,13 +73,13 @@
 }
 
 @utility text-hero {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
   line-height: 1.12;
   letter-spacing: -0.025em;
 }
 
 @utility text-section {
-  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  font-size: clamp(1.125rem, 2.25vw, 1.5rem);
   line-height: 1.2;
   letter-spacing: -0.02em;
 }

@@ -30,7 +30,7 @@ export default function ResourcesPage() {
   }
 
   return (
-    <article className="page-container pt-4 pb-8 sm:pt-6 sm:pb-10">
+    <article className="page-container pt-2 pb-8 sm:pt-3 sm:pb-10">
       <h1 className="text-hero">Resources &amp; Influences</h1>
       <span aria-hidden="true" className="mt-2 block h-1 w-12 rounded-full bg-accent" />
       <p className="mt-2 text-muted">{RESOURCES_INTRO}</p>
