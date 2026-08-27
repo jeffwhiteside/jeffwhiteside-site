@@ -109,50 +109,6 @@ export default function AboutPage() {
           ))}
         </ul>
       </section>
-
-      {/* A Few Things I Believe / What I'm Learning Lately */}
-      {/* <section className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_auto_1fr] lg:items-center">
-        <div>
-          <h2 className="text-section">A Few Things I Believe</h2>
-          <ul className="mt-5 space-y-3">
-            {BELIEFS.map((belief) => (
-              <li key={belief} className="flex items-start gap-2 text-sm text-muted">
-                <CheckIcon className="mt-0.5 size-4 shrink-0 text-accent" />
-                {belief}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mx-auto w-full max-w-[220px] -rotate-2 rounded-md border border-line bg-elevated p-3 shadow-lg">
-          <PhotoBox
-            candidates={POLAROID_CANDIDATES}
-            alt="A quiet moment outdoors"
-            className="relative aspect-square w-full"
-          />
-          <p className="mt-3 pb-1 text-center font-serif text-xs text-muted italic">
-            {POLAROID_CAPTION}
-          </p>
-        </div>
-
-        <div>
-          <h2 className="text-section">What I&rsquo;m Learning Lately</h2>
-          <ul className="mt-5 space-y-3">
-            {LEARNING_LATELY.map((item) => (
-              <li key={item} className="flex items-start gap-2 text-sm text-muted">
-                <SparkIcon className="mt-0.5 size-4 shrink-0 text-accent" />
-                {item}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-4 flex items-center gap-2 font-serif text-sm text-accent italic">
-            <LeafIcon className="size-4" />
-            {LEARNING_TAGLINE}
-          </p>
-        </div>
-      </section> */}
-
-     
     </article>
   );
 }
