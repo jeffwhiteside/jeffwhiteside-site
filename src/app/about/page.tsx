@@ -89,10 +89,10 @@ export default function AboutPage() {
           Some of the things I&rsquo;m usually learning, growing, reading, playing, or getting
           myself into.
         </p>
-        <ul className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        <ul className="mt-5 grid grid-cols-2 items-stretch gap-4 sm:grid-cols-3 lg:grid-cols-6">
           {OUTSIDE_OF_WORK.map((item) => (
-            <li key={item.title} className="card overflow-hidden">
-              <div className="p-4">
+            <li key={item.title} className="card flex h-full flex-col overflow-hidden">
+              <div className="p-3">
                 <p className="flex items-center gap-2 text-sm font-bold text-ink">
                   <item.icon className="size-5 shrink-0 text-accent" />
                   {item.title}
@@ -103,7 +103,7 @@ export default function AboutPage() {
                 candidates={item.coverCandidates}
                 alt={item.title}
                 icon={item.icon}
-                className="relative aspect-square w-full"
+                className="relative mt-auto aspect-square w-full"
               />
             </li>
           ))}

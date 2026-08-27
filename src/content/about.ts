@@ -61,7 +61,7 @@ export const OUTSIDE_OF_WORK: readonly OutsideOfWorkItem[] = [
   },
   {
     title: "Vinyl & Music",
-    description: "Collecting records and discovering the music of every era.",
+    description: "Collecting vinyls & hearing the music of every era.",
     icon: VinylIcon,
     coverCandidates: ["/about/vinyl-1.jpg"],
   },
