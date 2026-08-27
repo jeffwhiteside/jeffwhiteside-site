@@ -428,6 +428,84 @@ export function ChevronDownIcon({ className }: IconProps) {
   );
 }
 
+/** Playing guitar. */
+export function GuitarIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M8.5 21a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
+      <path d="M10 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+      <path d="M11.5 9 18 2.5" />
+      <path d="M16 2.5h3v3" />
+    </svg>
+  );
+}
+
+/** Vinyl records and music. */
+export function VinylIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="2.5" />
+      <path d="M12 6v.01M17 12h.01M12 18v-.01M7 12h-.01" />
+    </svg>
+  );
+}
+
+/** Plants, orchids, things that grow. */
+export function LeafIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M12 21c0-8.5 4-13.5 9-15.5-1 8.5-4 13.5-9 15.5Z" />
+      <path d="M12 21c0-6-3-10-8-12 1 6 3 10 8 12Z" />
+    </svg>
+  );
+}
+
+/** Staying active, working out. */
+export function DumbbellIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <rect x="2" y="9" width="3" height="6" rx="1" />
+      <rect x="19" y="9" width="3" height="6" rx="1" />
+      <path d="M5 12h1M18 12h1" />
+      <path d="M9 8v8M15 8v8" />
+      <path d="M9 12h6" />
+    </svg>
+  );
+}
+
+/** A short pull-quote. */
+export function QuoteIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M7 8.5c-1.7 0-3 1.4-3 3.5s1.3 3.5 3 3.5c0-2.3 1-3.6 2.3-4.2V8.5H7Z" />
+      <path d="M15.7 8.5c-1.7 0-3 1.4-3 3.5s1.3 3.5 3 3.5c0-2.3 1-3.6 2.3-4.2V8.5h-2.3Z" />
+    </svg>
+  );
+}
+
+/** Theater and live performance. */
+export function TheaterMasksIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <circle cx="8" cy="10" r="5.5" />
+      <path d="M5.5 12c.8 1 1.7 1.5 2.5 1.5s1.7-.5 2.5-1.5" />
+      <circle cx="16" cy="14" r="5.5" />
+      <path d="M13.5 12.5c.8-1 1.7-1.5 2.5-1.5s1.7.5 2.5 1.5" />
+    </svg>
+  );
+}
+
+/** Movies and TV. */
+export function ClapperboardIcon({ className }: IconProps) {
+  return (
+    <svg {...svgProps(className)}>
+      <path d="M3 10h18v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9Z" />
+      <path d="m3 10 1.5-5h4L7 10M10 10l1.5-5h4L14 10M17 10l1.5-5h2l-1 5" />
+    </svg>
+  );
+}
+
 /** A footnote worth reading. */
 export function InfoIcon({ className }: IconProps) {
   return (

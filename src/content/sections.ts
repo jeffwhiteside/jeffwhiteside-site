@@ -86,15 +86,14 @@ export const SECTIONS = [
 export type SectionId = (typeof SECTIONS)[number]["id"];
 
 /**
- * Header navigation. About is excluded for now — hidden from navigation, but the route, its
- * content, and `getSection("about")` all still work.
+ * Header navigation.
  *
  * There is no Contact section or route. It was a placeholder page reachable only by a hidden
  * (CSS `lg:hidden` counterpart never rendered on desktop) link, which meant it stayed
  * crawlable and publicly reachable at /contact while offering nothing real — worse than not
  * having it. Reaching out happens through the footer's direct LinkedIn and email links instead.
  */
-const HIDDEN_FROM_NAV: readonly SectionId[] = ["about"];
+const HIDDEN_FROM_NAV: readonly SectionId[] = [];
 
 export const NAV_SECTIONS = SECTIONS.filter(
   (section) => !HIDDEN_FROM_NAV.includes(section.id),
