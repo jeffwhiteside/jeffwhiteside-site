@@ -1,5 +1,5 @@
-import Image from "next/image";
 import type { Icon } from "@/components/ui/icons";
+import { LightboxImage } from "@/components/about/lightbox-image";
 import { resolvePublicImage } from "@/lib/assets";
 
 interface PhotoBoxProps {
@@ -17,16 +17,15 @@ interface PhotoBoxProps {
  * soft bordered placeholder with a drawn icon — same real-asset-first pattern as the portrait,
  * project screenshots, and every book cover on the Resources page. Server-only (resolving a
  * cover touches the filesystem), so this can't be used from a Client Component.
+ *
+ * A real photo renders via LightboxImage so every photo on the page opens full-size on click —
+ * the grid thumbnails are small by design, so that's the only way to actually see one clearly.
  */
 export function PhotoBox({ candidates, alt, icon: FallbackIcon, className }: PhotoBoxProps) {
   const src = resolvePublicImage(candidates);
 
   if (src) {
-    return (
-      <div className={`overflow-hidden rounded-xl border border-line ${className}`}>
-        <Image src={src} alt={alt} fill className="object-cover" />
-      </div>
-    );
+    return <LightboxImage src={src} alt={alt} className={className} />;
   }
 
   return (

@@ -56,7 +56,7 @@ export default function AboutPage() {
           )}
           <p className="mt-4 text-muted">
             {HERO_INTRO.map((line, index) => (
-              <Fragment key={line}>
+              <Fragment key={index}>
                 {index > 0 ? <br /> : null}
                 {line}
               </Fragment>
@@ -71,13 +71,13 @@ export default function AboutPage() {
         />
       </div>
 
-      <div className="mt-8 grid grid-cols-4 gap-3 sm:grid-cols-7">
+      <div className="mt-8 grid grid-cols-3 gap-3 sm:grid-cols-7">
         {HERO_GALLERY.map((candidates, index) => (
           <PhotoBox
             key={candidates[0]}
             candidates={candidates}
             alt={`Jeff Whiteside, photo ${index + 1}`}
-            className="relative aspect-square w-full"
+            className={`relative aspect-square w-full ${index === 6 ? "hidden sm:block" : ""}`}
           />
         ))}
       </div>
