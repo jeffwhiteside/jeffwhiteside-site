@@ -17,9 +17,11 @@ import {
 
 export const HERO_INTRO = [
   "Most of this site is about things I think about professionally. This page is a little more personal.",
-  "",
-  "I’m a husband, father of three wonderful kids, three cats, and the sweetest dog. I love to learn new " +
-  "things and challenge myself to continuously improve. I’m usually curious about something, learning something I’m not very good at yet, or finding a new project to get interested in.",
+  " ",
+  "I’m a husband, dad of three, lifelong learner, and caretaker of three cats and one very sweet dog. " +
+  "I like learning new things, taking on projects I’m not very good at yet, and following whatever "  +
+  "happens to catch my curiosity.",
+  " ",
   "My family keeps me grounded, and I try to make room for the people, interests, and experiences that " +
   "make life interesting.",
 ] as const;
@@ -65,13 +67,13 @@ export const OUTSIDE_OF_WORK: readonly OutsideOfWorkItem[] = [
   },
   {
     title: "Plants",
-    description: "Trying to keep my houseplants alive and helping things grow.",
+    description: "Trying to keep my houseplants alive and happy.",
     icon: LeafIcon,
     coverCandidates: ["/about/plants.jpg", "/about/plants.png"],
   },
   {
     title: "Reading",
-    description: "Always learning. Books, ideas, and better ways to lead.",
+    description: "Always reading. From Stephen King to history.",
     icon: BookOpenIcon,
     coverCandidates: ["/about/reading.jpg", "/about/reading.png"],
   },
@@ -83,7 +85,7 @@ export const OUTSIDE_OF_WORK: readonly OutsideOfWorkItem[] = [
   },
   {
     title: "Movies & TV",
-    description: "We may take family movie night a little too seriously.",
+    description: "We take family movie night a little too seriously. Exhibit A",
     icon: ClapperboardIcon,
     coverCandidates: ["/about/movies.jpg", "/about/movies.png"],
   },
